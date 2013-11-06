@@ -133,7 +133,23 @@ public class NavNodeManager {
 		float duration = (Time.time - startTime);
 		Debug.Log("Navigation mesh completed in <" + duration + "> seconds. <" + availableNodes.Count.ToString() + "> nodes created.");
 	}
-
+	
+	public void FindNodeLinks () {
+		Vector3 initialDirection = new Vector3(1,0,1);
+		float distance = 2.5f;
+		foreach (NavNode node in availableNodes) {
+			for (int i = 0 ; i < 12 ; i++) { //THIS MAY NEED NORMALISATIONS
+				Vector3 locCheck = node.nodePosition + (RotateVector3RY(initialDirection, (i * 30f)) * distance);
+				NavNode linkedNode = FindNavNodeFromPos(locCheck);
+				if (linkedNode != null) {
+					node.AddNodeLink(linkedNode);
+				}
+			}
+			Debug.Log("Node <" + node.uID + "> has found (" + node.linkedNodes.Count + ") node(s) to link to");
+		}
+	}
+	
+	
 	private float NodeScaling (Vector3 rPos, Vector3 pPos, Vector3 pExt, int directionFlag) {
 		List<Vector3> navPosList = new List<Vector3>();
 		//if (FindNavNodeFromPos(rPos) != null) { return 0f; }

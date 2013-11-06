@@ -38,8 +38,16 @@ public class NavNode {
 //	}
 	
 	public void AddNodeLink(NavNode nodeToLink) {
-		linkedNodes.Add(nodeToLink);
+		if (CheckForDuplicateNode(nodeToLink)){
+			linkedNodes.Add(nodeToLink);
+		}
 		UpdateDebugNodeLinks();
+	}
+	
+	private bool CheckForDuplicateNode (NavNode nodeToLink) {
+		NavNode dupeNode = linkedNodes.Find(node => node.uID == nodeToLink.uID);
+		if (dupeNode == null) { return true; }
+		else { return false; }
 	}
 	
 	public void RemoveNodeLink(NavNode nodeToRemove) {
@@ -54,7 +62,7 @@ public class NavNode {
 	private void CreateDebugNode () {
 		Vector3 debugNodePos = new Vector3(nodePosition.x, nodePosition.y + 1, nodePosition.z);
 		nodeVis = (GameObject)GameObject.Instantiate(Resources.Load("nodeVisPlane"), debugNodePos, new Quaternion(0,0,0,0));
-		//nodeVis.GetComponent<DebuggingNodes>().SendMessage("InitNavNode", this);
+		nodeVis.GetComponent<DebuggingNodes>().SendMessage("InitNavNode", this);
 	}
 	
 	public void TogglePropagation (bool state) {

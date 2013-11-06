@@ -39,8 +39,8 @@ public class CameraSelection : MonoBehaviour {
 				newMousePosition = Vector3.zero;
 			}
 			if (Input.GetKeyUp(KeyCode.L)){
-				navManager.BeginFloodFill();
-				//navManager.FindNodeLinks();
+				//navManager.BeginFloodFill();
+				navManager.FindNodeLinks();
 			}
 			if ((Input.GetMouseButtonDown(1)) && (selectedObjectList.Count > 0)){
 				int[] worldLayer = {9};

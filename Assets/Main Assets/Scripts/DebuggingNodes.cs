@@ -19,14 +19,9 @@ public class DebuggingNodes : MonoBehaviour {
 		this.renderer.material.color = Color.green;
 	}
 	
-	public void InitLinkedList (List<NavNode> initNodeList) {
-		System.Array.Resize(ref linkedNodesUID, 0);
-		List<int> uIDList = new List<int>();
-		foreach (NavNode node in initNodeList) {
-			uIDList.Add(node.uID);
-		}
-		linkedNodesUID = uIDList.ToArray();
-		linkedNodes = initNodeList;
+	public void InitNavNode (NavNode node) {
+		this.uID = node.uID;
+		this.transform.localScale = node.nodeExtents;
 	}
 	
 	public void UpdateLinks (List<NavNode> linkedNodeList) {
