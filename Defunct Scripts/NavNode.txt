@@ -1,0 +1,125 @@
+using UnityEngine;
+using System.Collections;
+using System.Linq;
+
+public class NavNodeDefunct {
+	
+	public Vector3 position;
+	public System.Collections.Generic.List<NavNode> linkedNodes = new System.Collections.Generic.List<NavNode>();
+	public int castDistance;
+	public bool canPropagate;
+	public string gridID;
+	public int uID;
+	public int extents;
+	public int generation;
+	public GameObject nodeVis;
+	public NavNodeManager nodeManager;
+	public Vector3 normalizedParentVector = new Vector3(0,0,0);
+	
+	
+	public NavNodeDefunct (Vector3 initPos, NavNode parentNode, int nodeGeneration, NavNodeManager initNodeManager, bool MedianNode) {
+		position = initPos;
+		extents = 5;
+		nodeManager = initNodeManager;
+		uID = nodeManager.GenerateUID();
+		generation = nodeGeneration + 1;
+		canPropagate = true;
+		gridID = "A";
+		castDistance = 5;
+
+		if (parentNode != null) {
+			Debug.Log("Node " + parentNode.uID + " has made a new Node " + uID +" at: " + initPos + "!!");
+			linkedNodes.Add(parentNode);
+			normalizedParentVector = CalculateNormalizedParentVector(parentNode);
+		}
+		nodeManager.activeNodes.Add(this);
+		if (MedianNode) {
+			Debug.Log("New median node created with uID: " + uID + " with position: " + position);
+			canPropagate = false;
+		}
+		if (!MedianNode) {
+			nodeManager.CleanUpNode(this);
+		}
+		CreateDebugNode();
+	}
+	
+	private Vector3 CalculateNormalizedParentVector(NavNode parentNode) {
+		Vector3 vectorToTarget = parentNode.position - position;
+		return vectorToTarget.normalized;
+	}
+	
+	private void CreateDebugNode () {
+		Vector3 debugSpherePos = new Vector3(position.x, position.y + 1, position.z);
+		nodeVis = (GameObject)GameObject.Instantiate(Resources.Load("nodeVisPlane"), debugSpherePos, new Quaternion(0,0,0,0));
+		nodeVis.GetComponent<DebuggingNodes>().SendMessage("InitNavNode", this);
+	}
+	
+	public void ReplaceLinkedNode (NavNode nodeToChange, NavNode newNode) {
+		linkedNodes.Remove(nodeToChange);
+		linkedNodes.Add(newNode);
+		try {
+			nodeVis.GetComponent<DebuggingNodes>().SendMessage("InitLinkedList", linkedNodes);
+		}
+		catch (MissingReferenceException e) {
+			Debug.LogError("Node " + uID + " cannot access it's own debug node. Attempted to exchange " + nodeToChange.uID + " -> " + newNode.uID + ".");
+		}
+		Debug.Log("Node " + uID + " has exchanged changed a node link. " + nodeToChange.uID + " -> " + newNode.uID);
+	} 
+	
+	public void InformLinkedNodes (NavNode newNode) {
+		Object.Destroy(nodeVis);
+		Debug.Log("Node " + uID.ToString() + " is trying to inform " + linkedNodes.Count + " node(s) of a change!");
+		foreach (NavNode node in linkedNodes.ToList()) {
+			node.ReplaceLinkedNode(this, newNode);
+		}
+		nodeManager.activeNodes.Remove(this);
+	}
+
+	public void PropagateNodes () {
+		if (canPropagate) {
+			int[] layerMask = {10,9};
+			if(normalizedParentVector.x != 1) CastRay(new Vector3(1,0,0), layerMask);
+			if(normalizedParentVector.x != -1) CastRay(new Vector3(-1,0,0), layerMask);
+			if(normalizedParentVector.z != 1) CastRay(new Vector3(0,0,1), layerMask);
+			if(normalizedParentVector.z != -1) CastRay(new Vector3(0,0,-1), layerMask);
+			canPropagate = false;
+			nodeVis.GetComponent<DebuggingNodes>().SendMessage("InitLinkedList", linkedNodes);
+		}
+		curiosityRay(new Vector3(1,0,0));
+	}
+	private int CreateLayerMask (int[] layers) {
+		int layerMask = 1;
+		foreach (int Layer in layers){
+			int i = 1 << Layer;
+			layerMask = layerMask | i;
+		}
+		return layerMask;
+	}
+	
+	public void CastRay (Vector3 rayDirection, int[] layerMask) {
+		Vector3 attemptedPos = new Vector3(position.x + (rayDirection.x * castDistance),position.y + (rayDirection.y * castDistance),position.z + (rayDirection.z * castDistance));
+		Ray newRay = new Ray(position, rayDirection);
+		RaycastHit objectHit;
+		Physics.Raycast(newRay, out objectHit, castDistance, CreateLayerMask(layerMask));
+		if (objectHit.collider != null) {
+			linkedNodes.Add(new NavNode(objectHit.point, this, generation, nodeManager, false));
+		}
+		else {
+			linkedNodes.Add(new NavNode(attemptedPos, this, generation, nodeManager, false));
+		}
+		
+	}
+	
+	public void curiosityRay (Vector3 rayDirection) {
+		Vector3 attemptedPos = new Vector3(position.x + (rayDirection.x * castDistance),position.y + (rayDirection.y * castDistance),position.z + (rayDirection.z * castDistance));
+		Ray newRay = new Ray(position, rayDirection);
+		RaycastHit objectHit;
+		int[] layerMask = {11};
+		Physics.Raycast(newRay, out objectHit, castDistance, CreateLayerMask(layerMask));
+		if (objectHit.collider != null) {
+			Debug.Log("I've hit something!");
+		}
+		
+	}
+}
+	

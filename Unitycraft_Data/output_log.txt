@@ -1,0 +1,374 @@
+Initialize engine version: 4.2.1f4 (4d30acc925c2)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 9.0c [aticfx32.dll 8.17.10.1172]
+    Renderer: AMD Radeon HD 7900 Series
+    Vendor:   ATI
+    VRAM:     3055 MB (via DXGI)
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=1 DF24=1 INTZ=1 RAWZ=0 NULL=1 RESZ=1 SlowINTZ=1
+Begin MonoManager ReloadAssembly
+Platform assembly: E:\UnityProjects\Warcraft 3 - Unity Edition\Unitycraft_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading E:\UnityProjects\Warcraft 3 - Unity Edition\Unitycraft_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: E:\UnityProjects\Warcraft 3 - Unity Edition\Unitycraft_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading E:\UnityProjects\Warcraft 3 - Unity Edition\Unitycraft_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: E:\UnityProjects\Warcraft 3 - Unity Edition\Unitycraft_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading E:\UnityProjects\Warcraft 3 - Unity Edition\Unitycraft_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: E:\UnityProjects\Warcraft 3 - Unity Edition\Unitycraft_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
+Loading E:\UnityProjects\Warcraft 3 - Unity Edition\Unitycraft_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
+- Completed reload, in  0.217 seconds
+desktop: 1920x1200 60Hz; virtual: 3840x1200 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+Platform assembly: E:\UnityProjects\Warcraft 3 - Unity Edition\Unitycraft_Data\Managed\System.Core.dll (this message is harmless)
+Lol debug
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (17.5, 0.0, 17.5) and (22.5, 0.0, 17.5). They hit -> Cube
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (17.5, 0.0, 17.5) and (22.5, 0.0, 17.5). They hit -> Cube
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (27.5, 0.0, 12.5) and (27.5, 0.0, 17.5). They hit -> Cube
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (22.5, 0.0, 22.5) and (22.5, 0.0, 17.5). They hit -> Cube
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (32.5, 0.0, 17.5) and (27.5, 0.0, 17.5). They hit -> Cube
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (52.5, 0.0, 2.5) and (47.5, 0.0, 2.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (22.5, 0.0, 22.5) and (22.5, 0.0, 17.5). They hit -> Cube
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (-52.5, 0.0, 2.5) and (-47.5, 0.0, 2.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (2.5, 0.0, 52.5) and (2.5, 0.0, 47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (2.5, 0.0, -52.5) and (2.5, 0.0, -47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (52.5, 0.0, 7.5) and (47.5, 0.0, 7.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (52.5, 0.0, -2.5) and (47.5, 0.0, -2.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (32.5, 0.0, 17.5) and (27.5, 0.0, 17.5). They hit -> Cube
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (27.5, 0.0, 22.5) and (27.5, 0.0, 17.5). They hit -> Cube
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (7.5, 0.0, 52.5) and (7.5, 0.0, 47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (7.5, 0.0, -52.5) and (7.5, 0.0, -47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (-52.5, 0.0, 7.5) and (-47.5, 0.0, 7.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (-52.5, 0.0, -2.5) and (-47.5, 0.0, -2.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (-2.5, 0.0, 52.5) and (-2.5, 0.0, 47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (-2.5, 0.0, -52.5) and (-2.5, 0.0, -47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (52.5, 0.0, 12.5) and (47.5, 0.0, 12.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (52.5, 0.0, -7.5) and (47.5, 0.0, -7.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (27.5, 0.0, 22.5) and (27.5, 0.0, 17.5). They hit -> Cube
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (27.5, 0.0, 22.5) and (27.5, 0.0, 17.5). They hit -> Cube
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (12.5, 0.0, 52.5) and (12.5, 0.0, 47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (12.5, 0.0, -52.5) and (12.5, 0.0, -47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (-52.5, 0.0, 12.5) and (-47.5, 0.0, 12.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (-52.5, 0.0, -7.5) and (-47.5, 0.0, -7.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (-7.5, 0.0, 52.5) and (-7.5, 0.0, 47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (-7.5, 0.0, -52.5) and (-7.5, 0.0, -47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (52.5, 0.0, 17.5) and (47.5, 0.0, 17.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (52.5, 0.0, -12.5) and (47.5, 0.0, -12.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (17.5, 0.0, 52.5) and (17.5, 0.0, 47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (17.5, 0.0, -52.5) and (17.5, 0.0, -47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (-52.5, 0.0, 17.5) and (-47.5, 0.0, 17.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (-52.5, 0.0, -12.5) and (-47.5, 0.0, -12.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (-12.5, 0.0, 52.5) and (-12.5, 0.0, 47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (-12.5, 0.0, -52.5) and (-12.5, 0.0, -47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (52.5, 0.0, 22.5) and (47.5, 0.0, 22.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (52.5, 0.0, -17.5) and (47.5, 0.0, -17.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (22.5, 0.0, -52.5) and (22.5, 0.0, -47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (22.5, 0.0, 52.5) and (22.5, 0.0, 47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (-52.5, 0.0, 22.5) and (-47.5, 0.0, 22.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (-52.5, 0.0, -17.5) and (-47.5, 0.0, -17.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (-17.5, 0.0, 52.5) and (-17.5, 0.0, 47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (-17.5, 0.0, -52.5) and (-17.5, 0.0, -47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (52.5, 0.0, 27.5) and (47.5, 0.0, 27.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (52.5, 0.0, -22.5) and (47.5, 0.0, -22.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (27.5, 0.0, -52.5) and (27.5, 0.0, -47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (27.5, 0.0, 52.5) and (27.5, 0.0, 47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (-52.5, 0.0, 27.5) and (-47.5, 0.0, 27.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (-52.5, 0.0, -22.5) and (-47.5, 0.0, -22.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (-22.5, 0.0, 52.5) and (-22.5, 0.0, 47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (-22.5, 0.0, -52.5) and (-22.5, 0.0, -47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (52.5, 0.0, 32.5) and (47.5, 0.0, 32.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (52.5, 0.0, -27.5) and (47.5, 0.0, -27.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (32.5, 0.0, -52.5) and (32.5, 0.0, -47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (32.5, 0.0, 52.5) and (32.5, 0.0, 47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (-52.5, 0.0, 32.5) and (-47.5, 0.0, 32.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (-52.5, 0.0, -27.5) and (-47.5, 0.0, -27.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (-27.5, 0.0, 52.5) and (-27.5, 0.0, 47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (-27.5, 0.0, -52.5) and (-27.5, 0.0, -47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (52.5, 0.0, 37.5) and (47.5, 0.0, 37.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (52.5, 0.0, -32.5) and (47.5, 0.0, -32.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (37.5, 0.0, 52.5) and (37.5, 0.0, 47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (37.5, 0.0, -52.5) and (37.5, 0.0, -47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (-52.5, 0.0, 37.5) and (-47.5, 0.0, 37.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (-52.5, 0.0, -32.5) and (-47.5, 0.0, -32.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (-32.5, 0.0, 52.5) and (-32.5, 0.0, 47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (-32.5, 0.0, -52.5) and (-32.5, 0.0, -47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (52.5, 0.0, 42.5) and (47.5, 0.0, 42.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (52.5, 0.0, -37.5) and (47.5, 0.0, -37.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (42.5, 0.0, 52.5) and (42.5, 0.0, 47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (42.5, 0.0, -52.5) and (42.5, 0.0, -47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (-52.5, 0.0, 42.5) and (-47.5, 0.0, 42.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (-52.5, 0.0, -37.5) and (-47.5, 0.0, -37.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (-37.5, 0.0, 52.5) and (-37.5, 0.0, 47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (-37.5, 0.0, -52.5) and (-37.5, 0.0, -47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (52.5, 0.0, 47.5) and (47.5, 0.0, 47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (47.5, 0.0, 52.5) and (47.5, 0.0, 47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (52.5, 0.0, -42.5) and (47.5, 0.0, -42.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (47.5, 0.0, -52.5) and (47.5, 0.0, -47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (-52.5, 0.0, 47.5) and (-47.5, 0.0, 47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (-42.5, 0.0, 52.5) and (-42.5, 0.0, 47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (-52.5, 0.0, -42.5) and (-47.5, 0.0, -42.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+No LOS between (-42.5, 0.0, -52.5) and (-42.5, 0.0, -47.5). They hit -> Test_Floor
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+Navigation mesh completed in <0> seconds. <355> nodes created.
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+

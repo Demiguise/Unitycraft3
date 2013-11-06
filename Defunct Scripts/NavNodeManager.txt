@@ -1,0 +1,101 @@
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+
+public class NavNodeManagerDefunct {
+	
+	public List<NavNode> activeNodes = new System.Collections.Generic.List<NavNode>();
+	public float bufferZone;
+	
+	public NavNodeManagerDefunct () {
+		bufferZone = 3;
+	}
+	
+	public void RegenerateNavMesh () {
+		Debug.Log("Regenerating Navmesh");
+	}
+	
+	private bool CheckNodeProximity (NavNode nodeA, NavNode nodeB) {
+		Vector3 resultantVector = nodeA.position - nodeB.position;
+		if (resultantVector.magnitude < bufferZone) {
+			//Debug.Log("Distance between Node " + nodeA.uID.ToString() + " and Node " + nodeB.uID.ToString() + " is " + resultantVector.magnitude + ".");
+			return true;
+		}
+		else return false;
+	}
+	
+	public void PropagateNodes (){
+		List<NavNode> nodeListCopy = activeNodes;
+		if (activeNodes.Count() == 0) {
+			Debug.Log("No active nodes in list...");
+		}
+		foreach (NavNode node in activeNodes.ToList()) {
+			Debug.Log("User requested propagation of nodes...");
+			node.PropagateNodes();
+			Debug.Log("Active node list now contains " + activeNodes.Count() + " node(s).");
+		}
+	}
+	
+	private List<NavNode> FindCloseNodes (NavNode nodeToCheck) {
+		System.Collections.Generic.List<NavNode> foundNodes = new System.Collections.Generic.List<NavNode>();
+		foreach (NavNode node in activeNodes) {
+			if ((nodeToCheck != node) && (CheckNodeProximity(nodeToCheck, node))) {
+				foundNodes.Add(node);
+			}
+		}
+		return foundNodes;
+	}
+	
+	public int GenerateUID () {
+		int uID = 0;
+		if (activeNodes.Count > 0) {
+			foreach (NavNode node in activeNodes.ToList()) {
+				if (node.uID > uID) uID = node.uID;
+			}
+		}
+		return (uID + 1);
+	}
+	
+	private NavNode CreateMedianNode (NavNode firstNode, List<NavNode> nodeList) {
+		float maxX, maxZ, minX, minZ;
+		maxX = minX = firstNode.position.x;
+		maxZ = minZ = firstNode.position.z;
+		foreach (NavNode node in nodeList.ToList()) {
+			if (node.position.x > maxX) {
+				maxX = node.position.x;
+			}
+			if (node.position.x < minX) {
+				minX = node.position.x;
+			}
+			if (node.position.z > maxZ) {
+				maxZ = node.position.z;
+			}
+			if (node.position.z < minZ) {
+				minZ = node.position.z;
+			}
+		}
+		Vector3 medianPosition = new Vector3((maxX + minX)/2, 1, (maxZ + minZ)/2);
+		return new NavNode(medianPosition, null, (nodeList[0].generation + 1), this, true); 
+	}
+	
+	public void CleanUpNode (NavNode currentNode) {
+		List<NavNode> closeNodes = FindCloseNodes(currentNode);
+		if (closeNodes.Count() > 0) {
+			Debug.Log("Node " + currentNode.uID + " has begun a cleanup with " + closeNodes.Count() + " nodes nearby");
+			string stuff = "";
+			foreach (NavNode node in closeNodes.ToList()){
+				stuff = stuff + node.uID.ToString() + " : ";
+			}
+			Debug.Log("These nodes are close -> " + stuff);
+			if (closeNodes.Count > 0) {
+				NavNode medianNode = CreateMedianNode(currentNode, closeNodes);
+				currentNode.InformLinkedNodes(medianNode);
+				foreach (NavNode proximateNode in FindCloseNodes(currentNode)) {
+					proximateNode.InformLinkedNodes(medianNode);
+				}
+			}
+		}
+	}
+	
+}
