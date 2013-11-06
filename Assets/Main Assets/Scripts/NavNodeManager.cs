@@ -14,6 +14,7 @@ public class NavNodeManager {
 	public void CreateSpawnNode () {
 		CreateNavNode(new Vector3(0,0,0), defaultExtents); //Might set to an initial spawn location, or something.
 		BeginFloodFill();
+		//FindNodeLinks();
 	}
 	
 	public void RegenerateNavMesh () {
@@ -28,9 +29,6 @@ public class NavNodeManager {
 	
 	private void CreateNavNode (Vector3 nodePosition, float pExt, float nodeScale = 1f) {
 		int childID = GenerateUID();
-		if (childID == 12) {
-			Debug.Log("Lol debug");
-		}
 		availableNodes.Add(new NavNode(nodePosition, new Vector3(pExt * nodeScale, 0, pExt * nodeScale), childID));
 	}
 	
@@ -109,7 +107,6 @@ public class NavNodeManager {
 	}
 	
 	public void BeginFloodFill () {
-		float startTime = Time.time;
 		while (true) {
 			List<NavNode> activeNodes = FindActiveNodes();
 			if (activeNodes.Count == 0) { break; }
@@ -130,14 +127,13 @@ public class NavNodeManager {
 				activeNode.TogglePropagation(false);
 			}
 		}
-		float duration = (Time.time - startTime);
-		Debug.Log("Navigation mesh completed in <" + duration + "> seconds. <" + availableNodes.Count.ToString() + "> nodes created.");
+		Debug.Log("Navigation mesh completed. <" + availableNodes.Count.ToString() + "> nodes created.");
 	}
 	
 	public void FindNodeLinks () {
 		Vector3 initialDirection = new Vector3(1,0,1);
 		float distance = 2.5f;
-		foreach (NavNode node in availableNodes) {
+		foreach (NavNode node in availableNodes.ToList()) {
 			for (int i = 0 ; i < 12 ; i++) { //THIS MAY NEED NORMALISATIONS
 				Vector3 locCheck = node.nodePosition + (RotateVector3RY(initialDirection, (i * 30f)) * distance);
 				NavNode linkedNode = FindNavNodeFromPos(locCheck);
@@ -145,8 +141,9 @@ public class NavNodeManager {
 					node.AddNodeLink(linkedNode);
 				}
 			}
-			Debug.Log("Node <" + node.uID + "> has found (" + node.linkedNodes.Count + ") node(s) to link to");
+			//Debug.Log("Node <" + node.uID + "> has found (" + node.linkedNodes.Count + ") node(s) to link to");
 		}
+		Debug.Log("Links for all <" + availableNodes.Count + "> have been found");
 	}
 	
 	
@@ -203,7 +200,7 @@ public class NavNodeManager {
 			return true;
 		}
 		else { 
-			Debug.Log ("No LOS between " + firstPos + " and " + secondPos + ". They hit -> " + objectHit.collider.name);
+			//Debug.Log ("No LOS between " + firstPos + " and " + secondPos + ". They hit -> " + objectHit.collider.name);
 			return false; 
 		}
 	}
@@ -216,7 +213,7 @@ public class NavNodeManager {
 		RaycastHit objectHit;
 		Physics.Raycast(rV, out objectHit, 10, CreateLayerMask(worldLayer));
 		if (objectHit.collider == null) {
-			Debug.Log("Position " + rPos + " is off map!");
+			//Debug.Log("Position " + rPos + " is off map!");
 			return false;
 		}
 		else {return true;}

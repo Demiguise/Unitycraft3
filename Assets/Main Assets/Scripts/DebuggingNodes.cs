@@ -5,9 +5,9 @@ using System.Linq;
 
 public class DebuggingNodes : MonoBehaviour {
 	
+	public int uID;
 	public int[] linkedNodesUID;
 	private List<NavNode> linkedNodes = new List<NavNode>();
-	public int uID;
 	public int generation;
 	public int castDistance;
 	public bool debugDraw;
@@ -25,8 +25,9 @@ public class DebuggingNodes : MonoBehaviour {
 	}
 	
 	public void UpdateLinks (List<NavNode> linkedNodeList) {
+		List<NavNode> localNewList = new List<NavNode>(linkedNodeList);
 		linkedNodes.Clear();
-		linkedNodes = linkedNodeList;
+		linkedNodes = localNewList.OrderBy(n => n.uID).ToList();
 		ConvertListToArray();
 	}
 	

@@ -40,8 +40,9 @@ public class NavNode {
 	public void AddNodeLink(NavNode nodeToLink) {
 		if (CheckForDuplicateNode(nodeToLink)){
 			linkedNodes.Add(nodeToLink);
+			UpdateDebugNodeLinks();
+			nodeToLink.AddNodeLink(this);
 		}
-		UpdateDebugNodeLinks();
 	}
 	
 	private bool CheckForDuplicateNode (NavNode nodeToLink) {
@@ -53,6 +54,7 @@ public class NavNode {
 	public void RemoveNodeLink(NavNode nodeToRemove) {
 		linkedNodes.Remove(nodeToRemove);
 		UpdateDebugNodeLinks();
+		
 	}
 	
 	private void UpdateDebugNodeLinks () {

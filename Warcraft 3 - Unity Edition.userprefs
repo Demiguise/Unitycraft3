@@ -1,11 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Main Assets\Scripts\NavNodeManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Main Assets\Scripts\NavNode.cs">
     <Files>
-      <File FileName="Assets\Main Assets\Scripts\NavNodeManager.cs" Line="148" Column="5" />
-      <File FileName="Assets\Main Assets\Scripts\NavNode.cs" Line="70" Column="2" />
-      <File FileName="Assets\Main Assets\Scripts\DebuggingNodes.cs" Line="35" Column="24" />
-      <File FileName="Assets\Main Assets\Scripts\Camera Scripts\CameraSelection.cs" Line="43" Column="7" />
+      <File FileName="Assets\Main Assets\Scripts\NavNode.cs" Line="39" Column="2" />
+      <File FileName="Assets\Main Assets\Scripts\NavNodeManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Main Assets\Scripts\DebuggingNodes.cs" Line="30" Column="59" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -14,8 +13,7 @@
             <Node name="Assets" expanded="True">
               <Node name="Main Assets" expanded="True">
                 <Node name="Scripts" expanded="True">
-                  <Node name="Camera Scripts" expanded="True" />
-                  <Node name="NavNodeManager.cs" selected="True" />
+                  <Node name="NavNode.cs" selected="True" />
                 </Node>
               </Node>
             </Node>
@@ -27,9 +25,7 @@
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
         <State>
-          <Value>rPos.x + radius</Value>
-          <Value>radius</Value>
-          <Value>rPos.x + radius</Value>
+          <Value>localNewList</Value>
         </State>
       </Pad>
     </Pads>
