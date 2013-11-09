@@ -147,6 +147,7 @@ public class NavNodeManager {
 		else {
 			Debug.Log("Transverse complete. Path with ("+ traversalMap.Count +") has been found.");
 		}
+		HighlightTraversalMap(traversalMap);
 		return traversalMap;
 	}
 	
@@ -172,7 +173,7 @@ public class NavNodeManager {
 			currentNode = LowestScoreNode(openSet);
 			Debug.Log("[Current] Node is <" + currentNode.uID + "> with an fScore of (" + currentNode.fScore + ").");
 			if (currentNode == goal) {
-				cameFrom = ReconstructPath(cameFrom, currentNode);
+				ReconstructPath(ref cameFrom, currentNode);
 				return cameFrom;
 			}
 			
@@ -209,18 +210,28 @@ public class NavNodeManager {
 		return null;
 	}
 	
-	private List<NavNode> ReconstructPath(List<NavNode> nodeMap, NavNode currentNode){
-		List<NavNode> returnList = new List<NavNode>();
+	private void ReconstructPath(ref List<NavNode> nodeMap, NavNode currentNode){
 		if (currentNode.cameFrom != null) {
-			returnList.Add(currentNode);
-			ReconstructPath(returnList, currentNode.cameFrom);
-			return (returnList);
+			nodeMap.Add(currentNode);
+			ReconstructPath(ref nodeMap, currentNode.cameFrom);
 		}
 		else { 
-			returnList.Add(currentNode);
-			return returnList;
+			nodeMap.Add(currentNode);
 		}
 	}	
+	
+	private void HighlightTraversalMap (List<NavNode> nodeMap){
+		foreach (NavNode node in nodeMap) {
+			if (node.cameFrom != null) {
+				Vector3 modNodePos = node.nodePosition;
+				modNodePos.y = 3;
+				Vector3 modParentPos = node.cameFrom.nodePosition;
+				modParentPos.y = 3;
+				Vector3 directionToNode = modParentPos - modNodePos;
+				Debug.DrawRay(modNodePos, directionToNode, Color.white, 60);
+			}
+		}
+	}
 	
 	private bool CheckNodeInList (List<NavNode> nodeList, NavNode nodeToFind) {
 		NavNode foundNode = nodeList.Find(node => node.uID == nodeToFind.uID);
