@@ -40,7 +40,8 @@ public class CameraSelection : MonoBehaviour {
 			}
 			if (Input.GetKeyUp(KeyCode.L)){
 				//navManager.BeginFloodFill();
-				navManager.FindNodeLinks();
+				//navManager.FindNodeLinks();
+				navManager.FindTraversalMap(new Vector3(44,0,44), new Vector3(-44,0,-44));
 			}
 			if ((Input.GetMouseButtonDown(1)) && (selectedObjectList.Count > 0)){
 				int[] worldLayer = {9};

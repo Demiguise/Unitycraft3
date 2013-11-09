@@ -10,6 +10,9 @@ public class NavNode {
 	public List<NavNode> linkedNodes = new List<NavNode>();
 	public GameObject nodeVis;
 	public int uID;
+	public float fScore;
+	public float gScore;
+	public NavNode cameFrom;
 	public bool canPropagate;
 
 	public NavNode (Vector3 initPosition, Vector3 initExtents, int initUID) {
@@ -18,24 +21,25 @@ public class NavNode {
 		nodeExtents = initExtents;
 		uID = initUID;
 		CreateDebugNode();
+		gScore = 1000f;
+		fScore = 1000f;
 	}
 	
 	public void DestroyNode () {
 		Object.Destroy(nodeVis);
 	}
+	public void SetNavAttribs (float newGScore, float newFScore, NavNode parentNode = null) {
+		gScore = newGScore;
+		fScore = newFScore;
+		cameFrom = parentNode;
+		nodeVis.GetComponent<DebuggingNodes>().SendMessage("DebugScores", this);
+	}
 	
-//  Hacky function for linked to figuring out if "Findnavnodefromposition" worked.
-//	public void debugToggleSelected (bool state) {
-//		if (state) { nodeVis.GetComponent<DebuggingNodes>().SendMessage("UpdateColour", Color.yellow); }
-//		else {
-//			if (canPropagate) {
-//				nodeVis.GetComponent<DebuggingNodes>().SendMessage("UpdateColour", Color.green);
-//			}
-//			else {
-//				nodeVis.GetComponent<DebuggingNodes>().SendMessage("UpdateColour", Color.red);
-//			}
-//		}
-//	}
+	public void ResetScores () {
+		gScore = 1000f;
+		fScore = 1000f;
+		cameFrom = null;
+	}
 	
 	public void AddNodeLink(NavNode nodeToLink) {
 		if (CheckForDuplicateNode(nodeToLink)){
@@ -54,7 +58,6 @@ public class NavNode {
 	public void RemoveNodeLink(NavNode nodeToRemove) {
 		linkedNodes.Remove(nodeToRemove);
 		UpdateDebugNodeLinks();
-		
 	}
 	
 	private void UpdateDebugNodeLinks () {
@@ -74,6 +77,15 @@ public class NavNode {
 		}
 		else {
 			nodeVis.GetComponent<DebuggingNodes>().SendMessage("UpdateColour", Color.red);
+		}
+	}
+	
+	public void ToggleSelected (bool state) {
+		if (state) {
+			nodeVis.GetComponent<DebuggingNodes>().SendMessage("UpdateColour", Color.red);
+		}
+		else {
+			nodeVis.GetComponent<DebuggingNodes>().SendMessage("UpdateColour", Color.green);
 		}
 	}
 
