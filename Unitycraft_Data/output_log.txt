@@ -15,360 +15,429 @@ Platform assembly: E:\UnityProjects\Warcraft 3 - Unity Edition\Unitycraft_Data\M
 Loading E:\UnityProjects\Warcraft 3 - Unity Edition\Unitycraft_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
 Platform assembly: E:\UnityProjects\Warcraft 3 - Unity Edition\Unitycraft_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
 Loading E:\UnityProjects\Warcraft 3 - Unity Edition\Unitycraft_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
-- Completed reload, in  0.217 seconds
+- Completed reload, in  0.220 seconds
 desktop: 1920x1200 60Hz; virtual: 3840x1200 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 Platform assembly: E:\UnityProjects\Warcraft 3 - Unity Edition\Unitycraft_Data\Managed\System.Core.dll (this message is harmless)
-Lol debug
+Navigation mesh completed. <1055> nodes created.
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (17.5, 0.0, 17.5) and (22.5, 0.0, 17.5). They hit -> Cube
+Links for all <1055> have been found
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (17.5, 0.0, 17.5) and (22.5, 0.0, 17.5). They hit -> Cube
+Platform assembly: E:\UnityProjects\Warcraft 3 - Unity Edition\Unitycraft_Data\Managed\System.dll (this message is harmless)
+Reconstruct Total: 0.0695ms | 0.0695ms => 0.0695ms
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (27.5, 0.0, 12.5) and (27.5, 0.0, 17.5). They hit -> Cube
+LowestScore Total: 0.5013ms | 0.0136ms => 0.0842ms
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (22.5, 0.0, 22.5) and (22.5, 0.0, 17.5). They hit -> Cube
+ChecknodeinList Total: 0.883899999999998ms | 0.0007ms => 0.0505ms
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (32.5, 0.0, 17.5) and (27.5, 0.0, 17.5). They hit -> Cube
+Transverse complete  in (5.6273) milliseconds. Path with (10) has been found.
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (52.5, 0.0, 2.5) and (47.5, 0.0, 2.5). They hit -> Test_Floor
+Moving to (-9.0, 2.0, 30.0)
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (22.5, 0.0, 22.5) and (22.5, 0.0, 17.5). They hit -> Cube
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (-52.5, 0.0, 2.5) and (-47.5, 0.0, 2.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (2.5, 0.0, 52.5) and (2.5, 0.0, 47.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (2.5, 0.0, -52.5) and (2.5, 0.0, -47.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (52.5, 0.0, 7.5) and (47.5, 0.0, 7.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (52.5, 0.0, -2.5) and (47.5, 0.0, -2.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (32.5, 0.0, 17.5) and (27.5, 0.0, 17.5). They hit -> Cube
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (27.5, 0.0, 22.5) and (27.5, 0.0, 17.5). They hit -> Cube
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (7.5, 0.0, 52.5) and (7.5, 0.0, 47.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (7.5, 0.0, -52.5) and (7.5, 0.0, -47.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (-52.5, 0.0, 7.5) and (-47.5, 0.0, 7.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (-52.5, 0.0, -2.5) and (-47.5, 0.0, -2.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (-2.5, 0.0, 52.5) and (-2.5, 0.0, 47.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (-2.5, 0.0, -52.5) and (-2.5, 0.0, -47.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (52.5, 0.0, 12.5) and (47.5, 0.0, 12.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (52.5, 0.0, -7.5) and (47.5, 0.0, -7.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (27.5, 0.0, 22.5) and (27.5, 0.0, 17.5). They hit -> Cube
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (27.5, 0.0, 22.5) and (27.5, 0.0, 17.5). They hit -> Cube
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (12.5, 0.0, 52.5) and (12.5, 0.0, 47.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (12.5, 0.0, -52.5) and (12.5, 0.0, -47.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (-52.5, 0.0, 12.5) and (-47.5, 0.0, 12.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (-52.5, 0.0, -7.5) and (-47.5, 0.0, -7.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (-7.5, 0.0, 52.5) and (-7.5, 0.0, 47.5). They hit -> Test_Floor
+Reconstruct Total: 0.0019ms | 0.0019ms => 0.0019ms
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (-7.5, 0.0, -52.5) and (-7.5, 0.0, -47.5). They hit -> Test_Floor
+LowestScore Total: 0.9752ms | 0.0129ms => 0.0163ms
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (52.5, 0.0, 17.5) and (47.5, 0.0, 17.5). They hit -> Test_Floor
+ChecknodeinList Total: 2.3297ms | 0ms => 0.0247ms
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (52.5, 0.0, -12.5) and (47.5, 0.0, -12.5). They hit -> Test_Floor
+Transverse complete  in (4.9378) milliseconds. Path with (14) has been found.
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (17.5, 0.0, 52.5) and (17.5, 0.0, 47.5). They hit -> Test_Floor
+Moving to (18.0, 2.0, 12.0)
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (17.5, 0.0, -52.5) and (17.5, 0.0, -47.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (-52.5, 0.0, 17.5) and (-47.5, 0.0, 17.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (-52.5, 0.0, -12.5) and (-47.5, 0.0, -12.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (-12.5, 0.0, 52.5) and (-12.5, 0.0, 47.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (-12.5, 0.0, -52.5) and (-12.5, 0.0, -47.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (52.5, 0.0, 22.5) and (47.5, 0.0, 22.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (52.5, 0.0, -17.5) and (47.5, 0.0, -17.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (22.5, 0.0, -52.5) and (22.5, 0.0, -47.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (22.5, 0.0, 52.5) and (22.5, 0.0, 47.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (-52.5, 0.0, 22.5) and (-47.5, 0.0, 22.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (-52.5, 0.0, -17.5) and (-47.5, 0.0, -17.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (-17.5, 0.0, 52.5) and (-17.5, 0.0, 47.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (-17.5, 0.0, -52.5) and (-17.5, 0.0, -47.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (52.5, 0.0, 27.5) and (47.5, 0.0, 27.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (52.5, 0.0, -22.5) and (47.5, 0.0, -22.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (27.5, 0.0, -52.5) and (27.5, 0.0, -47.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (27.5, 0.0, 52.5) and (27.5, 0.0, 47.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (-52.5, 0.0, 27.5) and (-47.5, 0.0, 27.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (-52.5, 0.0, -22.5) and (-47.5, 0.0, -22.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (-22.5, 0.0, 52.5) and (-22.5, 0.0, 47.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (-22.5, 0.0, -52.5) and (-22.5, 0.0, -47.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (52.5, 0.0, 32.5) and (47.5, 0.0, 32.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (52.5, 0.0, -27.5) and (47.5, 0.0, -27.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (32.5, 0.0, -52.5) and (32.5, 0.0, -47.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (32.5, 0.0, 52.5) and (32.5, 0.0, 47.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (-52.5, 0.0, 32.5) and (-47.5, 0.0, 32.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (-52.5, 0.0, -27.5) and (-47.5, 0.0, -27.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (-27.5, 0.0, 52.5) and (-27.5, 0.0, 47.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (-27.5, 0.0, -52.5) and (-27.5, 0.0, -47.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (52.5, 0.0, 37.5) and (47.5, 0.0, 37.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (52.5, 0.0, -32.5) and (47.5, 0.0, -32.5). They hit -> Test_Floor
+Reconstruct Total: 0.0027ms | 0.0027ms => 0.0027ms
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (37.5, 0.0, 52.5) and (37.5, 0.0, 47.5). They hit -> Test_Floor
+LowestScore Total: 1.3728ms | 0.0125ms => 0.0266ms
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (37.5, 0.0, -52.5) and (37.5, 0.0, -47.5). They hit -> Test_Floor
+ChecknodeinList Total: 2.5372ms | 0ms => 0.0372ms
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (-52.5, 0.0, 37.5) and (-47.5, 0.0, 37.5). They hit -> Test_Floor
+Transverse complete  in (5.4816) milliseconds. Path with (17) has been found.
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (-52.5, 0.0, -32.5) and (-47.5, 0.0, -32.5). They hit -> Test_Floor
+Moving to (-3.0, 2.0, -3.0)
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (-32.5, 0.0, 52.5) and (-32.5, 0.0, 47.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (-32.5, 0.0, -52.5) and (-32.5, 0.0, -47.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (52.5, 0.0, 42.5) and (47.5, 0.0, 42.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (52.5, 0.0, -37.5) and (47.5, 0.0, -37.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (42.5, 0.0, 52.5) and (42.5, 0.0, 47.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (42.5, 0.0, -52.5) and (42.5, 0.0, -47.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (-52.5, 0.0, 42.5) and (-47.5, 0.0, 42.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (-52.5, 0.0, -37.5) and (-47.5, 0.0, -37.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (-37.5, 0.0, 52.5) and (-37.5, 0.0, 47.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (-37.5, 0.0, -52.5) and (-37.5, 0.0, -47.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (52.5, 0.0, 47.5) and (47.5, 0.0, 47.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (47.5, 0.0, 52.5) and (47.5, 0.0, 47.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (52.5, 0.0, -42.5) and (47.5, 0.0, -42.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (47.5, 0.0, -52.5) and (47.5, 0.0, -47.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (-52.5, 0.0, 47.5) and (-47.5, 0.0, 47.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (-42.5, 0.0, 52.5) and (-42.5, 0.0, 47.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (-52.5, 0.0, -42.5) and (-47.5, 0.0, -42.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-No LOS between (-42.5, 0.0, -52.5) and (-42.5, 0.0, -47.5). They hit -> Test_Floor
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 
-Navigation mesh completed in <0> seconds. <355> nodes created.
+I have reached my destination!
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+I have reached my destination!
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+I have reached my destination!
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+I have reached my destination!
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+I have reached my destination!
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+I have reached my destination!
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+I have reached my destination!
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+I have reached my destination!
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+I have reached my destination!
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+I have reached my destination!
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+I have reached my destination!
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+I have reached my destination!
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+I have reached my destination!
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+I have reached my destination!
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+I have reached my destination!
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+I have reached my destination!
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+I have reached my destination!
+ 
+(Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
+
+I have reached my destination!
  
 (Filename: C:/BuildAgent/work/cac08d8a5e25d4cb/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 54)
 

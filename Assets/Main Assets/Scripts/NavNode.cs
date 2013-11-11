@@ -39,6 +39,7 @@ public class NavNode {
 		gScore = 1000f;
 		fScore = 1000f;
 		cameFrom = null;
+		nodeVis.GetComponent<DebuggingNodes>().SendMessage("DebugScores", this);
 	}
 	
 	public void AddNodeLink(NavNode nodeToLink) {

@@ -19,35 +19,25 @@ public class DebuggingNodes : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		debugDraw = true;
+		debugDraw = false;
 		this.renderer.material.color = Color.green;
 	}
 	
 	public void DebugScores (NavNode node) {
 		fScore = node.fScore;
 		gScore = node.gScore;
-		if (node.cameFrom != null) { 
-			linkedNodeUID = node.cameFrom.uID;
-			parentNode = node.cameFrom;
-			Vector3 modParentPosition = node.cameFrom.nodePosition;
-			modParentPosition.y = 2;
-			Vector3 modNodePosition = transform.position;
-			modNodePosition.y = 2;
-			Vector3 directionToLink = modParentPosition - modNodePosition;
-			Ray newRay = new Ray(modNodePosition, directionToLink);
-			Debug.DrawRay(modNodePosition, directionToLink, Color.red, 60);
-		}
+		parentNode = node.cameFrom;
 	}
 	
 	void Update () {
-		if (parentNode != null) { 
+		if ((parentNode != null) && (debugDraw == true)) { 
 			Vector3 modParentPosition = parentNode.nodePosition;
 			modParentPosition.y = 2;
 			Vector3 modNodePosition = transform.position;
 			modNodePosition.y = 2;
 			Vector3 directionToLink = modParentPosition - modNodePosition;
 			Ray newRay = new Ray(modNodePosition, directionToLink);
-			Debug.DrawRay(modNodePosition, directionToLink, Color.red, 60);
+			Debug.DrawRay(modNodePosition, directionToLink, Color.red, 0);
 		}
 	}
 	

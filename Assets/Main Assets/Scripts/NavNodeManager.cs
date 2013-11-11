@@ -6,15 +6,41 @@ using System.Linq;
 public class NavNodeManager {
 	private List<NavNode> availableNodes = new List<NavNode>();
 	private float defaultExtents;
+	private List<double> lowestScoreTimes = new List<double>();
+	private List<double> reconstructPathTimes = new List<double>();
+	private List<double> checkNodeInListTimes = new List<double>();
+	
 	
 	public NavNodeManager () {
 		defaultExtents = 3f;
 	}
 	
-	public void CreateSpawnNode () {
-		CreateNavNode(new Vector3(0,0,0), defaultExtents); //Might set to an initial spawn location, or something.
-		BeginFloodFill();
-		FindNodeLinks();
+	//######################################################//
+	//					Navmesh Creation					//
+	//######################################################//
+	
+	public void BeginFloodFill () {
+		while (true) {
+			List<NavNode> activeNodes = FindActiveNodes();
+			if (activeNodes.Count == 0) { break; }
+			foreach (NavNode activeNode in activeNodes) {
+				for ( int i = 1 ; i <= 4 ; i++ ) {
+					Vector3 newNodePos = CalculateNewNodePos(activeNode.nodePosition, activeNode.nodeExtents, i);
+					NavNode DuplicateNode = FindNavNodeFromPos(newNodePos);
+					if (DuplicateNode == null) {
+						if (CheckPosIsOnMap(newNodePos)) {
+							float nodeScale = NodeScaling(newNodePos, activeNode.nodePosition, activeNode.nodeExtents, i);
+							newNodePos = CalculateNewNodePos(activeNode.nodePosition, activeNode.nodeExtents, i, nodeScale);
+							if (nodeScale != 0) {
+								CreateNavNode(newNodePos, activeNode.nodeExtents.x, nodeScale);
+							}
+						}
+					}
+				}
+				activeNode.TogglePropagation(false);
+			}
+		}
+		Debug.Log("Navigation mesh completed. <" + availableNodes.Count.ToString() + "> nodes created.");
 	}
 	
 	public void RegenerateNavMesh () {
@@ -25,6 +51,12 @@ public class NavNodeManager {
 		availableNodes.Clear ();
 		Debug.Log("<" + availableNodes.Count() + "> available nodes");
 		CreateSpawnNode();
+	}
+	
+	public void CreateSpawnNode () {
+		CreateNavNode(new Vector3(0,0,0), defaultExtents); //Might set to an initial spawn location, or something.
+		BeginFloodFill();
+		FindNodeLinks();
 	}
 	
 	private void CreateNavNode (Vector3 nodePosition, float pExt, float nodeScale = 1f) {
@@ -95,30 +127,6 @@ public class NavNodeManager {
 		return newNodeLocation;
 	}
 	
-	public void BeginFloodFill () {
-		while (true) {
-			List<NavNode> activeNodes = FindActiveNodes();
-			if (activeNodes.Count == 0) { break; }
-			foreach (NavNode activeNode in activeNodes) {
-				for ( int i = 1 ; i <= 4 ; i++ ) {
-					Vector3 newNodePos = CalculateNewNodePos(activeNode.nodePosition, activeNode.nodeExtents, i);
-					NavNode DuplicateNode = FindNavNodeFromPos(newNodePos);
-					if (DuplicateNode == null) {
-						if (CheckPosIsOnMap(newNodePos)) {
-							float nodeScale = NodeScaling(newNodePos, activeNode.nodePosition, activeNode.nodeExtents, i);
-							newNodePos = CalculateNewNodePos(activeNode.nodePosition, activeNode.nodeExtents, i, nodeScale);
-							if (nodeScale != 0) {
-								CreateNavNode(newNodePos, activeNode.nodeExtents.x, nodeScale);
-							}
-						}
-					}
-				}
-				activeNode.TogglePropagation(false);
-			}
-		}
-		Debug.Log("Navigation mesh completed. <" + availableNodes.Count.ToString() + "> nodes created.");
-	}
-	
 	public void FindNodeLinks () {
 		Vector3 initialDirection = new Vector3(1,0,1);
 		float distance = 2.5f;
@@ -135,127 +143,19 @@ public class NavNodeManager {
 		Debug.Log("Links for all <" + availableNodes.Count + "> have been found");
 	}
 	
-	public List<NavNode> FindTraversalMap (Vector3 start, Vector3 goal) {
-		NavNode startNode = FindNavNodeFromPos(start);
-		NavNode goalNode = FindNavNodeFromPos(goal);
-		startNode.ToggleSelected(true);
-		goalNode.ToggleSelected(true);
-		List <NavNode> traversalMap = AStarPathfind(startNode, goalNode);
-		if (traversalMap.Count == 0) {
-			Debug.Log("Transverse complete. No path found.");
-		}
-		else {
-			Debug.Log("Transverse complete. Path with ("+ traversalMap.Count +") has been found.");
-		}
-		HighlightTraversalMap(traversalMap);
-		return traversalMap;
-	}
-	
-	private List<NavNode> AStarPathfind (NavNode start, NavNode goal) {
-		
-		//F score is the node's distance between it and the goal node. This is stored in the actual node.
-		//G Score is the distance between the two nodes in question. This is also stored in the node.
-		
-		foreach (NavNode node in availableNodes) {
-			node.ResetScores();
-		}
-		List<NavNode> closedSet = new List<NavNode>();
-		List<NavNode> openSet = new List<NavNode>(availableNodes.ToList());
-		List<NavNode> cameFrom = new List<NavNode>();
-		
-		NavNode currentNode;
-		
-		start.SetNavAttribs(0, (0 + FindMagnitude(start.nodePosition, goal.nodePosition)));
-		
-		Debug.Log("[Start] Node is <" + start.uID + "> with an fScore of (" + start.fScore + ").");
-		
-		while (openSet.Count != 0) {
-			currentNode = LowestScoreNode(openSet);
-			Debug.Log("[Current] Node is <" + currentNode.uID + "> with an fScore of (" + currentNode.fScore + ").");
-			if (currentNode == goal) {
-				ReconstructPath(ref cameFrom, currentNode);
-				return cameFrom;
-			}
-			
-			openSet.Remove(currentNode);
-			closedSet.Add(currentNode);
-			
-			if (currentNode.uID == 1){
-				Debug.Log("Node 1 DETECTED");
-			}
-			
-			Debug.Log("[Sets] Openset contains ("+ openSet.Count +") nodes. Closed set contains ("+ closedSet.Count + ") nodes.");
-			foreach (NavNode neighbour in currentNode.linkedNodes) {
-				int navId = neighbour.uID;
-				if (navId == 1) { 
-					Debug.Log("Lol");
-				}
-				float trialGScore = currentNode.gScore + FindMagnitude(currentNode.nodePosition, neighbour.nodePosition);
-				float trialFScore = trialGScore + FindMagnitude(neighbour.nodePosition, goal.nodePosition);
-				
-				if ((CheckNodeInList(closedSet,neighbour) && (trialFScore >= neighbour.fScore))){
-					Debug.Log("[Neighbour] Node <" + neighbour.uID + "> has been discarded.");
-					continue;
-				}
-				
-				if ((!CheckNodeInList(openSet, neighbour)) || (trialFScore < neighbour.fScore)) {
-					Debug.Log("[Neighbour] Node <" + neighbour.uID + "> has been set to come from node <"+ currentNode.uID+">.");
-					neighbour.SetNavAttribs(trialGScore, trialFScore, currentNode);
-					if (!CheckNodeInList(openSet, neighbour)){
-						openSet.Add(neighbour);
-					}
+	private bool CheckNodeVerts (Vector3 rPos, float testScale) {
+		float curExtents = defaultExtents * testScale;
+		List<Vector3> vertexList = GenerateVertexList(rPos, testScale);
+		foreach (Vector3 vertex in vertexList) {
+			if (!CheckPosIsOnMap(rPos)) { return false; }
+			if (FindNavNodeFromPos(rPos) != null) { return false; }
+			for (int i = 0 ; i < vertexList.Count ; i++) {
+				if (!CheckLOS(vertex, vertexList[i],testScale)) {
+					return false;
 				}
 			}
 		}
-		return null;
-	}
-	
-	private void ReconstructPath(ref List<NavNode> nodeMap, NavNode currentNode){
-		if (currentNode.cameFrom != null) {
-			nodeMap.Add(currentNode);
-			ReconstructPath(ref nodeMap, currentNode.cameFrom);
-		}
-		else { 
-			nodeMap.Add(currentNode);
-		}
-	}	
-	
-	private void HighlightTraversalMap (List<NavNode> nodeMap){
-		foreach (NavNode node in nodeMap) {
-			if (node.cameFrom != null) {
-				Vector3 modNodePos = node.nodePosition;
-				modNodePos.y = 3;
-				Vector3 modParentPos = node.cameFrom.nodePosition;
-				modParentPos.y = 3;
-				Vector3 directionToNode = modParentPos - modNodePos;
-				Debug.DrawRay(modNodePos, directionToNode, Color.white, 60);
-			}
-		}
-	}
-	
-	private bool CheckNodeInList (List<NavNode> nodeList, NavNode nodeToFind) {
-		NavNode foundNode = nodeList.Find(node => node.uID == nodeToFind.uID);
-		if (foundNode != null) {return true;}
-		else {return false;}
-	}
-	
-	private NavNode LowestScoreNode (List<NavNode> nodeList) {
-		NavNode lowestNode = null;
-		float lowestScore = 1100f;
-		foreach (NavNode node in nodeList.ToList()) {
-			if (node.fScore < lowestScore){
-				lowestScore = node.fScore;
-				lowestNode = node;
-			}
-		}
-		return lowestNode;
-	}
-	
-	private float FindMagnitude (Vector3 lhs, Vector3 rhs) {
-		float magnitude = 0f;
-		Vector3 toDist = lhs - rhs;
-		magnitude = toDist.magnitude;
-		return magnitude;
+		return true;
 	}
 	
 	private float NodeScaling (Vector3 rPos, Vector3 pPos, Vector3 pExt, int directionFlag) {
@@ -273,21 +173,6 @@ public class NavNodeManager {
 			rPos = CalculateNewNodePos(pPos, pExt, directionFlag, curScale);
 		}
 		return curScale;
-	}
-	
-	private bool CheckNodeVerts (Vector3 rPos, float testScale) {
-		float curExtents = defaultExtents * testScale;
-		List<Vector3> vertexList = GenerateVertexList(rPos, testScale);
-		foreach (Vector3 vertex in vertexList) {
-			if (!CheckPosIsOnMap(rPos)) { return false; }
-			if (FindNavNodeFromPos(rPos) != null) { return false; }
-			for (int i = 0 ; i < vertexList.Count ; i++) {
-				if (!CheckLOS(vertex, vertexList[i],testScale)) {
-					return false;
-				}
-			}
-		}
-		return true;
 	}
 	
 	private List<Vector3> GenerateVertexList (Vector3 rPos, float curScale = 1f) {
@@ -360,4 +245,153 @@ public class NavNodeManager {
 		return layerMask;
 	}
 	
+	//######################################################//
+	//					AI Pathfinding						//
+	//######################################################//
+	
+	public List<NavNode> FindTraversalMap (Vector3 start, Vector3 goal) {
+		ResetBenchmarkTimes();
+		System.Diagnostics.Stopwatch stopWatch = new System.Diagnostics.Stopwatch();
+		stopWatch.Start();
+		List <NavNode> traversalMap = AStarPathfind(FindNavNodeFromPos(start), FindNavNodeFromPos(goal));
+		traversalMap.Reverse();
+		stopWatch.Stop();
+		printBenchmarkTimes();
+		if (traversalMap.Count == 0) {
+			Debug.Log("Transverse complete in ("+ stopWatch.Elapsed.TotalMilliseconds +") milliseconds. No path found.");
+		}
+		else {
+			Debug.Log("Transverse complete  in ("+ stopWatch.Elapsed.TotalMilliseconds +") milliseconds. Path with ("+ traversalMap.Count +") has been found.");
+		}
+		HighlightTraversalMap(traversalMap);
+		return traversalMap;
+	}
+	
+	private void ResetBenchmarkTimes (){
+		lowestScoreTimes.Clear();
+		reconstructPathTimes.Clear();
+		checkNodeInListTimes.Clear();
+	}
+	
+	private void printBenchmarkTimes() {
+		Debug.Log("Reconstruct Total: " + reconstructPathTimes.Sum() + "ms | " + reconstructPathTimes.Min() + "ms => " + reconstructPathTimes.Max() + "ms");
+		Debug.Log("LowestScore Total: " + lowestScoreTimes.Sum() + "ms | " + lowestScoreTimes.Min() + "ms => " + lowestScoreTimes.Max() + "ms");
+		Debug.Log("ChecknodeinList Total: " + checkNodeInListTimes.Sum() + "ms | " + checkNodeInListTimes.Min() + "ms => " + checkNodeInListTimes.Max() + "ms");
+	}
+	
+	private List<NavNode> AStarPathfind (NavNode start, NavNode goal) {
+		
+		//F score is the node's distance between it and the goal node. This is stored in the actual node.
+		//G Score is the distance between the two nodes in question. This is also stored in the node.
+		
+		foreach (NavNode node in availableNodes) {
+			node.ResetScores();
+		}
+		
+		List<NavNode> closedSet = new List<NavNode>();
+		List<NavNode> openSet = new List<NavNode>(availableNodes.ToList());
+		List<NavNode> cameFrom = new List<NavNode>();
+		
+		NavNode currentNode;
+		
+		start.SetNavAttribs(0, (0 + FindMagnitude(start.nodePosition, goal.nodePosition)));
+		
+		//Debug.Log("[Start] Node is <" + start.uID + "> with an fScore of (" + start.fScore + ").");
+		
+		while (openSet.Count != 0) {
+
+			currentNode = LowestScoreNode(openSet);
+			//Debug.Log("[Current] Node is <" + currentNode.uID + "> with an fScore of (" + currentNode.fScore + ").");
+			if (currentNode == goal) {
+				System.Diagnostics.Stopwatch stopWatch = new System.Diagnostics.Stopwatch();
+				stopWatch.Start();
+				ReconstructPath(ref cameFrom, currentNode);
+				stopWatch.Stop();
+				reconstructPathTimes.Add(stopWatch.Elapsed.TotalMilliseconds);
+				return cameFrom;
+			}
+			
+			openSet.Remove(currentNode);
+			closedSet.Add(currentNode);
+			
+			//Debug.Log("[Sets] Openset contains ("+ openSet.Count +") nodes. Closed set contains ("+ closedSet.Count + ") nodes.");
+			foreach (NavNode neighbour in currentNode.linkedNodes) {
+				float trialGScore = currentNode.gScore + FindMagnitude(currentNode.nodePosition, neighbour.nodePosition);
+				float trialFScore = trialGScore + FindMagnitude(neighbour.nodePosition, goal.nodePosition);
+				bool nodeSet = CheckNodeInList(openSet, neighbour); //True if in Openset, false if in Closedset
+				
+				if ((nodeSet == false) && (trialFScore >= neighbour.fScore)){
+					//Debug.Log("[Neighbour] Node <" + neighbour.uID + "> has been discarded.");
+					continue;
+				}
+				
+				if ((nodeSet == false) || (trialFScore < neighbour.fScore)) {
+					//Debug.Log("[Neighbour] Node <" + neighbour.uID + "> has been set to come from node <"+ currentNode.uID+">.");
+					neighbour.SetNavAttribs(trialGScore, trialFScore, currentNode);
+					if (nodeSet == false){
+						openSet.Add(neighbour);
+					}
+				}
+			}
+		}
+		return null;
+	}
+	
+	private void ReconstructPath(ref List<NavNode> nodeMap, NavNode currentNode){
+		if (currentNode.cameFrom != null) {
+			nodeMap.Add(currentNode);
+			ReconstructPath(ref nodeMap, currentNode.cameFrom);
+		}
+		else { 
+			nodeMap.Add(currentNode);
+		}
+	}	
+	
+	private void HighlightTraversalMap (List<NavNode> nodeMap){
+		foreach (NavNode node in nodeMap) {
+			if (node.cameFrom != null) {
+				Vector3 modNodePos = (node.cameFrom.nodePosition + (Vector3.up * 3));
+				Vector3 directionToNode = (node.nodePosition + (Vector3.up * 3)) - modNodePos;
+				Debug.DrawRay(modNodePos, directionToNode, Color.white, 10);
+			}
+		}
+	}
+	
+	private bool CheckNodeInList (List<NavNode> nodeList, NavNode nodeToFind) {
+		System.Diagnostics.Stopwatch stopWatch = new System.Diagnostics.Stopwatch();
+		stopWatch.Start();
+		NavNode foundNode = nodeList.Find(node => node.uID == nodeToFind.uID);
+		if (foundNode != null) {
+			stopWatch.Stop();
+			checkNodeInListTimes.Add(stopWatch.Elapsed.TotalMilliseconds);
+			return true;
+		}
+		else {
+			stopWatch.Stop();
+			checkNodeInListTimes.Add(stopWatch.Elapsed.TotalMilliseconds);
+			return false;
+		}
+	}
+	
+	private NavNode LowestScoreNode (List<NavNode> nodeList) {
+		System.Diagnostics.Stopwatch stopWatch = new System.Diagnostics.Stopwatch();
+		stopWatch.Start();
+		NavNode lowestNode = null;
+		float lowestScore = 1100f;
+		foreach(NavNode node in nodeList) {
+			if(node.fScore < lowestScore){
+				lowestNode = node;
+				lowestScore = node.fScore;
+			}
+		}
+		stopWatch.Stop();
+		lowestScoreTimes.Add(stopWatch.Elapsed.TotalMilliseconds);
+		return lowestNode;
+	}
+	
+	private float FindMagnitude (Vector3 lhs, Vector3 rhs) {
+		Vector3 toDist = lhs - rhs;
+		return toDist.magnitude;
+	}
+
 }

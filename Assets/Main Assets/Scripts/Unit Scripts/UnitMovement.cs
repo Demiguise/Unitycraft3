@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-
+using System.Collections.Generic;
 
 public class UnitMovement : MonoBehaviour {
 	
@@ -12,6 +12,7 @@ public class UnitMovement : MonoBehaviour {
 	public float originalMoveSpeed;
 	[System.NonSerialized]
 	public bool moving;
+	private List<NavNode> nodeList = new List<NavNode>();
 	
 	
 	// Use this for initialization
@@ -24,28 +25,39 @@ public class UnitMovement : MonoBehaviour {
 	void Update () {
 		moveSpeed = originalMoveSpeed * CalcMoveModifier();
 		if (moving){
-			if (DestinationCheck()){
-				//Debug.Log("I've arrived at my position! (I think)");
+			if ((DestinationCheck()) && (nodeList.Count == 0)){
 				moving = false;
 			}
+			if ((DestinationCheck()) && (nodeList.Count > 0)){
+				nodeList.Remove(nodeList[0]);
+				if (nodeList.Count != 0) {
+					destination = SetDestination(nodeList[0].nodePosition);
+				}
+			}
 			float step = moveSpeed * Time.deltaTime;
-			//Debug.Log(Vector3.MoveTowards(transform.position, requestedLocation, step));
 			transform.position = Vector3.MoveTowards(transform.position, destination, step);
-	
 		}
 	}
 	
 	public void StopMove () {
 		moving = false;
+
 	}
 	
-	void Move (Vector3 moveLocation){
+	private Vector3 SetDestination (Vector3 destination) {
+		Vector3 modDestination = destination;
+		modDestination.y = (this.renderer.bounds.extents.y);
+		return modDestination;
+	}
+	
+	private void Move (List<NavNode> initNodeList){
 		moving = true;
-		destination = moveLocation;
-		//Debug.Log("I've been asked to move to: " + moveLocation);
+		nodeList = initNodeList;
+		destination = SetDestination(nodeList[0].nodePosition);
+		Debug.Log("Moving to " + destination);
 	}
 	
-	float CalcMoveModifier () {
+	private float CalcMoveModifier () {
 		float curMod = 1f;
 		foreach (float modifier in moveModifiers.Values) {
 			curMod *= (1 - modifier);
@@ -53,9 +65,10 @@ public class UnitMovement : MonoBehaviour {
 		return curMod;
 	}
 	
-	bool DestinationCheck(){
+	private bool DestinationCheck(){
 		Vector3 vectorToGoal = destination - transform.position;
 		if (bufferZone.magnitude > vectorToGoal.magnitude){
+			Debug.Log("I have reached my destination!");
 			return true;			
 		}
 		return false;

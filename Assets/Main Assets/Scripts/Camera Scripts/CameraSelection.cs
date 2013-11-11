@@ -39,9 +39,10 @@ public class CameraSelection : MonoBehaviour {
 				newMousePosition = Vector3.zero;
 			}
 			if (Input.GetKeyUp(KeyCode.L)){
-				//navManager.BeginFloodFill();
-				//navManager.FindNodeLinks();
 				navManager.FindTraversalMap(new Vector3(44,0,44), new Vector3(-44,0,-44));
+			}
+			if (Input.GetKeyUp(KeyCode.K)){
+				navManager.FindTraversalMap(new Vector3(44,0,-44), new Vector3(-44,0,44));
 			}
 			if ((Input.GetMouseButtonDown(1)) && (selectedObjectList.Count > 0)){
 				int[] worldLayer = {9};
@@ -51,7 +52,7 @@ public class CameraSelection : MonoBehaviour {
 					if (objectHit.tag == "MapGeom") {
 						if (selectedObjectList[0].tag == "Unit") {
 							foreach (GameObject unit in selectedObjectList){
-								unit.GetComponent<UnitMovement>().SendMessage("Move", CastWorldRay(worldLayer));
+								unit.GetComponent<UnitMovement>().SendMessage("Move", navManager.FindTraversalMap(unit.transform.position, CastWorldRay(worldLayer)));
 							}
 						}
 						if (selectedObjectList[0].tag == "Building") {
