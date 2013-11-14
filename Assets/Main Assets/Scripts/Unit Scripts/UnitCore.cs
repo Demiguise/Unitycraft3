@@ -11,6 +11,7 @@ public class UnitCore : MonoBehaviour {
 	public float healthMax;
 	public Vector3 worldToScreen;
 	public int factionFlag;
+	public Vector3 extents;
 
 		
 	// Use this for initialization
@@ -22,6 +23,7 @@ public class UnitCore : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		extents = this.GetComponent<MeshFilter>().mesh.bounds.extents;
 		worldToScreen = Camera.main.WorldToScreenPoint(transform.position);
 	}
 	

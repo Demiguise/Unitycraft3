@@ -1,25 +1,23 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Main Assets\Scripts\Unit Scripts\UnitMovement.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Main Assets\Scripts\NavNodeManager.cs">
     <Files>
-      <File FileName="Assets\Main Assets\Scripts\DebuggingNodes.cs" Line="1" Column="1" />
-      <File FileName="Assets\Main Assets\Scripts\NavNodeManager.cs" Line="252" Column="69" />
-      <File FileName="Assets\Main Assets\Scripts\Camera Scripts\CameraSelection.cs" Line="106" Column="9" />
-      <File FileName="Assets\Main Assets\Scripts\Unit Scripts\UnitMovement.cs" Line="49" Column="54" />
-      <File FileName="Assets\Main Assets\Scripts\Unit Scripts\UnitCombat.cs" Line="13" Column="23" />
+      <File FileName="Assets\Main Assets\Scripts\NavNode.cs" Line="1" Column="1" />
+      <File FileName="Assets\Main Assets\Scripts\NavNode.cs" Line="21" Column="29" />
+      <File FileName="Assets\Main Assets\Scripts\NavNodeManager.cs" Line="309" Column="6" />
+      <File FileName="Assets\Main Assets\Scripts\Camera Scripts\CameraSelection.cs" Line="40" Column="5" />
+      <File FileName="Assets\Main Assets\Scripts\Unit Scripts\UnitMovement.cs" Line="52" Column="3" />
+      <File FileName="Assets\Main Assets\Scripts\Unit Scripts\UnitCore.cs" Line="26" Column="65" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
-            <Node name="Assets" expanded="True">
-              <Node name="Main Assets" expanded="True">
-                <Node name="Scripts" expanded="True">
-                  <Node name="Camera Scripts" expanded="True" />
-                  <Node name="Unit Scripts" expanded="True">
-                    <Node name="UnitMovement.cs" selected="True" />
-                  </Node>
-                </Node>
+            <Node name="Main Assets" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="Camera Scripts" expanded="True" />
+                <Node name="Unit Scripts" expanded="True" />
+                <Node name="NavNodeManager.cs" selected="True" />
               </Node>
             </Node>
           </Node>
@@ -30,7 +28,10 @@
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
         <State>
-          <Value>sortedList[0]</Value>
+          <Value>vectorList._items[0]</Value>
+          <Value>vectorList._items[1]</Value>
+          <Value>vectorList._items[2]</Value>
+          <Value>vectorList._items[3]</Value>
         </State>
       </Pad>
     </Pads>

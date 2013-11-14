@@ -12,7 +12,8 @@ public class UnitMovement : MonoBehaviour {
 	public float originalMoveSpeed;
 	[System.NonSerialized]
 	public bool moving;
-	private List<NavNode> nodeList = new List<NavNode>();
+
+	private List<Vector3> VectorList = new List<Vector3>();
 	
 	
 	// Use this for initialization
@@ -25,13 +26,13 @@ public class UnitMovement : MonoBehaviour {
 	void Update () {
 		moveSpeed = originalMoveSpeed * CalcMoveModifier();
 		if (moving){
-			if ((DestinationCheck()) && (nodeList.Count == 0)){
+			if ((DestinationCheck()) && (VectorList.Count == 0)){
 				moving = false;
 			}
-			if ((DestinationCheck()) && (nodeList.Count > 0)){
-				nodeList.Remove(nodeList[0]);
-				if (nodeList.Count != 0) {
-					destination = SetDestination(nodeList[0].nodePosition);
+			if ((DestinationCheck()) && (VectorList.Count > 0)){
+				VectorList.Remove(VectorList[0]);
+				if (VectorList.Count != 0) {
+					destination = SetDestination(VectorList[0]);
 				}
 			}
 			float step = moveSpeed * Time.deltaTime;
@@ -50,10 +51,10 @@ public class UnitMovement : MonoBehaviour {
 		return modDestination;
 	}
 	
-	private void Move (List<NavNode> initNodeList){
+	private void Move (List<Vector3> initVectorList){
 		moving = true;
-		nodeList = initNodeList;
-		destination = SetDestination(nodeList[0].nodePosition);
+		VectorList = initVectorList;
+		destination = SetDestination(VectorList[0]);
 		Debug.Log("Moving to " + destination);
 	}
 	
@@ -68,7 +69,7 @@ public class UnitMovement : MonoBehaviour {
 	private bool DestinationCheck(){
 		Vector3 vectorToGoal = destination - transform.position;
 		if (bufferZone.magnitude > vectorToGoal.magnitude){
-			Debug.Log("I have reached my destination!");
+			//Debug.Log("I have reached my destination!");
 			return true;			
 		}
 		return false;

@@ -6,6 +6,7 @@ using System.Linq;
 public class NavNodeManager {
 	private List<NavNode> availableNodes = new List<NavNode>();
 	private float defaultExtents;
+	
 	private List<double> lowestScoreTimes = new List<double>();
 	private List<double> reconstructPathTimes = new List<double>();
 	private List<double> checkNodeInListTimes = new List<double>();
@@ -150,7 +151,7 @@ public class NavNodeManager {
 			if (!CheckPosIsOnMap(rPos)) { return false; }
 			if (FindNavNodeFromPos(rPos) != null) { return false; }
 			for (int i = 0 ; i < vertexList.Count ; i++) {
-				if (!CheckLOS(vertex, vertexList[i],testScale)) {
+				if (!CheckLOS(vertex, vertexList[i], defaultExtents,testScale)) {
 					return false;
 				}
 			}
@@ -185,13 +186,13 @@ public class NavNodeManager {
 		return VertexList;
 	}
 	
-	private bool CheckLOS (Vector3 firstPos, Vector3 secondPos, float curScale = 1f) {
+	private bool CheckLOS (Vector3 firstPos, Vector3 secondPos, float distance, float curScale = 1f) {
 		if (firstPos == secondPos) { return true; }
 		int[] worldLayer = {9};
 		Vector3 rayHDirection = secondPos - firstPos;
 		Ray rH = new Ray(firstPos, rayHDirection);
 		RaycastHit objectHit;
-		Physics.Raycast(rH, out objectHit, (defaultExtents * curScale), CreateLayerMask(worldLayer));
+		Physics.Raycast(rH, out objectHit, (distance * curScale), CreateLayerMask(worldLayer));
 		if (objectHit.collider == null) {
 			return true;
 		}
@@ -249,22 +250,102 @@ public class NavNodeManager {
 	//					AI Pathfinding						//
 	//######################################################//
 	
-	public List<NavNode> FindTraversalMap (Vector3 start, Vector3 goal) {
+	public List<Vector3> FindTraversalMap (Vector3 start, Vector3 goal) {
+		Debug.Log("Start position: " + start + " | Goal Position: " + goal);
 		ResetBenchmarkTimes();
 		System.Diagnostics.Stopwatch stopWatch = new System.Diagnostics.Stopwatch();
 		stopWatch.Start();
 		List <NavNode> traversalMap = AStarPathfind(FindNavNodeFromPos(start), FindNavNodeFromPos(goal));
 		traversalMap.Reverse();
+		HighlightTraversalMap(traversalMap, Color.white);
+		List<Vector3> vectorMap = SmoothTraversalMap(traversalMap);
+		HighlightTraversalMap(traversalMap, Color.red);
 		stopWatch.Stop();
-		printBenchmarkTimes();
+		//printBenchmarkTimes();
 		if (traversalMap.Count == 0) {
 			Debug.Log("Transverse complete in ("+ stopWatch.Elapsed.TotalMilliseconds +") milliseconds. No path found.");
 		}
 		else {
 			Debug.Log("Transverse complete  in ("+ stopWatch.Elapsed.TotalMilliseconds +") milliseconds. Path with ("+ traversalMap.Count +") has been found.");
 		}
-		HighlightTraversalMap(traversalMap);
-		return traversalMap;
+
+		return vectorMap;
+	}
+	
+	private List<Vector3> SmoothTraversalMap (List<NavNode> nodeList, float smoothScale =1f){
+		NavNode curNode = nodeList[0];
+		List<NavNode> returnList = nodeList;
+		List<NavNode> nodesToRemove = new List<NavNode>();
+		for (int i = 1 ; i < (nodeList.Count - 1) ; i++ ){
+			Vector3 distToNode = curNode.nodePosition - nodeList[i].nodePosition;
+			Vector3 distToSecondNode = curNode.nodePosition - nodeList[i+1].nodePosition;
+			if ((CheckLOS(curNode.nodePosition, nodeList[i].nodePosition, distToNode.magnitude)) && (CheckLOS(curNode.nodePosition, nodeList[i+1].nodePosition, distToSecondNode.magnitude))){
+				nodesToRemove.Add(nodeList[i]);
+			}
+			else {
+				curNode = nodeList[i];
+			}
+		}
+		foreach (NavNode node in nodesToRemove){
+			returnList.Remove(node);
+		}
+		List<Vector3> vectorList = ConvertNodeToVector(returnList);
+		vectorList = CollisionRayTests(vectorList);
+		return vectorList;
+	}
+
+	private List<Vector3> ConvertNodeToVector (List<NavNode> nodelist){
+		List<Vector3> returnList = new List<Vector3>();
+		foreach(NavNode node in nodelist){
+			returnList.Add(node.nodePosition);
+		}
+		return returnList;
+	}
+
+	private List<Vector3> CollisionRayTests (List<Vector3> vectorList){
+		List<Vector3> localVectorList = vectorList;
+		for (int i = 0 ; i < localVectorList.Count - 1 ; i++) {
+			Vector3 mainDirection = localVectorList[i+1] - localVectorList[i];
+			Vector3 normalDirection = (RotateVector3RY(mainDirection.normalized, 90f));
+			float pCollisionChange = FindReqCollisionChange(localVectorList[i], localVectorList[i+1], (normalDirection * 2));
+			float nCollisionChange = FindReqCollisionChange(localVectorList[i], localVectorList[i+1], (normalDirection * -2));
+			float resultantChange = pCollisionChange - nCollisionChange;
+			Debug.Log("[Collision Detection] Need to move " + localVectorList[i] + " by " + resultantChange + " units");
+			localVectorList[i+1] = MoveVector(localVectorList[i+1], normalDirection, (resultantChange * -1));
+			Debug.DrawRay(((normalDirection * 2) + localVectorList[i] + (Vector3.up * 2)), (localVectorList[i+1] - localVectorList[i] + (Vector3.up * 2)), Color.yellow, 10);
+			Debug.DrawRay(((normalDirection *-2) + localVectorList[i] + (Vector3.up * 2)), (localVectorList[i+1] - localVectorList[i] + (Vector3.up * 2)), Color.yellow, 10);
+			//NEEDS TO ACTUALLY RUN THE TEST AGAIN TO MAKE SURE IT WORKED, IF IT DIDN'T LOLBREAK
+		}
+		return vectorList;
+	}
+
+	private float FindReqCollisionChange (Vector3 curPos, Vector3 goalPos, Vector3 normalDirection, float initChange = 10f) {
+		int[] worldLayer = {9};
+		float change = 0f;
+		float step = 1f;
+		float maxChange = initChange;
+		Vector3 testPos = goalPos;
+		Vector3 mainDirection = testPos - curPos;
+		Vector3 normalPos = curPos + normalDirection + (Vector3.up * 2);
+		Ray normalRay = new Ray(normalPos, mainDirection);
+		while (Physics.Raycast(normalRay, mainDirection.magnitude, CreateLayerMask(worldLayer))){
+			testPos = MoveVector(testPos, (normalDirection * -1), step);
+			mainDirection = testPos - curPos;
+			normalRay = new Ray(normalPos, mainDirection);
+			change += step;
+			if (change == maxChange) {
+				break;
+			}
+		}
+		return change;
+	}
+
+	private Vector3 MoveVector (Vector3 origin, Vector3 direction, float distance){
+		Vector3 returnVector3 = new Vector3();
+		returnVector3.x = origin.x + (direction.x * distance);
+		returnVector3.y = origin.y + (direction.y * distance);
+		returnVector3.z = origin.z + (direction.z * distance);
+		return returnVector3;
 	}
 	
 	private void ResetBenchmarkTimes (){
@@ -345,15 +426,14 @@ public class NavNodeManager {
 		else { 
 			nodeMap.Add(currentNode);
 		}
-	}	
+	}
 	
-	private void HighlightTraversalMap (List<NavNode> nodeMap){
-		foreach (NavNode node in nodeMap) {
-			if (node.cameFrom != null) {
-				Vector3 modNodePos = (node.cameFrom.nodePosition + (Vector3.up * 3));
-				Vector3 directionToNode = (node.nodePosition + (Vector3.up * 3)) - modNodePos;
-				Debug.DrawRay(modNodePos, directionToNode, Color.white, 10);
-			}
+	private void HighlightTraversalMap (List<NavNode> nodeMap, Color highlightColour){
+		for (int i = 0 ; i < nodeMap.Count - 1 ; i++ ){
+			Vector3 modNodePos = nodeMap[i].nodePosition + (Vector3.up * 3);
+			Vector3 directionToNode = (nodeMap[i+1].nodePosition + (Vector3.up * 3)) - modNodePos;
+			Debug.DrawRay(modNodePos, directionToNode, highlightColour, 10);
+			Debug.DrawRay(modNodePos, Vector3.up, highlightColour, 10);
 		}
 	}
 	
