@@ -25,6 +25,7 @@ public class UnitMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		moveSpeed = originalMoveSpeed * CalcMoveModifier();
+		ChangeDirection();
 		if (moving){
 			if ((DestinationCheck()) && (VectorList.Count == 0)){
 				moving = false;
@@ -36,13 +37,21 @@ public class UnitMovement : MonoBehaviour {
 				}
 			}
 			float step = moveSpeed * Time.deltaTime;
-			transform.position = Vector3.MoveTowards(transform.position, destination, step);
+			transform.position = Vector3.MoveTowards(this.transform.position, destination, step);
 		}
 	}
 	
 	public void StopMove () {
 		moving = false;
 
+	}
+
+	private void ChangeDirection() {
+		float step = (moveSpeed * 0.5f) * Time.deltaTime;
+		Vector3 directionVector = destination - transform.position;
+		Vector3 newLookDirection = Vector3.RotateTowards(this.transform.forward, directionVector, step, 0.0f);
+		//Debug.DrawRay(transform.position, (directionVector.normalized * 5),Color.white);
+		transform.rotation = Quaternion.LookRotation(newLookDirection);
 	}
 	
 	private Vector3 SetDestination (Vector3 destination) {

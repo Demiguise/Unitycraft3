@@ -259,7 +259,7 @@ public class NavNodeManager {
 		traversalMap.Reverse();
 		HighlightTraversalMap(traversalMap, Color.white);
 		List<Vector3> vectorMap = SmoothTraversalMap(traversalMap);
-		HighlightTraversalMap(traversalMap, Color.red);
+		HighlightVectorMap(vectorMap, Color.red);
 		stopWatch.Stop();
 		//printBenchmarkTimes();
 		if (traversalMap.Count == 0) {
@@ -291,6 +291,7 @@ public class NavNodeManager {
 		}
 		List<Vector3> vectorList = ConvertNodeToVector(returnList);
 		vectorList = CollisionRayTests(vectorList);
+
 		return vectorList;
 	}
 
@@ -432,6 +433,15 @@ public class NavNodeManager {
 		for (int i = 0 ; i < nodeMap.Count - 1 ; i++ ){
 			Vector3 modNodePos = nodeMap[i].nodePosition + (Vector3.up * 3);
 			Vector3 directionToNode = (nodeMap[i+1].nodePosition + (Vector3.up * 3)) - modNodePos;
+			Debug.DrawRay(modNodePos, directionToNode, highlightColour, 10);
+			Debug.DrawRay(modNodePos, Vector3.up, highlightColour, 10);
+		}
+	}
+
+	private void HighlightVectorMap (List<Vector3> vectorMap, Color highlightColour){
+		for (int i = 0 ; i < vectorMap.Count - 1 ; i++ ){
+			Vector3 modNodePos = vectorMap[i] + (Vector3.up * 3);
+			Vector3 directionToNode = (vectorMap[i+1] + (Vector3.up * 3)) - modNodePos;
 			Debug.DrawRay(modNodePos, directionToNode, highlightColour, 10);
 			Debug.DrawRay(modNodePos, Vector3.up, highlightColour, 10);
 		}
