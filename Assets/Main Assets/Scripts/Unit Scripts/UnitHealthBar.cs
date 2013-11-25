@@ -4,8 +4,8 @@ using System.Collections;
 public class UnitHealthBar : MonoBehaviour {
 	
 	public float heightOffset;
-	private float widthOffset;
-	private float width;
+	public float widthOffset;
+	public float width;
 	private float health;
 	private float healthMax;
 	public Texture healthTexture;
@@ -15,8 +15,6 @@ public class UnitHealthBar : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		width = (this.renderer.bounds.size.x) * 13f;
-		widthOffset = (this.renderer.bounds.extents.x) * 13f;
 		healthMax = this.GetComponent<UnitCore>().healthMax;
 		health = this.GetComponent<UnitCore>().health;
 		selected = false;
@@ -24,9 +22,9 @@ public class UnitHealthBar : MonoBehaviour {
 	
 	void OnGUI () {
 		if (selected) {
-			GUI.BeginGroup(new Rect(curScreenPos.x - widthOffset, ((Screen.height - curScreenPos.y) - heightOffset), width, 12));
-				GUI.DrawTexture(new Rect(0,0,(transform.localScale.x * width),12), backgroundTexture);
-				GUI.DrawTexture(new Rect(1,1,((width - 2) * (health / healthMax)),10), healthTexture);
+			GUI.BeginGroup(new Rect(curScreenPos.x - widthOffset, ((Screen.height - curScreenPos.y) - heightOffset), width, 8));
+				GUI.DrawTexture(new Rect(0,0,(transform.localScale.x * width),8), backgroundTexture);
+				GUI.DrawTexture(new Rect(1,1,((width - 2) * (health / healthMax)),6), healthTexture);
 			GUI.EndGroup();
 		}
 	}

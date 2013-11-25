@@ -6,12 +6,9 @@ public class UnitCombat : MonoBehaviour {
 	public System.Collections.Generic.Dictionary<string, int> attackModifiers = new System.Collections.Generic.Dictionary<string, int>();
 	public System.Collections.Generic.Dictionary<string, int> defenseModifiers = new System.Collections.Generic.Dictionary<string, int>(); //From things like "-20% damage taken"
 	public Spell curOrbEffect = new Spell();
-	
-	public int strength;
-	public int agility;
-	public int intelligence;
-	public int minDamage;
-	public int maxDamage;
+
+    public bool debugInfo;
+	public int[] damageRange;
 	public int armour;
 	public bool swinging;
 	public float curTimer;
@@ -20,18 +17,20 @@ public class UnitCombat : MonoBehaviour {
 	public float damageReduction; //from Armour
 	public GameObject targetUnit;
 	public float distanceToTarget;
-	
+    private UnitDebug debugComp;
+
 	void Start () {
-		minDamage = 10;
-		maxDamage = 20;
-		CalculateAttributeDamage();
+		damageRange = new int[2];
+		damageRange [0] = 10;
+		damageRange [1] = 20;
 		curTimer = swingTimer;
+        debugComp = this.GetComponent<UnitDebug>();
 	}
 	
 	void Update () {
 		CalculateArmourValue();
 		if (targetUnit != null) {
-			CalculateDistanceToTarget();
+			distanceToTarget = CalculateDistanceToTarget();
 			if (distanceToTarget <= attackdistance) {
 				this.GetComponent<UnitMovement>().SendMessage("StopMove");
 				if (swinging && curTimer > 0) {
@@ -46,13 +45,14 @@ public class UnitCombat : MonoBehaviour {
 		}
 	}
 	
-	public void CalculateDistanceToTarget () {
+	public float CalculateDistanceToTarget () {
 		Vector3 VectorToTarget = targetUnit.transform.position - this.transform.position;
-		distanceToTarget = VectorToTarget.magnitude;
+		float targetDistance = VectorToTarget.magnitude;
+		return targetDistance;
 	}
 	
 	public void MoveToAttackZone () {
-		this.GetComponent<UnitMovement>().SendMessage("Move", targetUnit.transform.position);
+		this.GetComponent<UnitCore> ().RequestMovement (targetUnit.transform.position, 1);
 	}
 	
 	public void StartSwinging (GameObject reqTargetUnit) {
@@ -73,10 +73,7 @@ public class UnitCombat : MonoBehaviour {
 	private void ResetSwingTimer () {
 		curTimer = swingTimer;
 	}
-	
-	private void CalculateAttributeDamage () {
-		
-	}
+
 	
 	private int CollateAttackMods () {
 		int fullMods = 0;
@@ -85,7 +82,7 @@ public class UnitCombat : MonoBehaviour {
 		}
 		return fullMods;
 	}
-	
+	 	
 	private float CollateDamageReductionMods () {
 		float curMod = (1f * damageReduction);
 		foreach (float modifier in defenseModifiers.Values) {
@@ -96,15 +93,17 @@ public class UnitCombat : MonoBehaviour {
 	}	
 	
 	public void Attack (GameObject defendingUnit) {
-		int attackDamage = Random.Range(minDamage, maxDamage);
+        this.GetComponent<UnitAnimation>().ForceAnimationState("Base Layer.Attack");
+		int attackDamage = Random.Range(damageRange[0], damageRange[1]);
 		int netDamage = (int)Mathf.Round(attackDamage + CollateAttackMods());
-		Debug.Log(this.gameObject + " has attacked with " + netDamage + " damage");
+        debugComp.LogIfTrue("UCombat", ("Attacked with " + netDamage + " damage"), debugInfo);
 		defendingUnit.GetComponent<UnitCombat>().Defend(netDamage);
 	}
-	
+
 	public void Defend (int damageToTake) {
 		int netDamage = (int)Mathf.Round (damageToTake * CollateDamageReductionMods());
-		this.GetComponent<UnitCore>().health -= netDamage;
-		Debug.Log(this.gameObject + " has taken " + netDamage + " damage.");
+        float newHealth = this.GetComponent<UnitCore>().health - netDamage;
+		this.GetComponent<UnitCore>().health = newHealth;
+        debugComp.LogIfTrue("UCombat", ("Taken (" + netDamage + ") damage. (" + newHealth + ") health remaining"), debugInfo);
 	}
 }

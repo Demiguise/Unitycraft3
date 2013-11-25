@@ -20,7 +20,7 @@ public class NavNode {
 		nodePosition = initPosition;
 		nodeExtents = initExtents;
 		uID = initUID;
-		CreateDebugNode();
+		//CreateDebugNode();
 		gScore = 1000f;
 		fScore = 1000f;
 	}
@@ -32,14 +32,14 @@ public class NavNode {
 		gScore = newGScore;
 		fScore = newFScore;
 		cameFrom = parentNode;
-		nodeVis.GetComponent<DebuggingNodes>().SendMessage("DebugScores", this);
+		//nodeVis.GetComponent<DebuggingNodes>().SendMessage("DebugScores", this);
 	}
 	
 	public void ResetScores () {
 		gScore = 1000f;
 		fScore = 1000f;
 		cameFrom = null;
-		nodeVis.GetComponent<DebuggingNodes>().SendMessage("DebugScores", this);
+		//nodeVis.GetComponent<DebuggingNodes>().SendMessage("DebugScores", this);
 	}
 	
 	public void AddNodeLink(NavNode nodeToLink) {
@@ -58,11 +58,11 @@ public class NavNode {
 	
 	public void RemoveNodeLink(NavNode nodeToRemove) {
 		linkedNodes.Remove(nodeToRemove);
-		UpdateDebugNodeLinks();
+		//UpdateDebugNodeLinks();
 	}
 	
 	private void UpdateDebugNodeLinks () {
-		nodeVis.GetComponent<DebuggingNodes>().SendMessage("UpdateLinks", this.linkedNodes);
+		//nodeVis.GetComponent<DebuggingNodes>().SendMessage("UpdateLinks", this.linkedNodes);
 	}
 	
 	private void CreateDebugNode () {
@@ -74,19 +74,19 @@ public class NavNode {
 	public void TogglePropagation (bool state) {
 		canPropagate = state;
 		if (state) {
-			nodeVis.GetComponent<DebuggingNodes>().SendMessage("UpdateColour", Color.green);
+			//nodeVis.GetComponent<DebuggingNodes>().SendMessage("UpdateColour", Color.green);
 		}
 		else {
-			nodeVis.GetComponent<DebuggingNodes>().SendMessage("UpdateColour", Color.red);
+			//nodeVis.GetComponent<DebuggingNodes>().SendMessage("UpdateColour", Color.red);
 		}
 	}
 	
 	public void ToggleSelected (bool state) {
 		if (state) {
-			nodeVis.GetComponent<DebuggingNodes>().SendMessage("UpdateColour", Color.red);
+			//nodeVis.GetComponent<DebuggingNodes>().SendMessage("UpdateColour", Color.red);
 		}
 		else {
-			nodeVis.GetComponent<DebuggingNodes>().SendMessage("UpdateColour", Color.green);
+			//nodeVis.GetComponent<DebuggingNodes>().SendMessage("UpdateColour", Color.green);
 		}
 	}
 

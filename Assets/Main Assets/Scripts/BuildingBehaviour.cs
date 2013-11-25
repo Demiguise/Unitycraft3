@@ -11,6 +11,8 @@ public class BuildingBehaviour : MonoBehaviour {
 	private bool creatingUnit;
 	private bool selected;
 	private bool rallyPointSet;
+	public int factionflag;
+	public NavNodeManager navManager;
 
 	// Use this for initialization
 	void Start () {
@@ -31,7 +33,10 @@ public class BuildingBehaviour : MonoBehaviour {
 		}
 		IncrementConstructionTimer();
 	}
-	
+
+	public void InitNavManager (NavNodeManager manager){
+		navManager = manager;
+	}
 	
 	void ChangeSelectedState (bool state) {
 		selected = state;
@@ -57,8 +62,9 @@ public class BuildingBehaviour : MonoBehaviour {
 		Transform outputLoc = transform.FindChild("outputLoc");
 		Vector3 unitCreationPosition = new Vector3(outputLoc.position.x, 3, outputLoc.position.z);
 		GameObject unitInstance = Instantiate(unitType, unitCreationPosition, transform.rotation) as GameObject;
+		unitInstance.GetComponent<UnitCore> ().InitNavManager (navManager);
 		if (rallyPointSet) {
-			unitInstance.SendMessage("Move", transform.FindChild("rallyPoint").transform.position);
+			//unitInstance.SendMessage("Move", transform.FindChild("rallyPoint").transform.position);
 		}
 	}
 	

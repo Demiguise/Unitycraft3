@@ -21,6 +21,7 @@ public class DebuggingNodes : MonoBehaviour {
 	void Start () {
 		debugDraw = false;
 		this.renderer.material.color = Color.green;
+		this.renderer.enabled = false;
 	}
 	
 	public void DebugScores (NavNode node) {

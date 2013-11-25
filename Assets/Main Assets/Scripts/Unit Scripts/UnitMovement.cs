@@ -5,14 +5,14 @@ using System.Collections.Generic;
 public class UnitMovement : MonoBehaviour {
 	
 	public System.Collections.Generic.Dictionary<string, float> moveModifiers = new System.Collections.Generic.Dictionary<string, float>();
-	
+
+    public bool debugInfo;
 	public Vector3 bufferZone;
 	private Vector3 destination;
 	public float moveSpeed;
 	public float originalMoveSpeed;
-	[System.NonSerialized]
 	public bool moving;
-
+    private UnitDebug debugComp;
 	private List<Vector3> VectorList = new List<Vector3>();
 	
 	
@@ -20,15 +20,19 @@ public class UnitMovement : MonoBehaviour {
 	void Start () {
 		moving = false;
 		originalMoveSpeed = moveSpeed;
+		destination = this.transform.forward;
+        debugComp = this.GetComponent<UnitDebug>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		moveSpeed = originalMoveSpeed * CalcMoveModifier();
-		ChangeDirection();
+        ChangeDirection();
 		if (moving){
+            
+            this.GetComponent<UnitAnimation>().FadeAnimationState("Base Layer.Walk");
 			if ((DestinationCheck()) && (VectorList.Count == 0)){
-				moving = false;
+                StopMove();
 			}
 			if ((DestinationCheck()) && (VectorList.Count > 0)){
 				VectorList.Remove(VectorList[0]);
@@ -42,31 +46,52 @@ public class UnitMovement : MonoBehaviour {
 	}
 	
 	public void StopMove () {
-		moving = false;
-
+        if (moving == true)
+        {
+            this.GetComponent<UnitAnimation>().FadeAnimationState("Base Layer.Idle");
+            moving = false;
+        }
+        else if (this.GetComponent<UnitAnimation>().IsCurrentlyPlaying("Base Layer.Walk"))
+        {
+            this.GetComponent<UnitAnimation>().FadeAnimationState("Base Layer.Idle");
+        }
 	}
 
 	private void ChangeDirection() {
 		float step = (moveSpeed * 0.5f) * Time.deltaTime;
 		Vector3 directionVector = destination - transform.position;
-		Vector3 newLookDirection = Vector3.RotateTowards(this.transform.forward, directionVector, step, 0.0f);
+		Vector3 newLookDirection = Vector3.RotateTowards(this.transform.forward, directionVector, step, 0.1f);
 		//Debug.DrawRay(transform.position, (directionVector.normalized * 5),Color.white);
+        debugComp.LogIfTrue("UMove", ("Current look direction -> " + newLookDirection + "| Destination current set to ->" + destination), debugInfo);
 		transform.rotation = Quaternion.LookRotation(newLookDirection);
 	}
 	
 	private Vector3 SetDestination (Vector3 destination) {
 		Vector3 modDestination = destination;
-		modDestination.y = (this.renderer.bounds.extents.y);
+		modDestination.y = 0.5f;
 		return modDestination;
 	}
-	
-	private void Move (List<Vector3> initVectorList){
-		moving = true;
-		VectorList = initVectorList;
-		destination = SetDestination(VectorList[0]);
-		Debug.Log("Moving to " + destination);
+
+	private void MoveToAttack(List<Vector3> VectorList){
+		Move (VectorList);
 	}
-	
+
+	private void MoveToPoint(List<Vector3> VectorList){
+		this.GetComponent<UnitCombat>().StopSwinging();
+		Move (VectorList);
+	}
+
+	private void Move (List<Vector3> initVectorList){
+		if (initVectorList != null) {
+			moving = true;
+            this.GetComponent<UnitAnimation>().FadeAnimationState("Base Layer.Walk");
+			this.GetComponent<UnitAudio>().PlayAudio(5);
+			VectorList = initVectorList;
+			destination = SetDestination (VectorList [0]);
+            debugComp.Log("UMove", ("Moving to " + destination));
+		}
+	}
+
 	private float CalcMoveModifier () {
 		float curMod = 1f;
 		foreach (float modifier in moveModifiers.Values) {
@@ -78,7 +103,7 @@ public class UnitMovement : MonoBehaviour {
 	private bool DestinationCheck(){
 		Vector3 vectorToGoal = destination - transform.position;
 		if (bufferZone.magnitude > vectorToGoal.magnitude){
-			//Debug.Log("I have reached my destination!");
+            debugComp.LogIfTrue("UMove", "I have reached my destination!", debugInfo);
 			return true;			
 		}
 		return false;

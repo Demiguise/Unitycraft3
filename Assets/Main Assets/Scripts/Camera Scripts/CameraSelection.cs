@@ -17,14 +17,27 @@ public class CameraSelection : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		unitArray = GameObject.FindGameObjectsWithTag("Unit");
+        FindActiveUnits();
+		RigUnitNavStuff ();
 		rayDebugInfo = true;
 		buildMenu = false;
 		navManager.CreateSpawnNode();
 	}
+
+	private void RigUnitNavStuff () {
+		foreach (GameObject unit in unitArray){
+			unit.GetComponent<UnitCore>().InitNavManager(navManager);
+		}
+	}
+
+    private void FindActiveUnits()
+    {
+        unitArray = GameObject.FindGameObjectsWithTag("Unit");
+    }
 	
 	// Update is called once per frame
 	void Update () {
+        FindActiveUnits();
 		if (!buildMenu) {
 			if (Input.GetMouseButtonDown(0)){
 				originalMousePosition = Input.mousePosition;
@@ -38,12 +51,6 @@ public class CameraSelection : MonoBehaviour {
 				originalMousePosition = Vector3.zero;
 				newMousePosition = Vector3.zero;
 			}
-			if (Input.GetKeyUp(KeyCode.L)){
-				navManager.FindTraversalMap(new Vector3(44,0,44), new Vector3(-44,0,-44));
-			}
-			if (Input.GetKeyUp(KeyCode.K)){
-				navManager.FindTraversalMap(new Vector3(44,0,-44), new Vector3(-44,0,44));
-			}
 			if ((Input.GetMouseButtonDown(1)) && (selectedObjectList.Count > 0)){
 				int[] worldLayer = {9};
 				int[] gameLayer = {8,9,10};
@@ -52,7 +59,8 @@ public class CameraSelection : MonoBehaviour {
 					if (objectHit.tag == "MapGeom") {
 						if (selectedObjectList[0].tag == "Unit") {
 							foreach (GameObject unit in selectedObjectList){
-								unit.GetComponent<UnitMovement>().SendMessage("Move", navManager.FindTraversalMap(unit.transform.position, CastWorldRay(worldLayer)));
+								//unit.GetComponent<UnitMovement>().SendMessage("Move", navManager.FindTraversalMap(unit.transform.position, CastWorldRay(worldLayer)));
+								unit.GetComponent<UnitCore>().RequestMovement(CastWorldRay(worldLayer));
 							}
 						}
 						if (selectedObjectList[0].tag == "Building") {
@@ -62,6 +70,7 @@ public class CameraSelection : MonoBehaviour {
 						}
 					}
 					if (objectHit.tag == "Unit" || objectHit.tag == "Building") {
+						Debug.Log("Attack command registered");
 						foreach (GameObject unit in selectedObjectList) {
 							unit.GetComponent<UnitCombat>().StartSwinging(objectHit);
 						}
@@ -78,6 +87,9 @@ public class CameraSelection : MonoBehaviour {
 		if (GUI.Button(new Rect(0,0,75,25), "Regen Nav")) {
 			navManager.RegenerateNavMesh();
 		}
+		if (GUI.Button (new Rect (0, 75, 75, 25), "Toggle Nav")){
+
+		}
 	}
 	
 	void ShowGhostBuilding() {
@@ -93,11 +105,17 @@ public class CameraSelection : MonoBehaviour {
 		}
 	}
 	
-	private bool CheckFactionFlags (GameObject unit) {
-		if (unit.GetComponent<UnitCore>().factionFlag == factionFlag) {
+	private bool CheckFactionFlags (GameObject userObject) {
+		if (userObject.tag == "Unit"){
+			if (userObject.GetComponent<UnitCore> ().factionFlag == factionFlag) {
+				return true;
+			}
+			else { return false; }
+		}
+		if (userObject.tag == "Building"){
 			return true;
 		}
-		else return false;
+		return false;
 	}
 	
 	bool CheckUnitInRange (Vector3 unitScreenPos, Vector3 firstMousePosition, Vector3 secondMousePosition) {
