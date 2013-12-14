@@ -48,8 +48,8 @@ public class DebuggingNodes : MonoBehaviour {
         this.nodeVertices = node.nodeVertices.ToArray();
 	}
 	
-	public void UpdateLinks (List<NavNode> linkedNodeList) {
-		List<NavNode> localNewList = new List<NavNode>(linkedNodeList);
+	public void UpdateLinks (NavNode node) {
+		List<NavNode> localNewList = new List<NavNode>(node.linkedNodes);
 		linkedNodes.Clear();
 		linkedNodes = localNewList.OrderBy(n => n.uID).ToList();
 		ConvertListToArray();

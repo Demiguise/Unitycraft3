@@ -67,7 +67,7 @@ public class UnitMovement : MonoBehaviour {
 	
 	private Vector3 SetDestination (Vector3 destination) {
 		Vector3 modDestination = destination;
-		modDestination.y = 0.5f;
+		modDestination.y += 0.5f;
 		return modDestination;
 	}
 
@@ -89,10 +89,6 @@ public class UnitMovement : MonoBehaviour {
 			destination = SetDestination (VectorList [0]);
             debugComp.Log("UMove", ("Moving to " + destination));
 		}
-        foreach (Vector3 movePoint in initVectorList)
-        {
-            Debug.Log(movePoint);
-        }
 	}
 
 	private float CalcMoveModifier () {

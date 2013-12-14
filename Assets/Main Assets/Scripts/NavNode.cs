@@ -15,59 +15,45 @@ public class NavNode {
 	public float gScore;
 	public NavNode cameFrom;
 	public bool canPropagate;
+    private bool showDebugNodes;
 
 	public NavNode (Vector3 initPosition, Vector3 initExtents, List<Vector3> vertexList, int initUID) {
 		canPropagate = true;
+        showDebugNodes = false;
 		nodePosition = initPosition;
         nodeExtents = initExtents;
         nodeVertices = vertexList;
 		uID = initUID;
-		CreateDebugNode();
 		gScore = 1000f;
 		fScore = 1000f;
-        if (uID == 338)
-        {
-            //PrintDebugMagnitudes();
-        }
+        if (showDebugNodes) { CreateDebugNode(); }
 	}
-
-    private void PrintDebugMagnitudes()
-    {
-        int i = 0;
-        Vector3 startVert = nodeVertices[0];
-        Vector3 endVert = nodeVertices[3];
-        foreach (Vector3 vert in nodeVertices)
-        {
-            Vector3 magnitude = vert - startVert;
-            Debug.Log("StartVert to Vert [" + i + "] is " + magnitude + ".");
-            i++;
-        }
-        i = 0;
-        foreach (Vector3 vert in nodeVertices)
-        {
-            Vector3 magnitude = vert - endVert;
-            Debug.Log("EndVert to Vert [" + i + "] is " + magnitude + ".");
-            i++;
-        }
-    }
 
     public void DestroyNode()
     {
 		Object.Destroy(nodeVis);
 	}
 
+    private void UpdateDebugNode(string function, NavNode node)
+    {
+        if (showDebugNodes)
+        {
+            nodeVis.GetComponent<DebuggingNodes>().SendMessage(function, node);
+        }
+    }
+
 	public void SetNavAttribs (float newGScore, float newFScore, NavNode parentNode = null) {
 		gScore = newGScore;
 		fScore = newFScore;
 		cameFrom = parentNode;
-		nodeVis.GetComponent<DebuggingNodes>().SendMessage("DebugScores", this);
+		UpdateDebugNode("DebugScores", this);
 	}
 	
 	public void ResetScores () {
 		gScore = 1000f;
 		fScore = 1000f;
 		cameFrom = null;
-		nodeVis.GetComponent<DebuggingNodes>().SendMessage("DebugScores", this);
+		UpdateDebugNode("DebugScores", this);
 	}
 	
 	public void AddNodeLink(NavNode nodeToLink) {
@@ -90,11 +76,11 @@ public class NavNode {
 	}
 	
 	private void UpdateDebugNodeLinks () {
-		nodeVis.GetComponent<DebuggingNodes>().SendMessage("UpdateLinks", this.linkedNodes);
+        UpdateDebugNode("UpdateLinks", this);
 	}
 	
-	private void CreateDebugNode () {
-
+	private void CreateDebugNode () 
+    {
         //Debug.Log("[" + uID + "][NavN] is creating a debug node at " + nodePosition + ". Vectors used are " + nodeVertices[0] + nodeVertices[1] + nodeVertices[2] + nodeVertices[3] + ".");
         Mesh mesh = new Mesh();
         Vector3[] debugVerts = new Vector3[4];
@@ -114,7 +100,7 @@ public class NavNode {
         nodeVis.GetComponent<MeshFilter>().mesh = mesh;
         nodeVis.name = "Node [" + uID + "]";
         nodeVis.layer = 11;
-        nodeVis.GetComponent<DebuggingNodes>().SendMessage("InitNavNode", this);
+        UpdateDebugNode("InitNavNode", this);
 	}
 
     private Vector2[] GenerateUVCoordinates(List<Vector3> vertexList)
@@ -131,6 +117,4 @@ public class NavNode {
     {
 		canPropagate = state;
 	}
-	
-
 }

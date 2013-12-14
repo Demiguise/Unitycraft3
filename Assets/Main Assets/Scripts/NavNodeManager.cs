@@ -36,6 +36,14 @@ public class NavNodeManager {
         //Debug.Log("[NavM] NodeScale Total: " + nodeScalingTimes.Sum() + "ms | " + nodeScalingTimes.Min() + "ms => " + nodeScalingTimes.Max() + "ms");
 	}
 
+    private void SaveNavMesh()
+    {
+    }
+
+    private void LoadNavMesh()
+    {
+    }
+
     public void BeginFloodFill()
     {
         System.Diagnostics.Stopwatch stopWatch = new System.Diagnostics.Stopwatch();
