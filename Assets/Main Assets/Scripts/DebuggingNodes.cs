@@ -7,21 +7,22 @@ public class DebuggingNodes : MonoBehaviour {
 	
 	public int uID;
 	public int[] linkedNodesUID;
+    public Vector3 nodePosition;
+    public Vector3[] nodeVertices;
 	private List<NavNode> linkedNodes = new List<NavNode>();
 	public int generation;
 	public int castDistance;
 	public bool debugDraw;
 	public float fScore;
 	public float gScore;
-	public int linkedNodeUID;
 	private NavNode parentNode;
 	
 	
 	// Use this for initialization
 	void Start () {
 		debugDraw = false;
-		this.renderer.material.color = Color.green;
-		this.renderer.enabled = false;
+        UpdateColour(Color.red);
+		this.renderer.enabled = true;
 	}
 	
 	public void DebugScores (NavNode node) {
@@ -37,14 +38,14 @@ public class DebuggingNodes : MonoBehaviour {
 			Vector3 modNodePosition = transform.position;
 			modNodePosition.y = 2;
 			Vector3 directionToLink = modParentPosition - modNodePosition;
-			Ray newRay = new Ray(modNodePosition, directionToLink);
 			Debug.DrawRay(modNodePosition, directionToLink, Color.red, 0);
 		}
 	}
 	
 	public void InitNavNode (NavNode node) {
 		this.uID = node.uID;
-		this.transform.localScale = node.nodeExtents;
+        this.nodePosition = node.nodePosition;
+        this.nodeVertices = node.nodeVertices.ToArray();
 	}
 	
 	public void UpdateLinks (List<NavNode> linkedNodeList) {

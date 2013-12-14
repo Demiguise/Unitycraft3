@@ -7,6 +7,7 @@ public class NavNode {
 	
 	public Vector3 nodePosition;
 	public Vector3 nodeExtents;
+    public List<Vector3> nodeVertices = new List<Vector3>();
 	public List<NavNode> linkedNodes = new List<NavNode>();
 	public GameObject nodeVis;
 	public int uID;
@@ -15,31 +16,58 @@ public class NavNode {
 	public NavNode cameFrom;
 	public bool canPropagate;
 
-	public NavNode (Vector3 initPosition, Vector3 initExtents, int initUID) {
+	public NavNode (Vector3 initPosition, Vector3 initExtents, List<Vector3> vertexList, int initUID) {
 		canPropagate = true;
 		nodePosition = initPosition;
-		nodeExtents = initExtents;
+        nodeExtents = initExtents;
+        nodeVertices = vertexList;
 		uID = initUID;
-		//CreateDebugNode();
+		CreateDebugNode();
 		gScore = 1000f;
 		fScore = 1000f;
+        if (uID == 338)
+        {
+            //PrintDebugMagnitudes();
+        }
 	}
-	
-	public void DestroyNode () {
+
+    private void PrintDebugMagnitudes()
+    {
+        int i = 0;
+        Vector3 startVert = nodeVertices[0];
+        Vector3 endVert = nodeVertices[3];
+        foreach (Vector3 vert in nodeVertices)
+        {
+            Vector3 magnitude = vert - startVert;
+            Debug.Log("StartVert to Vert [" + i + "] is " + magnitude + ".");
+            i++;
+        }
+        i = 0;
+        foreach (Vector3 vert in nodeVertices)
+        {
+            Vector3 magnitude = vert - endVert;
+            Debug.Log("EndVert to Vert [" + i + "] is " + magnitude + ".");
+            i++;
+        }
+    }
+
+    public void DestroyNode()
+    {
 		Object.Destroy(nodeVis);
 	}
+
 	public void SetNavAttribs (float newGScore, float newFScore, NavNode parentNode = null) {
 		gScore = newGScore;
 		fScore = newFScore;
 		cameFrom = parentNode;
-		//nodeVis.GetComponent<DebuggingNodes>().SendMessage("DebugScores", this);
+		nodeVis.GetComponent<DebuggingNodes>().SendMessage("DebugScores", this);
 	}
 	
 	public void ResetScores () {
 		gScore = 1000f;
 		fScore = 1000f;
 		cameFrom = null;
-		//nodeVis.GetComponent<DebuggingNodes>().SendMessage("DebugScores", this);
+		nodeVis.GetComponent<DebuggingNodes>().SendMessage("DebugScores", this);
 	}
 	
 	public void AddNodeLink(NavNode nodeToLink) {
@@ -58,36 +86,51 @@ public class NavNode {
 	
 	public void RemoveNodeLink(NavNode nodeToRemove) {
 		linkedNodes.Remove(nodeToRemove);
-		//UpdateDebugNodeLinks();
+		UpdateDebugNodeLinks();
 	}
 	
 	private void UpdateDebugNodeLinks () {
-		//nodeVis.GetComponent<DebuggingNodes>().SendMessage("UpdateLinks", this.linkedNodes);
+		nodeVis.GetComponent<DebuggingNodes>().SendMessage("UpdateLinks", this.linkedNodes);
 	}
 	
 	private void CreateDebugNode () {
-		Vector3 debugNodePos = new Vector3(nodePosition.x, nodePosition.y + 1, nodePosition.z);
-		nodeVis = (GameObject)GameObject.Instantiate(Resources.Load("nodeVisPlane"), debugNodePos, new Quaternion(0,0,0,0));
-		nodeVis.GetComponent<DebuggingNodes>().SendMessage("InitNavNode", this);
+
+        //Debug.Log("[" + uID + "][NavN] is creating a debug node at " + nodePosition + ". Vectors used are " + nodeVertices[0] + nodeVertices[1] + nodeVertices[2] + nodeVertices[3] + ".");
+        Mesh mesh = new Mesh();
+        Vector3[] debugVerts = new Vector3[4];
+        for (int i = 0 ; i < nodeVertices.Count ; i++)
+        {
+            debugVerts[i] = nodeVertices[i] + Vector3.up;
+        }
+        mesh.name = "debugNodeMesh";
+        mesh.vertices = debugVerts;
+        mesh.triangles = new int[] { 0, 2, 3, 0, 3, 1};
+        mesh.uv = GenerateUVCoordinates(nodeVertices);
+        mesh.RecalculateNormals();
+        nodeVis = new GameObject();
+        nodeVis.AddComponent<DebuggingNodes>();
+        nodeVis.AddComponent<MeshRenderer>();
+        nodeVis.AddComponent<MeshFilter>();
+        nodeVis.GetComponent<MeshFilter>().mesh = mesh;
+        nodeVis.name = "Node [" + uID + "]";
+        nodeVis.layer = 11;
+        nodeVis.GetComponent<DebuggingNodes>().SendMessage("InitNavNode", this);
 	}
-	
-	public void TogglePropagation (bool state) {
+
+    private Vector2[] GenerateUVCoordinates(List<Vector3> vertexList)
+    {
+        Vector2[] uvCoordinates = new Vector2[vertexList.Count];
+        for (int i = 0; i < uvCoordinates.Length; i++)
+        {
+            uvCoordinates[i] = new Vector2(vertexList[i].x, vertexList[i].z);
+        }
+        return uvCoordinates;
+    }
+
+    public void TogglePropagation(bool state)
+    {
 		canPropagate = state;
-		if (state) {
-			//nodeVis.GetComponent<DebuggingNodes>().SendMessage("UpdateColour", Color.green);
-		}
-		else {
-			//nodeVis.GetComponent<DebuggingNodes>().SendMessage("UpdateColour", Color.red);
-		}
 	}
 	
-	public void ToggleSelected (bool state) {
-		if (state) {
-			//nodeVis.GetComponent<DebuggingNodes>().SendMessage("UpdateColour", Color.red);
-		}
-		else {
-			//nodeVis.GetComponent<DebuggingNodes>().SendMessage("UpdateColour", Color.green);
-		}
-	}
 
 }

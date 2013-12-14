@@ -1,0 +1,147 @@
+fileFormatVersion: 2
+guid: 6bfc6162483feda41aa9cce00fd00dcc
+ModelImporter:
+  serializedVersion: 15
+  fileIDToRecycleName:
+    100000: Armature_Object
+    100002: Bone01
+    100004: Bone_Chest
+    100006: Bone_Chest_0
+    100008: Bone_Foot_Left_Front
+    100010: Bone_Foot_Left_Rear
+    100012: Bone_Foot_Left_Rear_01
+    100014: Bone_Foot_Right_Front
+    100016: Bone_Foot_Right_Rear
+    100018: Bone_Foot_Right_Rear_01
+    100020: Bone_Head
+    100022: Bone_Leg_Left_Front
+    100024: Bone_Leg_Left_Front_01
+    100026: Bone_Leg_Left_Rear
+    100028: Bone_Leg_Left_Rear_01
+    100030: Bone_Leg_Left_Rear_02
+    100032: Bone_Leg_Right_Front
+    100034: Bone_Leg_Right_Front_01
+    100036: Bone_Leg_Right_Rear
+    100038: Bone_Leg_Right_Rear_01
+    100040: Bone_Leg_Right_Rear_02
+    100042: Bone_Pelvis
+    100044: Bone_Tail
+    100046: Bone_Tail_01
+    100048: Bone_Tail_02
+    100050: Bone_Tail_03
+    100052: BoneStockL01
+    100054: BoneStockL02
+    100056: BoneStockL03
+    100058: BoneStockR01
+    100060: BoneStockR02
+    100062: BoneStockR03
+    100064: Dummy01
+    100066: Dummy02
+    100068: Mesh
+    100070: Object13sashsmoke
+    100072: Object13sparks01ash
+    100074: Star2Part01acidblobs
+    100076: Unit_Zerg_Zergling_Pincer_01
+    100078: //RootNode
+    400000: Armature_Object
+    400002: Bone01
+    400004: Bone_Chest
+    400006: Bone_Chest_0
+    400008: Bone_Foot_Left_Front
+    400010: Bone_Foot_Left_Rear
+    400012: Bone_Foot_Left_Rear_01
+    400014: Bone_Foot_Right_Front
+    400016: Bone_Foot_Right_Rear
+    400018: Bone_Foot_Right_Rear_01
+    400020: Bone_Head
+    400022: Bone_Leg_Left_Front
+    400024: Bone_Leg_Left_Front_01
+    400026: Bone_Leg_Left_Rear
+    400028: Bone_Leg_Left_Rear_01
+    400030: Bone_Leg_Left_Rear_02
+    400032: Bone_Leg_Right_Front
+    400034: Bone_Leg_Right_Front_01
+    400036: Bone_Leg_Right_Rear
+    400038: Bone_Leg_Right_Rear_01
+    400040: Bone_Leg_Right_Rear_02
+    400042: Bone_Pelvis
+    400044: Bone_Tail
+    400046: Bone_Tail_01
+    400048: Bone_Tail_02
+    400050: Bone_Tail_03
+    400052: BoneStockL01
+    400054: BoneStockL02
+    400056: BoneStockL03
+    400058: BoneStockR01
+    400060: BoneStockR02
+    400062: BoneStockR03
+    400064: Dummy01
+    400066: Dummy02
+    400068: Mesh
+    400070: Object13sashsmoke
+    400072: Object13sparks01ash
+    400074: Star2Part01acidblobs
+    400076: Unit_Zerg_Zergling_Pincer_01
+    400078: //RootNode
+    4300000: Bone_Chest
+    4300002: Mesh
+    7400000: Default Take
+    7400002: Armature_ObjectDeath_Fire
+    7400004: Armature_ObjectDeath_Fire_01
+    7400006: Armature_ObjectDeath_Fire_02
+    7400008: DEFAULTS_FOR_Armature_Object
+    9500000: //RootNode
+    13700000: Bone_Chest
+    13700002: Mesh
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  userData: 

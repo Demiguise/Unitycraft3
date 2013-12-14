@@ -61,7 +61,6 @@ public class UnitMovement : MonoBehaviour {
 		float step = (moveSpeed * 0.5f) * Time.deltaTime;
 		Vector3 directionVector = destination - transform.position;
 		Vector3 newLookDirection = Vector3.RotateTowards(this.transform.forward, directionVector, step, 0.1f);
-		//Debug.DrawRay(transform.position, (directionVector.normalized * 5),Color.white);
         debugComp.LogIfTrue("UMove", ("Current look direction -> " + newLookDirection + "| Destination current set to ->" + destination), debugInfo);
 		transform.rotation = Quaternion.LookRotation(newLookDirection);
 	}
@@ -90,6 +89,10 @@ public class UnitMovement : MonoBehaviour {
 			destination = SetDestination (VectorList [0]);
             debugComp.Log("UMove", ("Moving to " + destination));
 		}
+        foreach (Vector3 movePoint in initVectorList)
+        {
+            Debug.Log(movePoint);
+        }
 	}
 
 	private float CalcMoveModifier () {

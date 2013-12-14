@@ -6,73 +6,206 @@ using System.Linq;
 public class NavNodeManager {
 	private List<NavNode> availableNodes = new List<NavNode>();
 	private float defaultExtents;
+    private float minSubDivisionExtents;
+    public int debugLevel = 0; //Should go from 0 (Nothing) to 5 (Everything)
+    private int[] worldLayer = { 9 };
 	
 	private List<double> nodeLinksTimes = new List<double>();
-	private List<double> checkNodeVertsTimes = new List<double>();
+	private List<double> checkVertLOSTimes = new List<double>();
 	private List<double> nodeScalingTimes = new List<double>();
 	
 	
 	public NavNodeManager () {
 		defaultExtents = 3f;
-	}
-	
-	//######################################################//
-	//					Navmesh Creation					//
-	//######################################################//
-
-	private void printBenchmarkTimes() {
-        Debug.Log("[NavM] NodeVerts Total: " + checkNodeVertsTimes.Sum() + "ms | " + checkNodeVertsTimes.Min() + "ms => " + checkNodeVertsTimes.Max() + "ms");
-        Debug.Log("[NavM] NodeLinks Total: " + nodeLinksTimes.Sum() + "ms | " + nodeLinksTimes.Min() + "ms => " + nodeLinksTimes.Max() + "ms");
-        Debug.Log("[NavM] NodeScale Total: " + nodeScalingTimes.Sum() + "ms | " + nodeScalingTimes.Min() + "ms => " + nodeScalingTimes.Max() + "ms");
+        minSubDivisionExtents = defaultExtents / 3;
+        //Debug.Log("Minimum Extents set to : " + minSubDivisionExtents + ".");
 	}
 
-	public void BeginFloodFill () {
-		System.Diagnostics.Stopwatch stopWatch = new System.Diagnostics.Stopwatch();
-		stopWatch.Start ();
-		while (true) {
-			List<NavNode> activeNodes = FindActiveNodes();
-			if (activeNodes.Count == 0) { break; }
-			foreach (NavNode activeNode in activeNodes) {
-				for ( int i = 1 ; i <= 4 ; i++ ) {
-					Vector3 newNodePos = CalculateNewNodePos(activeNode.nodePosition, activeNode.nodeExtents, i);
-					NavNode DuplicateNode = FindNavNodeFromPos(newNodePos);
-					if (DuplicateNode == null) {
-						if (CheckPosIsOnMap(newNodePos)) {
-							float nodeScale = NodeScaling(newNodePos, activeNode.nodePosition, activeNode.nodeExtents, i);
-							newNodePos = CalculateNewNodePos(activeNode.nodePosition, activeNode.nodeExtents, i, nodeScale);
-							if (nodeScale != 0) {
-								CreateNavNode(newNodePos, activeNode.nodeExtents.x, nodeScale);
-							}
-						}
-					}
-				}
-				activeNode.TogglePropagation(false);
-			}
-		}
-		stopWatch.Stop ();
-		Debug.Log("[NavM] Navigation mesh completed. <" + availableNodes.Count.ToString() + "> nodes created in (" + stopWatch.Elapsed.TotalMilliseconds + ") ms.");
-		//printBenchmarkTimes ();
-	}
+    private void DebugLog(string service, string message, int debugLevelFlag)
+    {
+        if (debugLevel >= debugLevelFlag)
+        {
+            Debug.Log("[NavM][" + service + "] " + message);
+        }
+    }
 	
-	public void RegenerateNavMesh () {
-        //Debug.Log("[NavM] Deleting all available nodes");
+    #region NavMeshCreation
+    private void printBenchmarkTimes() {
+        Debug.Log("[NavM] NodeVerts Total: " + checkVertLOSTimes.Sum() + "ms | " + checkVertLOSTimes.Min() + "ms => " + checkVertLOSTimes.Max() + "ms");
+        //Debug.Log("[NavM] NodeLinks Total: " + nodeLinksTimes.Sum() + "ms | " + nodeLinksTimes.Min() + "ms => " + nodeLinksTimes.Max() + "ms");
+        //Debug.Log("[NavM] NodeScale Total: " + nodeScalingTimes.Sum() + "ms | " + nodeScalingTimes.Min() + "ms => " + nodeScalingTimes.Max() + "ms");
+	}
+
+    public void BeginFloodFill()
+    {
+        System.Diagnostics.Stopwatch stopWatch = new System.Diagnostics.Stopwatch();
+        stopWatch.Start();
+        //
+        List<NavNode> activeNodes = FindActiveNodes(availableNodes);
+
+        while ((activeNodes.Count != 0) && (availableNodes.Count < 250))
+        {
+            //Debug.Log("Current activeNode count is : " + activeNodes.Count+".");
+            for (int i = 0; i < activeNodes.Count; i++)
+            {
+                NavNode curNode = activeNodes[i];
+                for (int j = 1; j <= 4; j++)
+                {
+                    DebugLog("Main", "Navnode <" + curNode.uID + "> is attempting to create a node. Direction (" + j + ").", 2);
+                    float curScale = 1f;
+                    Vector3 nodeExtents = curNode.nodeExtents;
+                    Vector3 nodePosition = CalculateNewNodePos(curNode.nodePosition, nodeExtents, j);
+                    List<Vector3> nodeVertexList = GenerateVertexList(nodePosition, nodeExtents.x);
+                    if (FindNavNodeFromPos(nodePosition) == null)
+                    {
+                        while ((!CheckVertexLOS(nodeVertexList)) || (!CheckVertsAreOnMap(nodeVertexList)))
+                        {
+                            if ((nodeExtents.x * curScale) <= minSubDivisionExtents)
+                            {
+                                DebugLog("Main", "Node's extents are below the mininmum :" + (nodeExtents.x * curScale), 1);
+                                break;
+                            }
+                            DebugLog("Main", "Incrementing subdivision level", 1);
+                            curScale /= 2;
+                            nodePosition = CalculateNewNodePos(curNode.nodePosition, nodeExtents, j, curScale);
+                            nodeVertexList = GenerateVertexList(nodePosition, nodeExtents.x, curScale);
+                        }
+                        if (((nodeExtents.x * curScale) >= minSubDivisionExtents) && (CheckVertexTear(nodeVertexList)))
+                        {
+                            DebugLog("Main", "Success. Current extent of node is above the minimum ("+ minSubDivisionExtents +") and the there are no tears between verticies.", 1);
+                            CreateNavNode(nodePosition, nodeExtents.x, nodeVertexList, curScale);
+                            curScale = 1f;
+                        }
+                        else
+                        {
+                            DebugLog("Main", "Failure. Current extent of node is " + (nodeExtents.x * curScale) + " and the minimum is (" + minSubDivisionExtents +"). The verts could also be torn. Discarding node.", 1);
+                            curScale = 1f;
+                        }
+                    }
+                    else { DebugLog("Main", "Discarding duplicate node", 1); }
+                }
+                curNode.TogglePropagation(false);
+            }
+            activeNodes = FindActiveNodes(availableNodes);
+        }
+        //
+        stopWatch.Stop();
+        Debug.Log("[NavM][Main] Navigation mesh completed. <" + availableNodes.Count.ToString() + "> nodes created in (" + stopWatch.Elapsed.TotalMilliseconds + ") ms.");
+        printBenchmarkTimes();
+    }
+
+    private bool CheckVertexTear (List<Vector3> vertexList)
+    {
+        Vector3 startVertex = vertexList[0];
+        Vector3 endVertex = vertexList[vertexList.Count - 1];
+        Vector3[] vertArray = new Vector3[2] { startVertex, endVertex };
+        for (int i = 0; i < 2; i++)
+        {
+            for (int j = 0; j <= 3; j++)
+            {
+                Vector3 dirToVertex = vertexList[j] - vertArray[i];
+                DebugLog("VTear", "Vector from S:" + vertArray[i] + " to G:" + vertexList[j] + " is " + dirToVertex + ".", 4);
+                if (Mathf.Abs(dirToVertex.y) > 2)
+                {
+                    DebugLog("VTear", "Vertex tearing found.", 3);
+                    return false;
+                }
+            }
+        }
+        DebugLog("VTear", "No vertex tearing found.", 3);
+        return true;
+    }
+
+    private bool CheckPosIsOnMap(Vector3 rPos)
+    {
+        Vector3 rayVPosition = rPos + (Vector3.up * 10);
+        if (CastRay(rayVPosition, Vector3.down, 20, worldLayer).collider == null)
+        {
+            return false;
+        }
+        else { return true; }
+    }
+
+    private bool CheckVertsAreOnMap(List<Vector3> verticeList)
+    {
+        for (int i = 0 ; i < verticeList.Count ; i++ )
+        {
+            if (!CheckPosIsOnMap(verticeList[i]))
+            {
+                DebugLog("VertC", "Position " + verticeList[i] + " is off the map. Failing Mapcheck", 3);
+                return false;
+            }
+        }
+        DebugLog("VertC", "All positions are on map. Succeeding Mapcheck", 3);
+        return true;
+    }
+
+    private bool CheckVertexLOS(List<Vector3> vertexList)
+    {
+        System.Diagnostics.Stopwatch stopWatch = new System.Diagnostics.Stopwatch();
+        stopWatch.Start();
+        RaycastHit objectHit = new RaycastHit();
+        Vector3 startVertex = vertexList[0];
+        Vector3 endVertex = vertexList[vertexList.Count - 1];
+        Vector3[] vertArray = new Vector3[2] { startVertex, endVertex };
+        for (int i = 0; i < 2; i++)
+        {
+            for (int j = 0; j <= 3; j++)
+            {
+                if (vertArray[i] == vertexList[j]) { continue; }
+                objectHit = CheckLOS(vertexList[j], vertArray[i], worldLayer);
+                if ((objectHit.collider != null))
+                {
+                    if (objectHit.collider.tag == "Impassable")
+                    {
+                        stopWatch.Stop();
+                        checkVertLOSTimes.Add(stopWatch.Elapsed.TotalMilliseconds);
+                        DebugLog("VertLOS", "Positions " + vertArray[i] + " and " + vertexList[j] + " have failed LOS checks. They hit object " + objectHit.collider.tag + ".", 3);
+                        return false;
+                    }
+                    DebugLog("VertLOS", "Positions " + vertArray[i] + " and " + vertexList[j] + " hit object " + objectHit.collider.name + ".", 3);
+                }
+            }
+        }
+        stopWatch.Stop();
+        checkVertLOSTimes.Add(stopWatch.Elapsed.TotalMilliseconds);
+        DebugLog("VertLOS", " All LOS checks are fine. Succeeding LOSCheck", 3);
+        return true;
+    }
+
+    private RaycastHit CheckLOS(Vector3 fPos, Vector3 sPos, int[] layer)
+    {
+        RaycastHit objectHit = new RaycastHit();
+        Vector3 dir = FindResultant(fPos, sPos);
+        float dist = FindMagnitude(fPos, sPos);
+        DebugLog("VertLOS", "Casting a ray from " + fPos + " to " + sPos + " in the direction of " + dir + " for " + dist + " units.", 4);
+        objectHit = CastRay(fPos, dir, dist, layer);
+        return objectHit;
+    }
+
+    public void RegenerateNavMesh () {
+        Debug.Log("[NavM] Deleting all available nodes");
 		foreach(NavNode node in availableNodes) {
 			node.DestroyNode();
 		}
 		availableNodes.Clear ();
-        //Debug.Log("[NavM] <" + availableNodes.Count() + "> available nodes");
 		CreateSpawnNode();
 	}
 	
 	public void CreateSpawnNode () {
-		CreateNavNode(new Vector3(0,0,0), defaultExtents); //Might set to an initial spawn location, or something.
+        GameObject spawnCube = GameObject.FindGameObjectWithTag("SPAWNCUBE");
+        Vector3 spawnLoc = spawnCube.transform.position;
+        spawnLoc.y = 0;
+        CreateNavNode(spawnLoc, defaultExtents, GenerateVertexList(spawnLoc, defaultExtents)); //Might set to an initial spawn location, or something.
 		BeginFloodFill();
 		FindNodeLinks();
 	}
 	
-	private void CreateNavNode (Vector3 nodePosition, float pExt, float nodeScale = 1f) {
+	private void CreateNavNode (Vector3 nodePosition, float pExt, List<Vector3> vertexList, float nodeScale = 1f) {
 		int childID = GenerateUID();
-		availableNodes.Add(new NavNode(nodePosition, new Vector3(pExt * nodeScale, 0, pExt * nodeScale), childID));
+        Vector3 newExtents = new Vector3(pExt * nodeScale, 0, pExt * nodeScale);
+        DebugLog("CreateNav", "Creating Navnode <" + childID + "> at " + nodePosition + ". Extents are set to " + newExtents + ".", 1);
+        availableNodes.Add(new NavNode(nodePosition, newExtents, vertexList, childID));
 	}
 	
 	private NavNode FindNavNodeFromPos (Vector3 requestedPosition) {
@@ -83,7 +216,7 @@ public class NavNodeManager {
 			Vector3 nodeExt = node.nodeExtents/2;
 			if (((nodePos.x + nodeExt.x) >= xPos) && ((nodePos.x - nodeExt.x) <= xPos)) {
 				if (((nodePos.z + nodeExt.z) >= zPos) && ((nodePos.z - nodeExt.z) <= zPos)) {
-					//Debug.Log("Found position " + requestedPosition + " in Node <" + node.uID + ">");
+                    DebugLog("PosC", "Position " + requestedPosition + " can be found in node <" + node.uID + ">.", 4);
 					return node;
 				}
 			}
@@ -134,21 +267,16 @@ public class NavNodeManager {
 			sDir = new Vector3(scaleDirection.x * (curExt /2), scaleDirection.y * (curExt /2),scaleDirection.z * (curExt /2));
 		}
 		float distToPos = (parentExtents.x / 2) + (curExt / 2);
-		newNodeLocation = new Vector3(originalPos.x + sDir.x +(direction.x * distToPos), originalPos.y + sDir.y + (direction.y * distToPos), originalPos.z + sDir.z + (direction.z * distToPos));
+		newNodeLocation = new Vector3(originalPos.x + sDir.x +(direction.x * distToPos), 0, originalPos.z + sDir.z + (direction.z * distToPos));
+        newNodeLocation.y = GetVertexHeight(newNodeLocation);
 		return newNodeLocation;
-	}
-
-	public void ToggleNavDebugShow (){
-		foreach (NavNode node in availableNodes) {
-
-		}
 	}
 	
 	public void FindNodeLinks () {
 		System.Diagnostics.Stopwatch stopWatch = new System.Diagnostics.Stopwatch();
 		stopWatch.Start ();
 		Vector3 initialDirection = new Vector3(1,0,1);
-		float distance = 2.5f;
+		float distance = 1.5f;
 		foreach (NavNode node in availableNodes.ToList()) {
 			for (int i = 0 ; i < 12 ; i++) { //THIS MAY NEED NORMALISATIONS
 				Vector3 locCheck = node.nodePosition + (RotateVector3RY(initialDirection, (i * 30f)) * distance);
@@ -164,103 +292,49 @@ public class NavNodeManager {
         Debug.Log("[NavM] Links for all <" + availableNodes.Count + "> have been found");
 	}
 	
-	private bool CheckNodeVerts (Vector3 rPos, float testScale) {
-		System.Diagnostics.Stopwatch stopWatch = new System.Diagnostics.Stopwatch();
-		stopWatch.Start ();
-		float curExtents = defaultExtents * testScale;
-		List<Vector3> vertexList = GenerateVertexList(rPos, testScale);
-		foreach (Vector3 vertex in vertexList) {
-			if (!CheckPosIsOnMap(rPos)) { return false; }
-			if (FindNavNodeFromPos(rPos) != null) { return false; }
-			for (int i = 0 ; i < vertexList.Count ; i++) {
-				if (!CheckLOS(vertex, vertexList[i], defaultExtents,testScale)) {
-					stopWatch.Stop ();
-					nodeLinksTimes.Add (stopWatch.Elapsed.TotalMilliseconds);
-					return false;
-				}
-			}
-		}
-		stopWatch.Stop ();
-		checkNodeVertsTimes.Add (stopWatch.Elapsed.TotalMilliseconds);
-		return true;
-	}
-	
-	private float NodeScaling (Vector3 rPos, Vector3 pPos, Vector3 pExt, int directionFlag) {
-		System.Diagnostics.Stopwatch stopWatch = new System.Diagnostics.Stopwatch();
-		stopWatch.Start ();
-		List<Vector3> navPosList = new List<Vector3>();
-		//if (FindNavNodeFromPos(rPos) != null) { return 0f; }
-		//if (CheckPosIsOnMap(rPos)) { return 0f; }
-		float curScale = 1f;
-		float minExt = (float)defaultExtents / 4f;
-		while (!CheckNodeVerts(rPos, curScale)) {
-			curScale /= 2;
-			if ((curScale * pExt.x) <= minExt){ 
-				curScale = 0; 
-				break; 
-			}
-			rPos = CalculateNewNodePos(pPos, pExt, directionFlag, curScale);
-		}
-		stopWatch.Stop ();
-		nodeScalingTimes.Add (stopWatch.Elapsed.TotalMilliseconds);
-		return curScale;
-	}
-	
-	private List<Vector3> GenerateVertexList (Vector3 rPos, float curScale = 1f) {
+	private List<Vector3> GenerateVertexList (Vector3 rPos, float ext, float curScale = 1f) {
 		List<Vector3> VertexList = new List<Vector3>();
-		float radius = (defaultExtents*curScale) / 2;
-		VertexList.Add(new Vector3(rPos.x + radius, rPos.y, rPos.z + radius));
-		VertexList.Add(new Vector3(rPos.x - radius, rPos.y, rPos.z + radius));
-		VertexList.Add(new Vector3(rPos.x + radius, rPos.y, rPos.z - radius));
-		VertexList.Add(new Vector3(rPos.x - radius, rPos.y, rPos.z - radius));
+        float radius = (ext * curScale) / 2;
+		VertexList.Add(new Vector3(rPos.x + radius, 0, rPos.z + radius));
+		VertexList.Add(new Vector3(rPos.x - radius, 0, rPos.z + radius));
+		VertexList.Add(new Vector3(rPos.x + radius, 0, rPos.z - radius));
+		VertexList.Add(new Vector3(rPos.x - radius, 0, rPos.z - radius));
+        for (int i = 0 ; i < VertexList.Count() ; i++)
+        {
+            VertexList[i] += (Vector3.up * GetVertexHeight(VertexList[i]));
+        }
+        DebugLog("VGen", "[R" + rPos + "][" + radius + "] Vector list -> " + VertexList[0] + VertexList[1] + VertexList[2] + VertexList[3] + ".", 4);
 		return VertexList;
 	}
-	
-	private bool CheckLOS (Vector3 firstPos, Vector3 secondPos, float reqDistance, float curScale = 1f) {
-		if (firstPos == secondPos) { return true; }
-        float distance = reqDistance;
-        if (reqDistance == -1)
+
+    private float GetVertexHeight(Vector3 position)
+    {
+        float vertexHeight;
+        int initialPos = 30;
+        Vector3 vPos = position + (Vector3.up * initialPos);
+        RaycastHit objectHit = CastRay(vPos, Vector3.down, (initialPos * 1.5f), worldLayer);
+        vertexHeight = objectHit.point.y;
+        return vertexHeight;
+    }
+
+    private RaycastHit CastRay(Vector3 pos, Vector3 dir, float dist, int[] layer)
+    {
+        int layerMask = CreateLayerMask(layer);
+        Ray rV = new Ray(pos, dir);
+        RaycastHit objectHit;
+        Physics.Raycast(rV, out objectHit, dist, layerMask);
+        return objectHit;
+    }
+
+	private List<NavNode> FindActiveNodes(List<NavNode> inputList) {
+        List<NavNode> activeNodes = new List<NavNode>();
+        foreach (NavNode node in inputList)
         {
-            Vector3 directionToGoal = firstPos - secondPos;
-            distance = directionToGoal.magnitude;
-        }
-		int[] worldLayer = {9};
-		Vector3 rayHDirection = secondPos - firstPos;
-		Ray rH = new Ray(firstPos, rayHDirection);
-		RaycastHit objectHit;
-        Physics.Raycast(rH, out objectHit, (distance * curScale), CreateLayerMask(worldLayer));
-		if (objectHit.collider == null) {
-			return true;
-		}
-		else { 
-			//Debug.Log ("No LOS between " + firstPos + " and " + secondPos + ". They hit -> " + objectHit.collider.name);
-			return false; 
-		}
-	}
-	
-	private bool CheckPosIsOnMap (Vector3 rPos) {
-		Vector3 rayVPosition = rPos;
-		int[] worldLayer = {9};
-		rayVPosition.y = 10;
-		Ray rV = new Ray (rayVPosition, new Vector3(0,-1,0));
-		RaycastHit objectHit;
-		Physics.Raycast(rV, out objectHit, 10, CreateLayerMask(worldLayer));
-		if (objectHit.collider == null) {
-			//Debug.Log("Position " + rPos + " is off map!");
-			return false;
-		}
-		else {return true;}
-	}
-	
-	private List<NavNode> FindActiveNodes() {
-		List<NavNode> activeNodes = new List<NavNode>();
-		foreach (NavNode node in availableNodes) {
 			if (node.canPropagate == true) {
-				activeNodes.Add(node);
+                activeNodes.Add(node);
 			}
 		}
-		//Debug.Log("Found <" + activeNodes.Count + "> node(s) available for propagation");
-		return activeNodes;
+        return activeNodes;
 	}
 	
 	public int GenerateUID () {
@@ -271,22 +345,22 @@ public class NavNodeManager {
 			}
 		}
 		return (uID + 1);
-        
 	}
 
-		
 	int CreateLayerMask (int[] layers) {
 		int layerMask = 1;
-		foreach (int Layer in layers){
-			int i = 1 << Layer;
+		foreach (int layer in layers){
+			int i = 1 << layer;
 			layerMask = layerMask | i;
 		}
 		return layerMask;
 	}
-	
-	//######################################################//
-	//					AI Pathfinding						//
-	//######################################################//
+    #endregion
+
+    #region NavMeshSimplification
+    #endregion
+
+    #region AIPathfinding
 
     public List<Vector3> FindTraversalMap(Vector3 start, Vector3 goal, GameObject unit)
     {
@@ -303,9 +377,7 @@ public class NavNodeManager {
 		List <NavNode> traversalMap = AStarPathfind(startNode, goalNode);
 		traversalMap.Reverse();
 		HighlightTraversalMap(traversalMap, Color.white);
-		//List<Vector3> vectorMap = SmoothTraversalMapV1(traversalMap);
-        List<Vector3> vectorMap = SmoothTraversalMapV2(traversalMap, unit);
-        //vectorMap = CollisionRayTests(vectorMap, unit);
+        List<Vector3> vectorMap = ConvertNodeToVector(traversalMap);
         HighlightVectorMap(vectorMap, Color.red);
         vectorMap.RemoveAt(0); //Deleting starting node, don't need it.
 		vectorMap[vectorMap.Count - 1] = goal;
@@ -319,65 +391,6 @@ public class NavNodeManager {
 		return vectorMap;
 	}
 	
-	private List<Vector3> SmoothTraversalMapV1 (List<NavNode> nodeList, float smoothScale = 1f){
-		NavNode curNode = nodeList[0];
-		List<NavNode> returnList = nodeList;
-		List<NavNode> nodesToRemove = new List<NavNode>();
-		for (int i = 1 ; i < (nodeList.Count - 1) ; i++ ){
-			Vector3 distToNode = curNode.nodePosition - nodeList[i].nodePosition;
-			Vector3 distToSecondNode = curNode.nodePosition - nodeList[i+1].nodePosition;
-			if ((CheckLOS(curNode.nodePosition, nodeList[i].nodePosition, distToNode.magnitude)) && (CheckLOS(curNode.nodePosition, nodeList[i+1].nodePosition, distToSecondNode.magnitude))){
-				nodesToRemove.Add(nodeList[i]);
-			}
-			else {
-				curNode = nodeList[i];
-			}
-		}
-		foreach (NavNode node in nodesToRemove){
-			returnList.Remove(node);
-		}
-		List<Vector3> vectorList = ConvertNodeToVector(returnList);
-		return vectorList;
-	}
-
-    private List<Vector3> SmoothTraversalMapV2 (List<NavNode> initNodeList, GameObject unit, float smoothScale = 1f)
-    {
-        List<NavNode> nodeList = initNodeList;
-        List<NavNode> usableNodes = new List<NavNode>();
-        usableNodes.Add(nodeList[0]);
-        NavNode curNode = nodeList[0];
-        NavNode goalNode = nodeList[nodeList.Count - 1];
-        //Check LOS to goal node. If you can't see it, try the node nearest the halfway point.
-        //If you still can't see it, try the next half way node. If not again, go to the next node regardless.
-        //Each time, check for LOS and then perform a unit collision test.
-        //If the Unit collision fails, have to somehow make it find an alternate path.
-        while (curNode != initNodeList[initNodeList.Count -1])
-        {
-            int curGoalIndex = nodeList.Count - 1;
-            goalNode = nodeList[curGoalIndex];
-            int numAttempts = 0;
-            while((!CheckLOS(curNode.nodePosition, goalNode.nodePosition, -1)) || (!CheckUnitCollision(curNode.nodePosition, goalNode.nodePosition, unit)))
-            {
-				if (numAttempts == 2)
-				{
-					Debug.Log("Reached maximum attempt number");
-					break; 
-				}
-                numAttempts += 1;
-                curGoalIndex /= 2;
-                goalNode = nodeList[Mathf.RoundToInt(curGoalIndex)];
-                Debug.Log("Unsuccessful attempt. Goal node is now at position: " + goalNode.nodePosition);
-            }
-            nodeList.Remove(nodeList[0]);
-            usableNodes.Add(curNode);
-            curNode = goalNode;
-        }
-
-        List<Vector3> vectorList = ConvertNodeToVector(usableNodes);
-        return vectorList;
-    }
-
-
 	private List<Vector3> ConvertNodeToVector (List<NavNode> nodelist){
 		List<Vector3> returnList = new List<Vector3>();
 		foreach(NavNode node in nodelist){
@@ -385,22 +398,6 @@ public class NavNodeManager {
 		}
 		return returnList;
 	}
-
-    private bool CheckUnitCollision (Vector3 firstPos, Vector3 secondPos, GameObject unit)
-    {
-        float localScale = 1.666f;
-        float colliderXExtent = unit.GetComponent<BoxCollider>().size.x;
-        Vector3 directionToGoal = secondPos - firstPos;
-        Vector3 normalToDirection = (RotateVector3RY(directionToGoal, 90f) * (localScale * colliderXExtent));
-        bool positiveNormalCast = CheckLOS((firstPos + normalToDirection), (secondPos + normalToDirection), directionToGoal.magnitude);
-        bool negativeNormalCast = CheckLOS((firstPos -normalToDirection), (secondPos - normalToDirection), directionToGoal.magnitude);
-        if ((positiveNormalCast) && (negativeNormalCast))
-        {
-            return true;
-        }
-        else { return false; }
-    }
-
 
     private List<Vector3> CollisionRayTests(List<Vector3> vectorList, GameObject unit)
     {
@@ -421,8 +418,6 @@ public class NavNodeManager {
 		}
 		return vectorList;
 	}
-
-
 
 	private float FindReqCollisionChange (Vector3 curPos, Vector3 goalPos, Vector3 normalDirection, float initChange = 10f) {
 		int[] worldLayer = {9};
@@ -455,7 +450,7 @@ public class NavNodeManager {
 	
 	private void ResetBenchmarkTimes (){
 		nodeLinksTimes.Clear();
-		checkNodeVertsTimes.Clear();
+		checkVertLOSTimes.Clear();
 		nodeScalingTimes.Clear();
 	}
 
@@ -563,9 +558,16 @@ public class NavNodeManager {
 		return lowestNode;
 	}
 	
-	private float FindMagnitude (Vector3 lhs, Vector3 rhs) {
-		Vector3 toDist = lhs - rhs;
+	private float FindMagnitude (Vector3 fPos, Vector3 sPos) 
+    {
+        Vector3 toDist = FindResultant(fPos, sPos);
 		return toDist.magnitude;
 	}
 
+    private Vector3 FindResultant(Vector3 fPos, Vector3 sPos)
+    {
+        Vector3 resultant = sPos - fPos;
+        return resultant;
+    }
+    #endregion
 }
