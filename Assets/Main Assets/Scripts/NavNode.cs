@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft;
 
 public class NavNode {
 	
@@ -19,7 +20,7 @@ public class NavNode {
 
 	public NavNode (Vector3 initPosition, Vector3 initExtents, List<Vector3> vertexList, int initUID) {
 		canPropagate = true;
-        showDebugNodes = false;
+        showDebugNodes = true;
 		nodePosition = initPosition;
         nodeExtents = initExtents;
         nodeVertices = vertexList;

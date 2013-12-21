@@ -21,7 +21,7 @@ public class CameraSelection : MonoBehaviour {
 		RigUnitNavStuff ();
 		rayDebugInfo = true;
 		buildMenu = false;
-		navManager.CreateSpawnNode();
+        navManager.InitNavigationMesh();
 	}
 
 	private void RigUnitNavStuff () {

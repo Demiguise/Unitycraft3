@@ -2,28 +2,55 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft;
 
-public class NavNodeManager {
+public class SimpleNavNode
+{
+    public int uID;
+    public List<float> nodePosition;
+    public List<float> nodeExtents;
+    public List<float> nodeVert0;
+    public List<float> nodeVert1;
+    public List<float> nodeVert2;
+    public List<float> nodeVert3;
+    public List<int> nodeLinks;
+
+    public SimpleNavNode(int id, List<float> pos, List<float> ext, List<float> vert0, List<float> vert1, List<float> vert2, List<float> vert3, List<int> links)
+    {
+        uID = id;
+        nodePosition = pos;
+        nodeExtents = ext;
+        nodeVert0 = vert0;
+        nodeVert1 = vert1;
+        nodeVert2 = vert2;
+        nodeVert3 = vert3;
+        nodeLinks = links;
+    }
+}
+
+
+public class NavNodeManager 
+{
 	private List<NavNode> availableNodes = new List<NavNode>();
-	private float defaultExtents;
-    private float minSubDivisionExtents;
-    public int debugLevel = 0; //Should go from 0 (Nothing) to 5 (Everything)
+	private Vector3 defaultExtents;
+    private Vector3 minSubDivisionExtents;
+    public int navGenDebugLevel = 0; //Should go from 0 (Nothing) to 5 (Everything)
     private int[] worldLayer = { 9 };
 	
-	private List<double> nodeLinksTimes = new List<double>();
+	private List<double> nodeLinkTimes = new List<double>();
 	private List<double> checkVertLOSTimes = new List<double>();
 	private List<double> nodeScalingTimes = new List<double>();
 	
 	
 	public NavNodeManager () {
-		defaultExtents = 3f;
+        defaultExtents = new Vector3(3, 0, 3);
         minSubDivisionExtents = defaultExtents / 3;
         //Debug.Log("Minimum Extents set to : " + minSubDivisionExtents + ".");
 	}
 
     private void DebugLog(string service, string message, int debugLevelFlag)
     {
-        if (debugLevel >= debugLevelFlag)
+        if (navGenDebugLevel >= debugLevelFlag)
         {
             Debug.Log("[NavM][" + service + "] " + message);
         }
@@ -31,27 +58,120 @@ public class NavNodeManager {
 	
     #region NavMeshCreation
     private void printBenchmarkTimes() {
-        Debug.Log("[NavM] NodeVerts Total: " + checkVertLOSTimes.Sum() + "ms | " + checkVertLOSTimes.Min() + "ms => " + checkVertLOSTimes.Max() + "ms");
-        //Debug.Log("[NavM] NodeLinks Total: " + nodeLinksTimes.Sum() + "ms | " + nodeLinksTimes.Min() + "ms => " + nodeLinksTimes.Max() + "ms");
+        //Debug.Log("[NavM] NodeVerts Total: " + checkVertLOSTimes.Sum() + "ms | " + checkVertLOSTimes.Min() + "ms => " + checkVertLOSTimes.Max() + "ms");
+        //Debug.Log("[NavM] NodeLinks Total: " + nodeLinkTimes.Sum() + "ms | " + nodeLinkTimes.Min() + "ms => " + nodeLinkTimes.Max() + "ms");
         //Debug.Log("[NavM] NodeScale Total: " + nodeScalingTimes.Sum() + "ms | " + nodeScalingTimes.Min() + "ms => " + nodeScalingTimes.Max() + "ms");
 	}
 
-    private void SaveNavMesh()
+    public void InitNavigationMesh()
     {
+        DebugLog("NavLoad", "Beginning NavMesh initialization.", 0);
+        try
+        {
+            System.Diagnostics.Stopwatch stopWatch = new System.Diagnostics.Stopwatch();
+            stopWatch.Start();
+            System.IO.FileStream navSaveFile = System.IO.File.Open(Application.dataPath + "/Level Assets/" + Application.loadedLevelName + "/NavMesh.json", System.IO.FileMode.Open);
+            DebugLog("NavLoad", "NavMesh found. Parsing & Loading", 0);
+            availableNodes = LoadNavMesh(navSaveFile);
+            stopWatch.Stop();
+            DebugLog("NavLoad", "<" + availableNodes.Count + "> nodes loaded in " + stopWatch.Elapsed.TotalMilliseconds + "ms.", 0);
+            printBenchmarkTimes();
+            availableNodes = GenerateInitialSquareMesh(availableNodes);
+        }
+        catch (System.IO.FileNotFoundException)
+        {
+            DebugLog("NavLoad", "NavMesh not found!", 0);
+            CreateSpawnNode();
+            BeginFloodFill();
+            FindNodeLinks();
+            SaveNavMesh();
+            printBenchmarkTimes();
+        }
     }
 
-    private void LoadNavMesh()
+    private void SaveNavMesh()
     {
+        using (System.IO.FileStream stream = System.IO.File.Open(Application.dataPath + "/Level Assets/" + Application.loadedLevelName + "/NavMesh.json", System.IO.FileMode.Create))
+        using (System.IO.StreamWriter writer = new System.IO.StreamWriter(stream))
+        {
+            List<SimpleNavNode> simpleNodeList = new List<SimpleNavNode>();
+            for (int i = 0; i < availableNodes.Count; i++)
+            {
+                NavNode curNode = availableNodes[i];
+                List<float> nodePos = new List<float>() { curNode.nodePosition.x, curNode.nodePosition.y, curNode.nodePosition.z };
+                List<float> nodeExt = new List<float>() { curNode.nodeExtents.x, curNode.nodeExtents.y, curNode.nodeExtents.z };
+                List<float> nodeVert0 = new List<float>() { curNode.nodeVertices[0].x, curNode.nodeVertices[0].y, curNode.nodeVertices[0].z };
+                List<float> nodeVert1 = new List<float>() { curNode.nodeVertices[1].x, curNode.nodeVertices[1].y, curNode.nodeVertices[1].z };
+                List<float> nodeVert2 = new List<float>() { curNode.nodeVertices[2].x, curNode.nodeVertices[2].y, curNode.nodeVertices[2].z };
+                List<float> nodeVert3 = new List<float>() { curNode.nodeVertices[3].x, curNode.nodeVertices[3].y, curNode.nodeVertices[3].z };
+                List<int> nodeLinks = new List<int>();
+                for (int j = 0; j < curNode.linkedNodes.Count; j++)
+                {
+                    nodeLinks.Add(curNode.linkedNodes[j].uID);
+                }
+                SimpleNavNode node = new SimpleNavNode(curNode.uID, nodePos, nodeExt, nodeVert0, nodeVert1, nodeVert2, nodeVert3, nodeLinks);
+
+                simpleNodeList.Add(node);
+            }
+                //var jSettings = new Newtonsoft.Json.JsonSerializerSettings { ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore };
+                writer.Write(Newtonsoft.Json.JsonConvert.SerializeObject(simpleNodeList, Newtonsoft.Json.Formatting.Indented));
+        }
+        DebugLog("NavSave", "Navigation Mesh saved.", 0);
+    }
+
+    private List<NavNode> LoadNavMesh(System.IO.FileStream file)
+    {
+        List<NavNode> navNodeList = new List<NavNode>();
+        List<SimpleNavNode> simpleNodeList;
+        using (System.IO.StreamReader reader = new System.IO.StreamReader(file))
+        {
+            Newtonsoft.Json.JsonSerializer serializer = new Newtonsoft.Json.JsonSerializer();
+            simpleNodeList = (List<SimpleNavNode>)serializer.Deserialize(reader, typeof(List<SimpleNavNode>));
+        }
+        for (int i = 0; i < simpleNodeList.Count; i++)
+        {
+            SimpleNavNode cur = simpleNodeList[i];
+            int uID = simpleNodeList[i].uID;
+            Vector3 nodePos = new Vector3(cur.nodePosition[0], cur.nodePosition[1], cur.nodePosition[2]);
+            Vector3 nodeExt = new Vector3(cur.nodeExtents[0], cur.nodeExtents[1], cur.nodeExtents[2]);
+            List<Vector3> nodeVerts = new List<Vector3>();
+            nodeVerts.Add(new Vector3(cur.nodeVert0[0],cur.nodeVert0[1],cur.nodeVert0[2]));
+            nodeVerts.Add(new Vector3(cur.nodeVert1[0],cur.nodeVert1[1],cur.nodeVert1[2]));
+            nodeVerts.Add(new Vector3(cur.nodeVert2[0],cur.nodeVert2[1],cur.nodeVert2[2]));
+            nodeVerts.Add(new Vector3(cur.nodeVert3[0],cur.nodeVert3[1],cur.nodeVert3[2]));
+            NavNode newNode = new NavNode(nodePos, nodeExt, nodeVerts, uID);
+            navNodeList.Add(newNode);
+        }
+        LoadNavNodeLinks(simpleNodeList, navNodeList);
+        return navNodeList;
+    }
+
+    private void LoadNavNodeLinks(List<SimpleNavNode> simpleList, List<NavNode> nodeList)
+    {
+        System.Diagnostics.Stopwatch stopWatch = new System.Diagnostics.Stopwatch();
+        stopWatch.Start();
+        for (int i = 0; i < simpleList.Count; i++)
+        {
+            NavNode curNode = nodeList[i];
+            for (int j = 0; j < simpleList[i].nodeLinks.Count; j++)
+            {
+                int curID = simpleList[i].nodeLinks[j];
+                NavNode linkedNode = nodeList.Find(node => node.uID == curID);
+                if (linkedNode != null) { curNode.AddNodeLink(linkedNode); }
+            }   
+        }
+        stopWatch.Stop();
+        DebugLog("NavLoad", "Loading NavNodeLinks took " + stopWatch.Elapsed.TotalMilliseconds + "ms.", 0);
     }
 
     public void BeginFloodFill()
     {
+        DebugLog("Main", "Beginning Navigation mesh generation", 0);
         System.Diagnostics.Stopwatch stopWatch = new System.Diagnostics.Stopwatch();
         stopWatch.Start();
         //
         List<NavNode> activeNodes = FindActiveNodes(availableNodes);
-
-        while ((activeNodes.Count != 0) && (availableNodes.Count < 250))
+        while ((activeNodes.Count != 0) && (availableNodes.Count < 50))
         {
             //Debug.Log("Current activeNode count is : " + activeNodes.Count+".");
             for (int i = 0; i < activeNodes.Count; i++)
@@ -63,30 +183,31 @@ public class NavNodeManager {
                     float curScale = 1f;
                     Vector3 nodeExtents = curNode.nodeExtents;
                     Vector3 nodePosition = CalculateNewNodePos(curNode.nodePosition, nodeExtents, j);
-                    List<Vector3> nodeVertexList = GenerateVertexList(nodePosition, nodeExtents.x);
+                    List<Vector3> nodeVertexList = GenerateVertexList(nodePosition, nodeExtents);
                     if (FindNavNodeFromPos(nodePosition) == null)
                     {
                         while ((!CheckVertexLOS(nodeVertexList)) || (!CheckVertsAreOnMap(nodeVertexList)))
                         {
-                            if ((nodeExtents.x * curScale) <= minSubDivisionExtents)
+                            if (!CheckCurExtentScale((nodeExtents * curScale), minSubDivisionExtents))
                             {
-                                DebugLog("Main", "Node's extents are below the mininmum :" + (nodeExtents.x * curScale), 1);
+                                DebugLog("Main", "Node's extents are below the mininmum : " + (nodeExtents * curScale), 1);
                                 break;
                             }
-                            DebugLog("Main", "Incrementing subdivision level", 1);
+
+                            DebugLog("Main", "Incrementing subdivision level. " + curScale + "=>"+(curScale/2)+".", 1);
                             curScale /= 2;
                             nodePosition = CalculateNewNodePos(curNode.nodePosition, nodeExtents, j, curScale);
-                            nodeVertexList = GenerateVertexList(nodePosition, nodeExtents.x, curScale);
+                            nodeVertexList = GenerateVertexList(nodePosition, nodeExtents, curScale);
                         }
-                        if (((nodeExtents.x * curScale) >= minSubDivisionExtents) && (CheckVertexTear(nodeVertexList)))
+                        if ((CheckCurExtentScale((nodeExtents * curScale), minSubDivisionExtents)) && (CheckVertexTear(nodeVertexList)))
                         {
                             DebugLog("Main", "Success. Current extent of node is above the minimum ("+ minSubDivisionExtents +") and the there are no tears between verticies.", 1);
-                            CreateNavNode(nodePosition, nodeExtents.x, nodeVertexList, curScale);
+                            CreateNavNode(nodePosition, nodeExtents, nodeVertexList, curScale);
                             curScale = 1f;
                         }
                         else
                         {
-                            DebugLog("Main", "Failure. Current extent of node is " + (nodeExtents.x * curScale) + " and the minimum is (" + minSubDivisionExtents +"). The verts could also be torn. Discarding node.", 1);
+                            DebugLog("Main", "Failure. Current extent of node is " + (nodeExtents * curScale) + " and the minimum is (" + minSubDivisionExtents +"). The verts could also be torn. Discarding node.", 1);
                             curScale = 1f;
                         }
                     }
@@ -99,7 +220,13 @@ public class NavNodeManager {
         //
         stopWatch.Stop();
         Debug.Log("[NavM][Main] Navigation mesh completed. <" + availableNodes.Count.ToString() + "> nodes created in (" + stopWatch.Elapsed.TotalMilliseconds + ") ms.");
-        printBenchmarkTimes();
+    }
+
+    private bool CheckCurExtentScale(Vector3 curExt, Vector3 minExt)
+    {
+        if (curExt.x < minExt.x) { return false; }
+        if (curExt.z < minExt.z) { return false; }
+        return true;
     }
 
     private bool CheckVertexTear (List<Vector3> vertexList)
@@ -177,7 +304,7 @@ public class NavNodeManager {
         }
         stopWatch.Stop();
         checkVertLOSTimes.Add(stopWatch.Elapsed.TotalMilliseconds);
-        DebugLog("VertLOS", " All LOS checks are fine. Succeeding LOSCheck", 3);
+        DebugLog("VertLOS", "All LOS checks are fine. Succeeding LOSCheck", 3);
         return true;
     }
 
@@ -205,13 +332,12 @@ public class NavNodeManager {
         Vector3 spawnLoc = spawnCube.transform.position;
         spawnLoc.y = 0;
         CreateNavNode(spawnLoc, defaultExtents, GenerateVertexList(spawnLoc, defaultExtents)); //Might set to an initial spawn location, or something.
-		BeginFloodFill();
-		FindNodeLinks();
+
 	}
 	
-	private void CreateNavNode (Vector3 nodePosition, float pExt, List<Vector3> vertexList, float nodeScale = 1f) {
+	private void CreateNavNode (Vector3 nodePosition, Vector3 pExt, List<Vector3> vertexList, float nodeScale = 1f) {
 		int childID = GenerateUID();
-        Vector3 newExtents = new Vector3(pExt * nodeScale, 0, pExt * nodeScale);
+        Vector3 newExtents = new Vector3(pExt.x * nodeScale, 0, pExt.z * nodeScale);
         DebugLog("CreateNav", "Creating Navnode <" + childID + "> at " + nodePosition + ". Extents are set to " + newExtents + ".", 1);
         availableNodes.Add(new NavNode(nodePosition, newExtents, vertexList, childID));
 	}
@@ -296,22 +422,22 @@ public class NavNodeManager {
 			//Debug.Log("Node <" + node.uID + "> has found (" + node.linkedNodes.Count + ") node(s) to link to");
 		}
 		stopWatch.Stop ();
-		nodeLinksTimes.Add (stopWatch.Elapsed.TotalMilliseconds);
+		nodeLinkTimes.Add (stopWatch.Elapsed.TotalMilliseconds);
         Debug.Log("[NavM] Links for all <" + availableNodes.Count + "> have been found");
 	}
 	
-	private List<Vector3> GenerateVertexList (Vector3 rPos, float ext, float curScale = 1f) {
+	private List<Vector3> GenerateVertexList (Vector3 rPos, Vector3 ext, float curScale = 1f) {
 		List<Vector3> VertexList = new List<Vector3>();
-        float radius = (ext * curScale) / 2;
-		VertexList.Add(new Vector3(rPos.x + radius, 0, rPos.z + radius));
-		VertexList.Add(new Vector3(rPos.x - radius, 0, rPos.z + radius));
-		VertexList.Add(new Vector3(rPos.x + radius, 0, rPos.z - radius));
-		VertexList.Add(new Vector3(rPos.x - radius, 0, rPos.z - radius));
+        Vector3 curExt = ((ext/2) * curScale);
+        VertexList.Add(new Vector3(rPos.x + curExt.x, 0, rPos.z + curExt.z));
+        VertexList.Add(new Vector3(rPos.x - curExt.x, 0, rPos.z + curExt.z));
+        VertexList.Add(new Vector3(rPos.x + curExt.x, 0, rPos.z - curExt.z));
+        VertexList.Add(new Vector3(rPos.x - curExt.x, 0, rPos.z - curExt.z));
         for (int i = 0 ; i < VertexList.Count() ; i++)
         {
             VertexList[i] += (Vector3.up * GetVertexHeight(VertexList[i]));
         }
-        DebugLog("VGen", "[R" + rPos + "][" + radius + "] Vector list -> " + VertexList[0] + VertexList[1] + VertexList[2] + VertexList[3] + ".", 4);
+        DebugLog("VGen", "[R" + rPos + "][" + curExt + "] Vector list -> " + VertexList[0] + VertexList[1] + VertexList[2] + VertexList[3] + ".", 4);
 		return VertexList;
 	}
 
@@ -366,6 +492,75 @@ public class NavNodeManager {
     #endregion
 
     #region NavMeshSimplification
+
+    private List<NavNode> GenerateInitialSquareMesh(List<NavNode> initialNodeList)
+    {
+        List<NavNode> openSet = initialNodeList;
+        List<NavNode> curSet = new List<NavNode>();
+        List<NavNode> closedSet = new List<NavNode>();
+        List<NavNode> newNodeList = new List<NavNode>();
+        while (openSet.Count > 0)
+        {
+            NavNode curNode = openSet[Random.Range(0, openSet.Count())];
+            openSet.Remove(curNode);
+            curSet.Add(curNode);
+            NavNode nextNode = FindNavNodeFromPos(curSet[curSet.Count - 1].nodePosition + (Vector3.right * 2.2f));
+            int count = 0;
+            //Find the longest row of Nodes up to max of 4.
+            while (nextNode != null && count < 4)
+            {
+                Debug.Log("[NavSimp][Main] Next node in row is <" + nextNode.uID + ">. Adding to curSet("+curSet.Count+").");
+                openSet.Remove(nextNode);
+                curSet.Add(nextNode);
+                nextNode = FindNavNodeFromPos(curSet[curSet.Count - 1].nodePosition + (Vector3.right * 2.2f));
+                count++;
+            }
+            Debug.Log("[NavSimp][Main] O(" + openSet.Count + ") Cur(" + curSet.Count + ") C(" + closedSet.Count + ").");
+            newNodeList.Add(CreateNewNodeFromList(curSet));
+            for (int i = 0; i < curSet.Count; i++)
+            {
+                closedSet.Add(curSet[i]);
+            }
+            curSet.Clear();
+            count = 0;
+        }
+        Debug.Log(newNodeList.Count + " node(s) created through MeshSimplifcation. Part 1.");
+        return newNodeList;
+    }
+
+    private NavNode CreateNewNodeFromList(List<NavNode> nodeList)
+    {
+        Vector3 newNodeExtents = FindCombinedExtents(nodeList);
+        Vector3 newNodePos = FindAveragePosFromList(nodeList);
+        int uID = GenerateUID();
+        List<Vector3> newNodeVerts = GenerateVertexList(newNodePos, newNodeExtents);
+        Debug.Log("[NavSimp][NavCreate] Creating Navnode <" + uID + "> at " + newNodePos + ". Extents are set to " + newNodeExtents + ".");
+        NavNode newNode = new NavNode(newNodePos, new Vector3(0, 0, 0), newNodeVerts, uID);
+        return newNode;
+    }
+
+    private Vector3 FindCombinedExtents(List<NavNode> nodelist)
+    {
+        Vector3 extents = new Vector3(0, 0, 0);
+        for (int i = 0; i < nodelist.Count; i++)
+        {
+            extents += nodelist[i].nodeExtents;
+        }
+        return extents;
+    }
+
+    private Vector3 FindAveragePosFromList(List<NavNode> nodeList)
+    {
+        Vector3 averagePos = new Vector3(0,0,0);
+        int nodeCount = nodeList.Count;
+        for (int i = 0; i < nodeCount; i++)
+        {
+            averagePos += nodeList[i].nodePosition;
+        }
+        averagePos /= nodeCount;
+        return averagePos;
+    }
+
     #endregion
 
     #region AIPathfinding
@@ -457,7 +652,7 @@ public class NavNodeManager {
 	}
 	
 	private void ResetBenchmarkTimes (){
-		nodeLinksTimes.Clear();
+		nodeLinkTimes.Clear();
 		checkVertLOSTimes.Clear();
 		nodeScalingTimes.Clear();
 	}
