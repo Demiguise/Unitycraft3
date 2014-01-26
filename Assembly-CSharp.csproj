@@ -51,12 +51,14 @@
      <Compile Include="Assets\Main Assets\Scripts\Camera Scripts\CameraSelection.cs" />
      <Compile Include="Assets\Main Assets\Scripts\DebugGUI.cs" />
      <Compile Include="Assets\Main Assets\Scripts\DebuggingNodes.cs" />
+     <Compile Include="Assets\Main Assets\Scripts\GameLog.cs" />
      <Compile Include="Assets\Main Assets\Scripts\HealthBar.cs" />
      <Compile Include="Assets\Main Assets\Scripts\NavNode.cs" />
      <Compile Include="Assets\Main Assets\Scripts\NavNodeDebuggingHelper.cs" />
      <Compile Include="Assets\Main Assets\Scripts\NavNodeManager.cs" />
      <Compile Include="Assets\Main Assets\Scripts\ObjectManager.cs" />
      <Compile Include="Assets\Main Assets\Scripts\Spell &amp; Abilities\SpellLibrary.cs" />
+     <Compile Include="Assets\Main Assets\Scripts\Tools.cs" />
      <Compile Include="Assets\Main Assets\Scripts\Unit Scripts\UnitAbilities.cs" />
      <Compile Include="Assets\Main Assets\Scripts\Unit Scripts\UnitAnimation.cs" />
      <Compile Include="Assets\Main Assets\Scripts\Unit Scripts\UnitAudio.cs" />

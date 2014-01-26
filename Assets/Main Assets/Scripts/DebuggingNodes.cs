@@ -8,6 +8,7 @@ public class DebuggingNodes : MonoBehaviour {
 	public int uID;
 	public int[] linkedNodesUID;
     public Vector3 nodePosition;
+    public Vector3 nodeExtents;
     public Vector3[] nodeVertices;
 	private List<NavNode> linkedNodes = new List<NavNode>();
 	public int generation;
@@ -46,6 +47,7 @@ public class DebuggingNodes : MonoBehaviour {
 		this.uID = node.uID;
         this.nodePosition = node.nodePosition;
         this.nodeVertices = node.nodeVertices.ToArray();
+        this.nodeExtents = node.nodeExtents;
 	}
 	
 	public void UpdateLinks (NavNode node) {

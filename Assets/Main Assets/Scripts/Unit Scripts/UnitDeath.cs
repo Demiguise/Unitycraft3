@@ -53,9 +53,6 @@ public class UnitDeath : MonoBehaviour {
     {
         float timeOnField = 0f;
         AnimatorStateInfo animInfo = this.GetComponent<Animator>().GetNextAnimatorStateInfo(0);
-		Animator anim = this.GetComponent<Animator> ();
-        //Debug.Log(minTimeOnField);
-        //timeOnField = Random.Range(minTimeOnField, minTimeOnField + 4f);
         return timeOnField;
     }
 }

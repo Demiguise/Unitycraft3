@@ -35,6 +35,7 @@ public class NavNodeManager
 	private Vector3 defaultExtents;
     private Vector3 minSubDivisionExtents;
     public int navGenDebugLevel = 0; //Should go from 0 (Nothing) to 5 (Everything)
+    public int navSimpDebugLevel = 0;
     private int[] worldLayer = { 9 };
 	
 	private List<double> nodeLinkTimes = new List<double>();
@@ -45,42 +46,34 @@ public class NavNodeManager
 	public NavNodeManager () {
         defaultExtents = new Vector3(3, 0, 3);
         minSubDivisionExtents = defaultExtents / 3;
-        //Debug.Log("Minimum Extents set to : " + minSubDivisionExtents + ".");
 	}
 
-    private void DebugLog(string service, string message, int debugLevelFlag)
+    private void DebugLog(string component, string message, int debugLevelFlag, int debugCvar)
     {
-        if (navGenDebugLevel >= debugLevelFlag)
+        if (debugCvar >= debugLevelFlag)
         {
-            Debug.Log("[NavM][" + service + "] " + message);
+            GameLog.Log("NavM", component, message);
         }
     }
-	
-    #region NavMeshCreation
-    private void printBenchmarkTimes() {
-        //Debug.Log("[NavM] NodeVerts Total: " + checkVertLOSTimes.Sum() + "ms | " + checkVertLOSTimes.Min() + "ms => " + checkVertLOSTimes.Max() + "ms");
-        //Debug.Log("[NavM] NodeLinks Total: " + nodeLinkTimes.Sum() + "ms | " + nodeLinkTimes.Min() + "ms => " + nodeLinkTimes.Max() + "ms");
-        //Debug.Log("[NavM] NodeScale Total: " + nodeScalingTimes.Sum() + "ms | " + nodeScalingTimes.Min() + "ms => " + nodeScalingTimes.Max() + "ms");
-	}
 
     public void InitNavigationMesh()
     {
-        DebugLog("NavLoad", "Beginning NavMesh initialization.", 0);
+        DebugLog("NavLoad", "Beginning NavMesh initialization.", 0, navGenDebugLevel);
         try
         {
             System.Diagnostics.Stopwatch stopWatch = new System.Diagnostics.Stopwatch();
             stopWatch.Start();
             System.IO.FileStream navSaveFile = System.IO.File.Open(Application.dataPath + "/Level Assets/" + Application.loadedLevelName + "/NavMesh.json", System.IO.FileMode.Open);
-            DebugLog("NavLoad", "NavMesh found. Parsing & Loading", 0);
+            DebugLog("NavLoad", "NavMesh found. Parsing & Loading", 0, navGenDebugLevel);
             availableNodes = LoadNavMesh(navSaveFile);
             stopWatch.Stop();
-            DebugLog("NavLoad", "<" + availableNodes.Count + "> nodes loaded in " + stopWatch.Elapsed.TotalMilliseconds + "ms.", 0);
+            DebugLog("NavLoad", "<" + availableNodes.Count + "> nodes loaded in " + stopWatch.Elapsed.TotalMilliseconds + "ms.", 0, navGenDebugLevel);
             printBenchmarkTimes();
             availableNodes = GenerateInitialSquareMesh(availableNodes);
         }
         catch (System.IO.FileNotFoundException)
         {
-            DebugLog("NavLoad", "NavMesh not found!", 0);
+            DebugLog("NavLoad", "NavMesh not found!", 0, navGenDebugLevel);
             CreateSpawnNode();
             BeginFloodFill();
             FindNodeLinks();
@@ -88,6 +81,13 @@ public class NavNodeManager
             printBenchmarkTimes();
         }
     }
+
+    #region NavMeshCreation
+    private void printBenchmarkTimes() {
+        //Debug.Log("[NavM] NodeVerts Total: " + checkVertLOSTimes.Sum() + "ms | " + checkVertLOSTimes.Min() + "ms => " + checkVertLOSTimes.Max() + "ms");
+        //Debug.Log("[NavM] NodeLinks Total: " + nodeLinkTimes.Sum() + "ms | " + nodeLinkTimes.Min() + "ms => " + nodeLinkTimes.Max() + "ms");
+        //Debug.Log("[NavM] NodeScale Total: " + nodeScalingTimes.Sum() + "ms | " + nodeScalingTimes.Min() + "ms => " + nodeScalingTimes.Max() + "ms");
+	}
 
     private void SaveNavMesh()
     {
@@ -110,13 +110,12 @@ public class NavNodeManager
                     nodeLinks.Add(curNode.linkedNodes[j].uID);
                 }
                 SimpleNavNode node = new SimpleNavNode(curNode.uID, nodePos, nodeExt, nodeVert0, nodeVert1, nodeVert2, nodeVert3, nodeLinks);
-
                 simpleNodeList.Add(node);
             }
                 //var jSettings = new Newtonsoft.Json.JsonSerializerSettings { ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore };
                 writer.Write(Newtonsoft.Json.JsonConvert.SerializeObject(simpleNodeList, Newtonsoft.Json.Formatting.Indented));
         }
-        DebugLog("NavSave", "Navigation Mesh saved.", 0);
+        DebugLog("NavSave", "Navigation Mesh saved.", 0, navGenDebugLevel);
     }
 
     private List<NavNode> LoadNavMesh(System.IO.FileStream file)
@@ -161,17 +160,17 @@ public class NavNodeManager
             }   
         }
         stopWatch.Stop();
-        DebugLog("NavLoad", "Loading NavNodeLinks took " + stopWatch.Elapsed.TotalMilliseconds + "ms.", 0);
+        DebugLog("NavLoad", "Loading NavNodeLinks took " + stopWatch.Elapsed.TotalMilliseconds + "ms.", 0, navGenDebugLevel);
     }
 
     public void BeginFloodFill()
     {
-        DebugLog("Main", "Beginning Navigation mesh generation", 0);
+        DebugLog("Main", "Beginning Navigation mesh generation", 0, navGenDebugLevel);
         System.Diagnostics.Stopwatch stopWatch = new System.Diagnostics.Stopwatch();
         stopWatch.Start();
         //
         List<NavNode> activeNodes = FindActiveNodes(availableNodes);
-        while ((activeNodes.Count != 0) && (availableNodes.Count < 50))
+        while ((activeNodes.Count != 0) && (availableNodes.Count < 500))
         {
             //Debug.Log("Current activeNode count is : " + activeNodes.Count+".");
             for (int i = 0; i < activeNodes.Count; i++)
@@ -179,7 +178,7 @@ public class NavNodeManager
                 NavNode curNode = activeNodes[i];
                 for (int j = 1; j <= 4; j++)
                 {
-                    DebugLog("Main", "Navnode <" + curNode.uID + "> is attempting to create a node. Direction (" + j + ").", 2);
+                    DebugLog("Main", "Navnode <" + curNode.uID + "> is attempting to create a node. Direction (" + j + ").", 2, navGenDebugLevel);
                     float curScale = 1f;
                     Vector3 nodeExtents = curNode.nodeExtents;
                     Vector3 nodePosition = CalculateNewNodePos(curNode.nodePosition, nodeExtents, j);
@@ -190,28 +189,28 @@ public class NavNodeManager
                         {
                             if (!CheckCurExtentScale((nodeExtents * curScale), minSubDivisionExtents))
                             {
-                                DebugLog("Main", "Node's extents are below the mininmum : " + (nodeExtents * curScale), 1);
+                                DebugLog("Main", "Node's extents are below the mininmum : " + (nodeExtents * curScale), 1, navGenDebugLevel);
                                 break;
                             }
 
-                            DebugLog("Main", "Incrementing subdivision level. " + curScale + "=>"+(curScale/2)+".", 1);
+                            DebugLog("Main", "Incrementing subdivision level. " + curScale + "=>" + (curScale / 2) + ".", 1, navGenDebugLevel);
                             curScale /= 2;
                             nodePosition = CalculateNewNodePos(curNode.nodePosition, nodeExtents, j, curScale);
                             nodeVertexList = GenerateVertexList(nodePosition, nodeExtents, curScale);
                         }
                         if ((CheckCurExtentScale((nodeExtents * curScale), minSubDivisionExtents)) && (CheckVertexTear(nodeVertexList)))
                         {
-                            DebugLog("Main", "Success. Current extent of node is above the minimum ("+ minSubDivisionExtents +") and the there are no tears between verticies.", 1);
+                            DebugLog("Main", "Success. Current extent of node is above the minimum (" + minSubDivisionExtents + ") and the there are no tears between verticies.", 1, navGenDebugLevel);
                             CreateNavNode(nodePosition, nodeExtents, nodeVertexList, curScale);
                             curScale = 1f;
                         }
                         else
                         {
-                            DebugLog("Main", "Failure. Current extent of node is " + (nodeExtents * curScale) + " and the minimum is (" + minSubDivisionExtents +"). The verts could also be torn. Discarding node.", 1);
+                            DebugLog("Main", "Failure. Current extent of node is " + (nodeExtents * curScale) + " and the minimum is (" + minSubDivisionExtents + "). The verts could also be torn. Discarding node.", 1, navGenDebugLevel);
                             curScale = 1f;
                         }
                     }
-                    else { DebugLog("Main", "Discarding duplicate node", 1); }
+                    else { DebugLog("Main", "Discarding duplicate node", 1, navGenDebugLevel); }
                 }
                 curNode.TogglePropagation(false);
             }
@@ -229,7 +228,7 @@ public class NavNodeManager
         return true;
     }
 
-    private bool CheckVertexTear (List<Vector3> vertexList)
+    private bool CheckVertexTear(List<Vector3> vertexList)
     {
         Vector3 startVertex = vertexList[0];
         Vector3 endVertex = vertexList[vertexList.Count - 1];
@@ -239,15 +238,15 @@ public class NavNodeManager
             for (int j = 0; j <= 3; j++)
             {
                 Vector3 dirToVertex = vertexList[j] - vertArray[i];
-                DebugLog("VTear", "Vector from S:" + vertArray[i] + " to G:" + vertexList[j] + " is " + dirToVertex + ".", 4);
+                DebugLog("VTear", "Vector from S:" + vertArray[i] + " to G:" + vertexList[j] + " is " + dirToVertex + ".", 4, navGenDebugLevel);
                 if (Mathf.Abs(dirToVertex.y) > 2)
                 {
-                    DebugLog("VTear", "Vertex tearing found.", 3);
+                    DebugLog("VTear", "Vertex tearing found.", 3, navGenDebugLevel);
                     return false;
                 }
             }
         }
-        DebugLog("VTear", "No vertex tearing found.", 3);
+        DebugLog("VTear", "No vertex tearing found.", 3, navGenDebugLevel);
         return true;
     }
 
@@ -267,11 +266,11 @@ public class NavNodeManager
         {
             if (!CheckPosIsOnMap(verticeList[i]))
             {
-                DebugLog("VertC", "Position " + verticeList[i] + " is off the map. Failing Mapcheck", 3);
+                DebugLog("VertC", "Position " + verticeList[i] + " is off the map. Failing Mapcheck", 3, navGenDebugLevel);
                 return false;
             }
         }
-        DebugLog("VertC", "All positions are on map. Succeeding Mapcheck", 3);
+        DebugLog("VertC", "All positions are on map. Succeeding Mapcheck", 3, navGenDebugLevel);
         return true;
     }
 
@@ -295,16 +294,16 @@ public class NavNodeManager
                     {
                         stopWatch.Stop();
                         checkVertLOSTimes.Add(stopWatch.Elapsed.TotalMilliseconds);
-                        DebugLog("VertLOS", "Positions " + vertArray[i] + " and " + vertexList[j] + " have failed LOS checks. They hit object " + objectHit.collider.tag + ".", 3);
+                        DebugLog("VertLOS", "Positions " + vertArray[i] + " and " + vertexList[j] + " have failed LOS checks. They hit object " + objectHit.collider.tag + ".", 3, navGenDebugLevel);
                         return false;
                     }
-                    DebugLog("VertLOS", "Positions " + vertArray[i] + " and " + vertexList[j] + " hit object " + objectHit.collider.name + ".", 3);
+                    DebugLog("VertLOS", "Positions " + vertArray[i] + " and " + vertexList[j] + " hit object " + objectHit.collider.name + ".", 3, navGenDebugLevel);
                 }
             }
         }
         stopWatch.Stop();
         checkVertLOSTimes.Add(stopWatch.Elapsed.TotalMilliseconds);
-        DebugLog("VertLOS", "All LOS checks are fine. Succeeding LOSCheck", 3);
+        DebugLog("VertLOS", "All LOS checks are fine. Succeeding LOSCheck", 3, navGenDebugLevel);
         return true;
     }
 
@@ -313,7 +312,7 @@ public class NavNodeManager
         RaycastHit objectHit = new RaycastHit();
         Vector3 dir = FindResultant(fPos, sPos);
         float dist = FindMagnitude(fPos, sPos);
-        DebugLog("VertLOS", "Casting a ray from " + fPos + " to " + sPos + " in the direction of " + dir + " for " + dist + " units.", 4);
+        DebugLog("VertLOS", "Casting a ray from " + fPos + " to " + sPos + " in the direction of " + dir + " for " + dist + " units.", 4, navGenDebugLevel);
         objectHit = CastRay(fPos, dir, dist, layer);
         return objectHit;
     }
@@ -336,9 +335,9 @@ public class NavNodeManager
 	}
 	
 	private void CreateNavNode (Vector3 nodePosition, Vector3 pExt, List<Vector3> vertexList, float nodeScale = 1f) {
-		int childID = GenerateUID();
+		int childID = GenerateUID(availableNodes);
         Vector3 newExtents = new Vector3(pExt.x * nodeScale, 0, pExt.z * nodeScale);
-        DebugLog("CreateNav", "Creating Navnode <" + childID + "> at " + nodePosition + ". Extents are set to " + newExtents + ".", 1);
+        DebugLog("CreateNav", "Creating Navnode <" + childID + "> at " + nodePosition + ". Extents are set to " + newExtents + ".", 1, navGenDebugLevel);
         availableNodes.Add(new NavNode(nodePosition, newExtents, vertexList, childID));
 	}
 	
@@ -350,7 +349,7 @@ public class NavNodeManager
 			Vector3 nodeExt = node.nodeExtents/2;
 			if (((nodePos.x + nodeExt.x) >= xPos) && ((nodePos.x - nodeExt.x) <= xPos)) {
 				if (((nodePos.z + nodeExt.z) >= zPos) && ((nodePos.z - nodeExt.z) <= zPos)) {
-                    DebugLog("PosC", "Position " + requestedPosition + " can be found in node <" + node.uID + ">.", 4);
+                    DebugLog("PosC", "Position " + requestedPosition + " can be found in node <" + node.uID + ">.", 4, navGenDebugLevel);
 					return node;
 				}
 			}
@@ -437,7 +436,7 @@ public class NavNodeManager
         {
             VertexList[i] += (Vector3.up * GetVertexHeight(VertexList[i]));
         }
-        DebugLog("VGen", "[R" + rPos + "][" + curExt + "] Vector list -> " + VertexList[0] + VertexList[1] + VertexList[2] + VertexList[3] + ".", 4);
+        DebugLog("VGen", "[R" + rPos + "][" + curExt + "] Vector list -> " + VertexList[0] + VertexList[1] + VertexList[2] + VertexList[3] + ".", 4, navGenDebugLevel);
 		return VertexList;
 	}
 
@@ -471,10 +470,12 @@ public class NavNodeManager
         return activeNodes;
 	}
 	
-	public int GenerateUID () {
+	public int GenerateUID (List<NavNode> nodeList) {
 		int uID = 0;
-		if (availableNodes.Count > 0) {
-			foreach (NavNode node in availableNodes.ToList()) {
+        if (nodeList.Count > 0)
+        {
+            foreach (NavNode node in nodeList.ToList())
+            {
 				if (node.uID > uID) uID = node.uID;
 			}
 		}
@@ -495,57 +496,163 @@ public class NavNodeManager
 
     private List<NavNode> GenerateInitialSquareMesh(List<NavNode> initialNodeList)
     {
+
         List<NavNode> openSet = initialNodeList;
         List<NavNode> curSet = new List<NavNode>();
         List<NavNode> closedSet = new List<NavNode>();
         List<NavNode> newNodeList = new List<NavNode>();
+        RemoveSubDividedNodes(ref openSet, ref closedSet);
+
         while (openSet.Count > 0)
         {
-            NavNode curNode = openSet[Random.Range(0, openSet.Count())];
+            //NavNode curNode = openSet[Random.Range(0, openSet.Count())];
+            NavNode curNode = initialNodeList[0];
             openSet.Remove(curNode);
             curSet.Add(curNode);
-            NavNode nextNode = FindNavNodeFromPos(curSet[curSet.Count - 1].nodePosition + (Vector3.right * 2.2f));
-            int count = 0;
-            //Find the longest row of Nodes up to max of 4.
-            while (nextNode != null && count < 4)
+            DebugLog("NavSimp", "curSet(" + curSet.Count + "). Starting from node <" + curNode.uID + ">.", 1, navSimpDebugLevel);
+            Vector3 rowDir = Vector3.right;
+            NavNode nextRowNode = FindNavNodeFromPos(curSet[curSet.Count - 1].nodePosition + (rowDir * 1.6f));
+            int rowCount= 0;
+
+            if (nextRowNode == null)
             {
-                Debug.Log("[NavSimp][Main] Next node in row is <" + nextNode.uID + ">. Adding to curSet("+curSet.Count+").");
-                openSet.Remove(nextNode);
-                curSet.Add(nextNode);
-                nextNode = FindNavNodeFromPos(curSet[curSet.Count - 1].nodePosition + (Vector3.right * 2.2f));
-                count++;
+                //This ensures that a row will be formed regardless of direction. If there's no node in front of it linearly, it will check behind.
+                rowDir *= -1;
+                nextRowNode = FindNavNodeFromPos(curSet[curSet.Count - 1].nodePosition + (rowDir * 1.6f));
             }
-            Debug.Log("[NavSimp][Main] O(" + openSet.Count + ") Cur(" + curSet.Count + ") C(" + closedSet.Count + ").");
-            newNodeList.Add(CreateNewNodeFromList(curSet));
+
+            //Find the longest row of Nodes up to max of 4.
+            while (nextRowNode != null)
+            {
+                if (rowCount > 2)
+                {
+                    DebugLog("NavSimp", "Row Count is now at " + rowCount + "(+1). Maximum row size reached", 1, navSimpDebugLevel);
+                    break; 
+                }
+                if (CheckNodeInList(openSet, nextRowNode))
+                {
+                    string debugString = curSet[0].uID.ToString();
+                    for (int i = 1; i < curSet.Count; i++)
+                    {
+                        debugString += "," + curSet[i].uID ;
+                    }
+                    DebugLog("NavSimp", "curSet UIDs(" + debugString + "). Adding node <" + nextRowNode.uID + ">.", 2, navSimpDebugLevel);
+                    openSet.Remove(nextRowNode);
+                    curSet.Add(nextRowNode);
+                    nextRowNode = FindNavNodeFromPos(curSet[curSet.Count - 1].nodePosition + (rowDir * 1.6f));
+                    rowCount++;
+                }
+                else
+                {
+                    DebugLog("NavSimp", "curSet(" + curSet.Count + "). Node <" + nextRowNode.uID + "> did not exist in Openset, Discarding.", 2, navSimpDebugLevel);
+                }
+            }
+            DebugLog("NavSimp", "End of Row reached. O(" + openSet.Count + ") Cur(" + curSet.Count + ") C(" + closedSet.Count + ").", 1, navSimpDebugLevel);
+
+            //Find the longest Column of Nodes up to max of 4.
+            int rowSize = curSet.Count();
+            Vector3 columnDir = Vector3.forward;
+            int columnCount = 0;
+            List<NavNode> columnSet = FindColumnList(curSet, rowSize, openSet, columnDir);
+            if (columnSet.Count == 0)
+            {
+                columnDir *= -1;
+                columnSet = FindColumnList(curSet, rowSize, openSet, columnDir);
+            }
+            while (columnSet.Count == rowSize)
+            {
+                if (columnCount > 2)
+                {
+                    DebugLog("NavSimp", "Column Count is now at " + columnCount + "(+1). Maximum column size reached", 1, navSimpDebugLevel);
+                    break; 
+                }
+                curSet.AddRange(columnSet);
+                string debugString = "";
+                for (int i = 0; i < columnSet.Count; i++)
+                {
+                    openSet.Remove(columnSet[i]);
+                    debugString += "," + columnSet[i].uID;
+                }
+                DebugLog("NavSimp", "Column found with UIDs(" + debugString + ").", 2, navSimpDebugLevel);
+                columnSet = FindColumnList(curSet, rowSize, openSet, columnDir);
+                columnCount++;
+            }
+            DebugLog("NavSimp", "End of Column reached. O(" + openSet.Count + ") Cur(" + curSet.Count + ") C(" + closedSet.Count + ").", 1, navSimpDebugLevel);
+
+            //Actually Generate the new node.
+            newNodeList.Add(CreateNewNodeFromList(curSet, GenerateUID(newNodeList), rowSize));
             for (int i = 0; i < curSet.Count; i++)
             {
                 closedSet.Add(curSet[i]);
             }
             curSet.Clear();
-            count = 0;
+            rowCount = 0;
         }
-        Debug.Log(newNodeList.Count + " node(s) created through MeshSimplifcation. Part 1.");
+        DebugLog("NavSimp", "<" + newNodeList.Count + "> node(s) created through MeshSimplifcation. Part 1.", 0, navSimpDebugLevel);
         return newNodeList;
     }
 
-    private NavNode CreateNewNodeFromList(List<NavNode> nodeList)
+    private void RemoveSubDividedNodes(ref List<NavNode> openSet, ref List<NavNode> closedSet)
     {
-        Vector3 newNodeExtents = FindCombinedExtents(nodeList);
+        List<NavNode> nodesToRemove = new List<NavNode>();
+        for (int i = 0; i < openSet.Count; i++)
+        {
+            NavNode curNode = openSet[i];
+            //Debug.Log("Checking Node <" + curNode.uID + ">. Extents are " + curNode.nodeExtents + ".");
+            if ((curNode.nodeExtents.x < defaultExtents.x) || (curNode.nodeExtents.z < defaultExtents.z))
+            {
+                //Debug.Log("Removing Node <" + curNode.uID + ">.");
+                nodesToRemove.Add(curNode);
+            }
+        }
+        for (int i = 0; i < nodesToRemove.Count; i++)
+        {
+            closedSet.Add(nodesToRemove[i]);
+            openSet.Remove(nodesToRemove[i]);
+        }
+        DebugLog("RmvSDNodes", "Removed (" + nodesToRemove.Count + ") nodes from the OpenSet", 0, navSimpDebugLevel);
+    }
+
+    private List<NavNode> FindColumnList(List<NavNode> curRowSet, int rowSize, List<NavNode> openSetList, Vector3 direction)
+    {
+        List<NavNode> columnSet = new List<NavNode>();
+        NavNode nextColumnNode;
+        for (int i = (curRowSet.Count - rowSize); i < curRowSet.Count; i++)
+        {
+            nextColumnNode = FindNavNodeFromPos(curRowSet[i].nodePosition + (direction * 1.6f));
+            if ((nextColumnNode != null) && (CheckNodeInList(openSetList,nextColumnNode))) 
+            {
+                columnSet.Add(nextColumnNode); 
+            }
+        }
+        DebugLog("NavSimp", "(" + columnSet.Count + ") nodes found.", 1, navSimpDebugLevel);
+        return columnSet;
+    }
+
+    private NavNode CreateNewNodeFromList(List<NavNode> nodeList, int uID, int rowSize)
+    {
+        Vector3 newNodeExtents = FindCombinedExtents(nodeList, rowSize);
         Vector3 newNodePos = FindAveragePosFromList(nodeList);
-        int uID = GenerateUID();
         List<Vector3> newNodeVerts = GenerateVertexList(newNodePos, newNodeExtents);
-        Debug.Log("[NavSimp][NavCreate] Creating Navnode <" + uID + "> at " + newNodePos + ". Extents are set to " + newNodeExtents + ".");
-        NavNode newNode = new NavNode(newNodePos, new Vector3(0, 0, 0), newNodeVerts, uID);
+        DebugLog("NavSimp", "Creating Navnode <" + uID + "> at " + newNodePos + ". Extents are set to " + newNodeExtents + ".", 1, navSimpDebugLevel);
+        NavNode newNode = new NavNode(newNodePos, newNodeExtents, newNodeVerts, uID);
+        for (int i = 0; i < nodeList.Count; i++)
+        {
+            nodeList[i].DestroyNode();
+        }
+        newNode.SetDebugNodeColour(Color.blue);
         return newNode;
     }
 
-    private Vector3 FindCombinedExtents(List<NavNode> nodelist)
+    private Vector3 FindCombinedExtents(List<NavNode> nodelist, int rowSize)
     {
-        Vector3 extents = new Vector3(0, 0, 0);
-        for (int i = 0; i < nodelist.Count; i++)
+        Vector3 extents = nodelist[0].nodeExtents;
+        int columnSize = nodelist.Count / rowSize;
+        for (int i = 1; i < rowSize; i++)
         {
-            extents += nodelist[i].nodeExtents;
+            extents.x += nodelist[i].nodeExtents.x;
         }
+        extents.z = nodelist[0].nodeExtents.z * columnSize;
         return extents;
     }
 
@@ -559,6 +666,23 @@ public class NavNodeManager
         }
         averagePos /= nodeCount;
         return averagePos;
+    }
+
+    private List<NavNode> FindNodesFromArea(List<NavNode> availableNodeList, Vector3 center, Vector3 size)
+    {
+        List<NavNode> returnList = new List<NavNode>();
+        for (int i = 0; i < availableNodeList.Count(); i++)
+        {
+            NavNode curNode = availableNodeList[i];
+            if (((center.x + size.x) >= curNode.nodePosition.x) && ((center.x - size.x) <= curNode.nodePosition.x))
+            {
+                if (((center.z + size.z) >= curNode.nodePosition.z) && ((center.z - size.z) <= curNode.nodePosition.z))
+                {
+                    returnList.Add(curNode);
+                }
+            }
+        }
+        return returnList;
     }
 
     #endregion

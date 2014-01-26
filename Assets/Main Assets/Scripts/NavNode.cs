@@ -79,7 +79,12 @@ public class NavNode {
 	private void UpdateDebugNodeLinks () {
         UpdateDebugNode("UpdateLinks", this);
 	}
-	
+
+    public void SetDebugNodeColour(Color newColor)
+    {
+        nodeVis.GetComponent<DebuggingNodes>().SendMessage("UpdateColour", newColor);
+    }
+
 	private void CreateDebugNode () 
     {
         //Debug.Log("[" + uID + "][NavN] is creating a debug node at " + nodePosition + ". Vectors used are " + nodeVertices[0] + nodeVertices[1] + nodeVertices[2] + nodeVertices[3] + ".");

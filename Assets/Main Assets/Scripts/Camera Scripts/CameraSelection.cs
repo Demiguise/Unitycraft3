@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class CameraSelection : MonoBehaviour {
-	
+    
 	public bool rayDebugInfo;
 	private GameObject[] unitArray;
 	public int factionFlag;
@@ -14,9 +14,9 @@ public class CameraSelection : MonoBehaviour {
 	private Vector3 newMousePosition;
 	private bool buildMenu;
 	
-	
 	// Use this for initialization
 	void Start () {
+        GameLog.InitGameLog();
         FindActiveUnits();
 		RigUnitNavStuff ();
 		rayDebugInfo = true;

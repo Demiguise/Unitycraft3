@@ -1,0 +1,7 @@
+<1/26/2014 10:22:07 AM>[NavM][NavLoad] Beginning NavMesh initialization.
+<1/26/2014 10:22:07 AM>[NavM][NavLoad] NavMesh found. Parsing & Loading
+<1/26/2014 10:22:08 AM>[NavM][NavLoad] Loading NavNodeLinks took 46.1648ms.
+<1/26/2014 10:22:08 AM>[NavM][NavLoad] <519> nodes loaded in 335.6059ms.
+<1/26/2014 10:22:10 AM>[NavM][RmvSDNodes] Removed (72) nodes from the OpenSet
+<1/26/2014 10:22:13 AM>[NavM][RmvSDNodes] Removed (0) nodes from the OpenSet
+<1/26/2014 10:22:13 AM>[NavM][NavSimp] <54> node(s) created through MeshSimplifcation. Part 1.

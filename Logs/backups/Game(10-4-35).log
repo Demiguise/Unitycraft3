@@ -1,0 +1,715 @@
+<1/26/2014 10:02:08 AM>[NavM][NavLoad] Beginning NavMesh initialization.
+<1/26/2014 10:02:08 AM>[NavM][NavLoad] NavMesh found. Parsing & Loading
+<1/26/2014 10:02:08 AM>[NavM][NavLoad] Loading NavNodeLinks took 45.3183ms.
+<1/26/2014 10:02:08 AM>[NavM][NavLoad] <519> nodes loaded in 337.7943ms.
+<1/26/2014 10:02:08 AM>[NavM][RmvSDNodes] Removed (48) nodes from the OpenSet
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] curSet(1). Starting from node <1>.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] curSet UIDs(1). Adding node <2>.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] curSet UIDs(1,2). Adding node <6>.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] curSet UIDs(1,2,6). Adding node <14>.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] Row Count is now at 3(+1). Maximum row size reached
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] End of Row reached. O(467) Cur(4) C(48).
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] Column found with UIDs(,5,8,16,28).
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] Column found with UIDs(,13,18,30,46).
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] Column found with UIDs(,25,32,48,68).
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] Column Count is now at 3(+1). Maximum column size reached
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] End of Column reached. O(455) Cur(16) C(48).
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] Creating Navnode <1> at (-82.3, 0.3, 111.6). Extents are set to (12.0, 0.0, 12.0).
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] curSet(1). Starting from node <3>.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] curSet UIDs(3). Adding node <7>.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] curSet UIDs(3,7). Adding node <15>.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] curSet UIDs(3,7,15). Adding node <27>.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] Row Count is now at 3(+1). Maximum row size reached
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] End of Row reached. O(451) Cur(4) C(64).
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] Column found with UIDs(,9,17,29,45).
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] Column found with UIDs(,19,31,47,67).
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] Column found with UIDs(,33,49,69,93).
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] Column Count is now at 3(+1). Maximum column size reached
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] End of Column reached. O(439) Cur(16) C(64).
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] Creating Navnode <2> at (-82.3, 0.4, 99.6). Extents are set to (12.0, 0.0, 12.0).
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] curSet(1). Starting from node <4>.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] curSet UIDs(4). Adding node <11>.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] curSet UIDs(4,11). Adding node <22>.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] curSet UIDs(4,11,22). Adding node <37>.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] Row Count is now at 3(+1). Maximum row size reached
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] End of Row reached. O(435) Cur(4) C(80).
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] Column found with UIDs(,12,23,38,57).
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] Column found with UIDs(,24,39,58,81).
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] Column found with UIDs(,40,59,82,109).
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] Column Count is now at 3(+1). Maximum column size reached
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] End of Column reached. O(423) Cur(16) C(80).
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] Creating Navnode <3> at (-94.3, 0.4, 111.6). Extents are set to (12.0, 0.0, 12.0).
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] curSet(1). Starting from node <10>.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] curSet UIDs(10). Adding node <21>.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] curSet UIDs(10,21). Adding node <36>.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] curSet UIDs(10,21,36). Adding node <55>.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] Row Count is now at 3(+1). Maximum row size reached
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] End of Row reached. O(419) Cur(4) C(96).
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] Column found with UIDs(,20,35,54,77).
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] Column found with UIDs(,34,53,76,103).
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] Column found with UIDs(,52,75,102,134).
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] Column Count is now at 3(+1). Maximum column size reached
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] End of Column reached. O(407) Cur(16) C(96).
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] Creating Navnode <4> at (-94.3, 0.4, 99.6). Extents are set to (12.0, 0.0, 12.0).
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] curSet(1). Starting from node <26>.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] curSet UIDs(26). Adding node <42>.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] curSet UIDs(26,42). Adding node <62>.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] curSet UIDs(26,42,62). Adding node <86>.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] Row Count is now at 3(+1). Maximum row size reached
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] End of Row reached. O(403) Cur(4) C(112).
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] Column found with UIDs(,44,64,88,116).
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] Column found with UIDs(,66,90,118,151).
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:08 AM>[NavM][NavSimp] Column found with UIDs(,92,120,153,188).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Column Count is now at 3(+1). Maximum column size reached
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] End of Column reached. O(391) Cur(16) C(112).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Creating Navnode <5> at (-70.3, 0.4, 111.6). Extents are set to (12.0, 0.0, 12.0).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] curSet(1). Starting from node <41>.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] curSet UIDs(41). Adding node <50>.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] curSet UIDs(41,50). Adding node <70>.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] curSet UIDs(41,50,70). Adding node <94>.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Row Count is now at 3(+1). Maximum row size reached
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] End of Row reached. O(387) Cur(4) C(128).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Column found with UIDs(,61,72,96,124).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Column found with UIDs(,85,98,126,159).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Column found with UIDs(,113,128,161,196).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Column Count is now at 3(+1). Maximum column size reached
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] End of Column reached. O(375) Cur(16) C(128).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Creating Navnode <6> at (-82.3, 0.4, 123.6). Extents are set to (12.0, 0.0, 12.0).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] curSet(1). Starting from node <43>.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] curSet UIDs(43). Adding node <63>.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] curSet UIDs(43,63). Adding node <87>.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] curSet UIDs(43,63,87). Adding node <115>.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Row Count is now at 3(+1). Maximum row size reached
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] End of Row reached. O(371) Cur(4) C(144).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Column found with UIDs(,65,89,117,150).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Column found with UIDs(,91,119,152,187).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Column found with UIDs(,121,154,189,227).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Column Count is now at 3(+1). Maximum column size reached
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] End of Column reached. O(359) Cur(16) C(144).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Creating Navnode <7> at (-70.3, 0.4, 99.6). Extents are set to (12.0, 0.0, 12.0).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] curSet(1). Starting from node <51>.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] curSet UIDs(51). Adding node <71>.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] curSet UIDs(51,71). Adding node <95>.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] curSet UIDs(51,71,95). Adding node <123>.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Row Count is now at 3(+1). Maximum row size reached
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] End of Row reached. O(355) Cur(4) C(160).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Column found with UIDs(,73,97,125,158).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] (1) nodes found.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] End of Column reached. O(351) Cur(8) C(160).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Creating Navnode <8> at (-82.3, 0.4, 90.6). Extents are set to (12.0, 0.0, 6.0).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] curSet(1). Starting from node <56>.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] curSet UIDs(56). Adding node <79>.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] curSet UIDs(56,79). Adding node <106>.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] curSet UIDs(56,79,106). Adding node <138>.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] End of Row reached. O(347) Cur(4) C(168).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Column found with UIDs(,80,107,139,173).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Column found with UIDs(,108,140,174,211).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Column found with UIDs(,141,175,212,249).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Column Count is now at 3(+1). Maximum column size reached
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] End of Column reached. O(335) Cur(16) C(168).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Creating Navnode <9> at (-106.3, 0.4, 111.6). Extents are set to (12.0, 0.0, 12.0).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] curSet(1). Starting from node <60>.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] curSet UIDs(60). Adding node <83>.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] curSet UIDs(60,83). Adding node <110>.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] curSet UIDs(60,83,110). Adding node <142>.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Row Count is now at 3(+1). Maximum row size reached
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] End of Row reached. O(331) Cur(4) C(184).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Column found with UIDs(,84,111,143,177).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Column found with UIDs(,112,144,178,215).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Column found with UIDs(,145,179,216,253).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Column Count is now at 3(+1). Maximum column size reached
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] End of Column reached. O(319) Cur(16) C(184).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Creating Navnode <10> at (-94.3, 0.4, 123.6). Extents are set to (12.0, 0.0, 12.0).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] curSet(1). Starting from node <74>.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] curSet UIDs(74). Adding node <101>.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] curSet UIDs(74,101). Adding node <133>.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] curSet UIDs(74,101,133). Adding node <167>.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Row Count is now at 3(+1). Maximum row size reached
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] End of Row reached. O(315) Cur(4) C(200).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Column found with UIDs(,100,132,166,202).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] (3) nodes found.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] End of Column reached. O(311) Cur(8) C(200).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Creating Navnode <11> at (-94.3, 0.4, 90.6). Extents are set to (12.0, 0.0, 6.0).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] curSet(1). Starting from node <78>.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] curSet UIDs(78). Adding node <105>.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] curSet UIDs(78,105). Adding node <137>.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] curSet UIDs(78,105,137). Adding node <171>.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Row Count is now at 3(+1). Maximum row size reached
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] End of Row reached. O(307) Cur(4) C(208).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Column found with UIDs(,104,136,170,206).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Column found with UIDs(,135,169,205,244).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Column found with UIDs(,168,204,243,282).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Column Count is now at 3(+1). Maximum column size reached
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] End of Column reached. O(295) Cur(16) C(208).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Creating Navnode <12> at (-106.3, 0.4, 99.6). Extents are set to (12.0, 0.0, 12.0).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] curSet(1). Starting from node <114>.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] curSet UIDs(114). Adding node <147>.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] curSet UIDs(114,147). Adding node <182>.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] curSet UIDs(114,147,182). Adding node <220>.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Row Count is now at 3(+1). Maximum row size reached
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] End of Row reached. O(291) Cur(4) C(224).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] Column found with UIDs(,149,184,222,260).
+<1/26/2014 10:02:09 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] Column found with UIDs(,186,224,262,300).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] Column found with UIDs(,226,264,302,340).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] Column Count is now at 3(+1). Maximum column size reached
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] End of Column reached. O(279) Cur(16) C(224).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] Creating Navnode <13> at (-58.3, 0.4, 111.6). Extents are set to (12.0, 0.0, 12.0).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] curSet(1). Starting from node <122>.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] curSet UIDs(122). Adding node <155>.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] curSet UIDs(122,155). Adding node <190>.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] curSet UIDs(122,155,190). Adding node <228>.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] Row Count is now at 3(+1). Maximum row size reached
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] End of Row reached. O(275) Cur(4) C(240).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] Column found with UIDs(,157,192,230,268).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] Column found with UIDs(,194,232,270,308).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] Column found with UIDs(,234,272,310,348).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] Column Count is now at 3(+1). Maximum column size reached
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] End of Column reached. O(263) Cur(16) C(240).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] Creating Navnode <14> at (-70.3, 0.4, 123.6). Extents are set to (12.0, 0.0, 12.0).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] curSet(1). Starting from node <130>.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] End of Row reached. O(262) Cur(1) C(256).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] End of Column reached. O(262) Cur(1) C(256).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] Creating Navnode <15> at (-87.6, 0.4, 86.9). Extents are set to (1.5, 0.0, 1.5).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] curSet(1). Starting from node <146>.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] curSet UIDs(146). Adding node <163>.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] curSet UIDs(146,163). Adding node <198>.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] curSet UIDs(146,163,198). Adding node <236>.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] Row Count is now at 3(+1). Maximum row size reached
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] End of Row reached. O(258) Cur(4) C(257).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] Column found with UIDs(,181,199,237,275).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] Column found with UIDs(,219,238,276,314).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] Column found with UIDs(,257,277,315,353).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] Column Count is now at 3(+1). Maximum column size reached
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] End of Column reached. O(246) Cur(16) C(257).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] Creating Navnode <16> at (-82.3, 0.4, 135.6). Extents are set to (12.0, 0.0, 12.0).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] curSet(1). Starting from node <148>.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] curSet UIDs(148). Adding node <183>.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] curSet UIDs(148,183). Adding node <221>.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] curSet UIDs(148,183,221). Adding node <259>.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] Row Count is now at 3(+1). Maximum row size reached
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] End of Row reached. O(242) Cur(4) C(273).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] Column found with UIDs(,185,223,261,299).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] Column found with UIDs(,225,263,301,339).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] Column found with UIDs(,265,303,341,379).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] Column Count is now at 3(+1). Maximum column size reached
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] End of Column reached. O(230) Cur(16) C(273).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] Creating Navnode <17> at (-58.3, 0.4, 99.6). Extents are set to (12.0, 0.0, 12.0).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] curSet(1). Starting from node <156>.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] curSet UIDs(156). Adding node <191>.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] curSet UIDs(156,191). Adding node <229>.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] curSet UIDs(156,191,229). Adding node <267>.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] Row Count is now at 3(+1). Maximum row size reached
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] End of Row reached. O(226) Cur(4) C(289).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] Column found with UIDs(,193,231,269,307).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] End of Column reached. O(222) Cur(8) C(289).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] Creating Navnode <18> at (-70.3, 0.4, 90.6). Extents are set to (12.0, 0.0, 6.0).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] curSet(1). Starting from node <165>.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] End of Row reached. O(221) Cur(1) C(297).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] End of Column reached. O(221) Cur(1) C(297).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] Creating Navnode <19> at (-92.1, 0.4, 86.9). Extents are set to (1.5, 0.0, 1.5).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] curSet(1). Starting from node <176>.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] curSet UIDs(176). Adding node <213>.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] curSet UIDs(176,213). Adding node <250>.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] curSet UIDs(176,213,250). Adding node <287>.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] Row Count is now at 3(+1). Maximum row size reached
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] End of Row reached. O(217) Cur(4) C(298).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] Column found with UIDs(,214,251,288,325).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] Column found with UIDs(,252,289,326,363).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] Column found with UIDs(,290,327,364,401).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] Column Count is now at 3(+1). Maximum column size reached
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] End of Column reached. O(205) Cur(16) C(298).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] Creating Navnode <20> at (-106.3, 0.4, 123.6). Extents are set to (12.0, 0.0, 12.0).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] curSet(1). Starting from node <180>.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] curSet UIDs(180). Adding node <217>.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] curSet UIDs(180,217). Adding node <254>.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] curSet UIDs(180,217,254). Adding node <291>.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] Row Count is now at 3(+1). Maximum row size reached
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] End of Row reached. O(201) Cur(4) C(314).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] Column found with UIDs(,218,255,292,329).
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:10 AM>[NavM][NavSimp] Column found with UIDs(,256,293,330,367).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] Column found with UIDs(,294,331,368,405).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] Column Count is now at 3(+1). Maximum column size reached
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] End of Column reached. O(189) Cur(16) C(314).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] Creating Navnode <21> at (-94.3, 0.4, 135.6). Extents are set to (12.0, 0.0, 12.0).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] curSet(1). Starting from node <201>.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] End of Row reached. O(188) Cur(1) C(330).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] End of Column reached. O(188) Cur(1) C(330).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] Creating Navnode <22> at (-95.1, 0.4, 86.9). Extents are set to (1.5, 0.0, 1.5).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] curSet(1). Starting from node <203>.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] curSet UIDs(203). Adding node <242>.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] curSet UIDs(203,242). Adding node <281>.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] curSet UIDs(203,242,281). Adding node <320>.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] Row Count is now at 3(+1). Maximum row size reached
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] End of Row reached. O(184) Cur(4) C(331).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] Column found with UIDs(,241,280,319,358).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] Column found with UIDs(,279,318,357,396).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] End of Column reached. O(176) Cur(12) C(331).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] Creating Navnode <23> at (-106.1, 0.4, 89.4). Extents are set to (12.0, 0.0, 9.0).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] curSet(1). Starting from node <208>.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] End of Row reached. O(175) Cur(1) C(343).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] End of Column reached. O(175) Cur(1) C(343).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] Creating Navnode <24> at (-113.1, 0.4, 104.9). Extents are set to (1.5, 0.0, 1.5).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] curSet(1). Starting from node <210>.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] End of Row reached. O(174) Cur(1) C(344).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] End of Column reached. O(174) Cur(1) C(344).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] Creating Navnode <25> at (-113.1, 0.4, 109.4). Extents are set to (1.5, 0.0, 1.5).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] curSet(1). Starting from node <240>.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] End of Row reached. O(173) Cur(1) C(345).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] End of Column reached. O(173) Cur(1) C(345).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] Creating Navnode <26> at (-98.1, 0.4, 86.9). Extents are set to (1.5, 0.0, 1.5).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] curSet(1). Starting from node <246>.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] End of Row reached. O(172) Cur(1) C(346).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] End of Column reached. O(172) Cur(1) C(346).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] Creating Navnode <27> at (-113.1, 0.4, 101.9). Extents are set to (1.5, 0.0, 1.5).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] curSet(1). Starting from node <248>.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] End of Row reached. O(171) Cur(1) C(347).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] End of Column reached. O(171) Cur(1) C(347).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] Creating Navnode <28> at (-113.1, 0.4, 112.4). Extents are set to (1.5, 0.0, 1.5).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] curSet(1). Starting from node <258>.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] curSet UIDs(258). Adding node <296>.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] curSet UIDs(258,296). Adding node <334>.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] curSet UIDs(258,296,334). Adding node <372>.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] Row Count is now at 3(+1). Maximum row size reached
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] End of Row reached. O(167) Cur(4) C(348).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] Column found with UIDs(,298,336,374,412).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] Column found with UIDs(,338,376,414,451).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] Column found with UIDs(,378,416,453,489).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] (3) nodes found.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] End of Column reached. O(155) Cur(16) C(348).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] Creating Navnode <29> at (-46.3, 0.4, 111.6). Extents are set to (12.0, 0.0, 12.0).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] curSet(1). Starting from node <266>.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] curSet UIDs(266). Adding node <304>.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] curSet UIDs(266,304). Adding node <342>.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] curSet UIDs(266,304,342). Adding node <380>.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] Row Count is now at 3(+1). Maximum row size reached
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] End of Row reached. O(151) Cur(4) C(364).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] Column found with UIDs(,306,344,382,420).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] Column found with UIDs(,346,384,422,459).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] Column found with UIDs(,386,424,461,497).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] (3) nodes found.
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] End of Column reached. O(139) Cur(16) C(364).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] Creating Navnode <30> at (-58.3, 0.4, 123.6). Extents are set to (12.0, 0.0, 12.0).
+<1/26/2014 10:02:11 AM>[NavM][NavSimp] curSet(1). Starting from node <274>.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] curSet UIDs(274). Adding node <312>.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] curSet UIDs(274,312). Adding node <350>.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] curSet UIDs(274,312,350). Adding node <388>.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] Row Count is now at 3(+1). Maximum row size reached
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] End of Row reached. O(135) Cur(4) C(380).
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] Column found with UIDs(,313,351,389,427).
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] Column found with UIDs(,352,390,428,465).
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] Column found with UIDs(,391,429,466,502).
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] (3) nodes found.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] End of Column reached. O(123) Cur(16) C(380).
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] Creating Navnode <31> at (-70.3, 0.4, 135.6). Extents are set to (12.0, 0.0, 12.0).
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] curSet(1). Starting from node <284>.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] End of Row reached. O(122) Cur(1) C(396).
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] End of Column reached. O(122) Cur(1) C(396).
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] Creating Navnode <32> at (-113.1, 0.4, 98.9). Extents are set to (1.5, 0.0, 1.5).
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] curSet(1). Starting from node <286>.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] End of Row reached. O(121) Cur(1) C(397).
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] End of Column reached. O(121) Cur(1) C(397).
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] Creating Navnode <33> at (-113.1, 0.4, 115.4). Extents are set to (1.5, 0.0, 1.5).
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] curSet(1). Starting from node <295>.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] curSet UIDs(295). Adding node <316>.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] curSet UIDs(295,316). Adding node <354>.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] curSet UIDs(295,316,354). Adding node <392>.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] Row Count is now at 3(+1). Maximum row size reached
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] End of Row reached. O(117) Cur(4) C(398).
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] Column found with UIDs(,333,355,393,431).
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] Column found with UIDs(,371,394,432,469).
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] Column found with UIDs(,409,433,470,506).
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] (3) nodes found.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] End of Column reached. O(105) Cur(16) C(398).
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] Creating Navnode <34> at (-82.3, 0.4, 147.6). Extents are set to (12.0, 0.0, 12.0).
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] curSet(1). Starting from node <297>.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] curSet UIDs(297). Adding node <335>.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] curSet UIDs(297,335). Adding node <373>.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] curSet UIDs(297,335,373). Adding node <411>.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] Row Count is now at 3(+1). Maximum row size reached
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] End of Row reached. O(101) Cur(4) C(414).
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] Column found with UIDs(,337,375,413,450).
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] Column found with UIDs(,377,415,452,488).
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] (3) nodes found.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] End of Column reached. O(93) Cur(12) C(414).
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] Creating Navnode <35> at (-46.3, 0.4, 101.1). Extents are set to (12.0, 0.0, 9.0).
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] curSet(1). Starting from node <305>.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] curSet UIDs(305). Adding node <343>.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] curSet UIDs(305,343). Adding node <381>.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] curSet UIDs(305,343,381). Adding node <419>.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] Row Count is now at 3(+1). Maximum row size reached
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] End of Row reached. O(89) Cur(4) C(426).
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] Column found with UIDs(,345,383,421,458).
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] End of Column reached. O(85) Cur(8) C(426).
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] Creating Navnode <36> at (-58.3, 0.4, 90.6). Extents are set to (12.0, 0.0, 6.0).
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] curSet(1). Starting from node <322>.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] End of Row reached. O(84) Cur(1) C(434).
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] End of Column reached. O(84) Cur(1) C(434).
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] Creating Navnode <37> at (-113.1, 0.4, 95.9). Extents are set to (1.5, 0.0, 1.5).
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] curSet(1). Starting from node <324>.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] End of Row reached. O(83) Cur(1) C(435).
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] End of Column reached. O(83) Cur(1) C(435).
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] Creating Navnode <38> at (-113.1, 0.4, 118.4). Extents are set to (1.5, 0.0, 1.5).
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] curSet(1). Starting from node <328>.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] curSet UIDs(328). Adding node <365>.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] curSet UIDs(328,365). Adding node <402>.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] curSet UIDs(328,365,402). Adding node <438>.
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] Row Count is now at 3(+1). Maximum row size reached
+<1/26/2014 10:02:12 AM>[NavM][NavSimp] End of Row reached. O(79) Cur(4) C(436).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] Column found with UIDs(,366,403,439,474).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] Column found with UIDs(,404,440,475,511).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] (3) nodes found.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] End of Column reached. O(71) Cur(12) C(436).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] Creating Navnode <39> at (-106.3, 0.4, 134.1). Extents are set to (12.0, 0.0, 9.0).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] curSet(1). Starting from node <332>.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] curSet UIDs(332). Adding node <369>.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] curSet UIDs(332,369). Adding node <406>.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] curSet UIDs(332,369,406). Adding node <442>.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] Row Count is now at 3(+1). Maximum row size reached
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] End of Row reached. O(67) Cur(4) C(448).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] Column found with UIDs(,370,407,443,478).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] (4) nodes found.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] Column found with UIDs(,408,444,479,515).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] (3) nodes found.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] End of Column reached. O(59) Cur(12) C(448).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] Creating Navnode <40> at (-94.3, 0.4, 146.1). Extents are set to (12.0, 0.0, 9.0).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] curSet(1). Starting from node <360>.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] End of Row reached. O(58) Cur(1) C(460).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] End of Column reached. O(58) Cur(1) C(460).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] Creating Navnode <41> at (-113.1, 0.4, 92.9). Extents are set to (1.5, 0.0, 1.5).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] curSet(1). Starting from node <362>.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] End of Row reached. O(57) Cur(1) C(461).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] End of Column reached. O(57) Cur(1) C(461).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] Creating Navnode <42> at (-113.1, 0.4, 121.4). Extents are set to (1.5, 0.0, 1.5).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] curSet(1). Starting from node <398>.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] End of Row reached. O(56) Cur(1) C(462).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] End of Column reached. O(56) Cur(1) C(462).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] Creating Navnode <43> at (-113.1, 0.4, 89.9). Extents are set to (1.5, 0.0, 1.5).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] curSet(1). Starting from node <400>.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] End of Row reached. O(55) Cur(1) C(463).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] End of Column reached. O(55) Cur(1) C(463).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] Creating Navnode <44> at (-113.1, 0.4, 124.4). Extents are set to (1.5, 0.0, 1.5).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] curSet(1). Starting from node <410>.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] curSet UIDs(410). Adding node <447>.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] curSet UIDs(410,447). Adding node <483>.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] End of Row reached. O(52) Cur(3) C(464).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] (2) nodes found.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] End of Column reached. O(52) Cur(3) C(464).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] Creating Navnode <45> at (-35.8, 0.4, 107.1). Extents are set to (9.0, 0.0, 3.0).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] curSet(1). Starting from node <417>.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] curSet UIDs(417). Adding node <454>.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] curSet UIDs(417,454). Adding node <490>.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] End of Row reached. O(49) Cur(3) C(467).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] (2) nodes found.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] End of Column reached. O(49) Cur(3) C(467).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] Creating Navnode <46> at (-47.8, 0.4, 95.1). Extents are set to (9.0, 0.0, 3.0).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] curSet(1). Starting from node <418>.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] curSet UIDs(418). Adding node <455>.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] curSet UIDs(418,455). Adding node <491>.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] End of Row reached. O(46) Cur(3) C(470).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] (2) nodes found.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] End of Column reached. O(46) Cur(3) C(470).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] Creating Navnode <47> at (-47.8, 0.4, 119.1). Extents are set to (9.0, 0.0, 3.0).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] curSet(1). Starting from node <426>.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] curSet UIDs(426). Adding node <463>.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] curSet UIDs(426,463). Adding node <499>.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] End of Row reached. O(43) Cur(3) C(473).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] (2) nodes found.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] End of Column reached. O(43) Cur(3) C(473).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] Creating Navnode <48> at (-59.8, 0.4, 131.1). Extents are set to (9.0, 0.0, 3.0).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] curSet(1). Starting from node <430>.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] curSet UIDs(430). Adding node <467>.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] curSet UIDs(430,467). Adding node <503>.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] End of Row reached. O(40) Cur(3) C(476).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] (2) nodes found.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] End of Column reached. O(40) Cur(3) C(476).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] Creating Navnode <49> at (-71.8, 0.4, 143.1). Extents are set to (9.0, 0.0, 3.0).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] curSet(1). Starting from node <435>.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] End of Row reached. O(39) Cur(1) C(479).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] End of Column reached. O(39) Cur(1) C(479).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] Creating Navnode <50> at (-113.1, 0.4, 86.9). Extents are set to (1.5, 0.0, 1.5).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] curSet(1). Starting from node <437>.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] End of Row reached. O(38) Cur(1) C(480).
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:13 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] End of Column reached. O(38) Cur(1) C(480).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] Creating Navnode <51> at (-113.1, 0.4, 127.4). Extents are set to (1.5, 0.0, 1.5).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] curSet(1). Starting from node <441>.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] curSet UIDs(441). Adding node <476>.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] curSet UIDs(441,476). Adding node <512>.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] End of Row reached. O(35) Cur(3) C(481).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] (2) nodes found.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] End of Column reached. O(35) Cur(3) C(481).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] Creating Navnode <52> at (-104.8, 0.4, 140.1). Extents are set to (9.0, 0.0, 3.0).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] curSet(1). Starting from node <445>.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] curSet UIDs(445). Adding node <480>.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] curSet UIDs(445,480). Adding node <516>.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] End of Row reached. O(32) Cur(3) C(484).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] (2) nodes found.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] End of Column reached. O(32) Cur(3) C(484).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] Creating Navnode <53> at (-92.8, 0.4, 152.1). Extents are set to (9.0, 0.0, 3.0).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] curSet(1). Starting from node <446>.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] curSet UIDs(446). Adding node <471>.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] curSet UIDs(446,471). Adding node <507>.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] End of Row reached. O(29) Cur(3) C(487).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] (2) nodes found.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] End of Column reached. O(29) Cur(3) C(487).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] Creating Navnode <54> at (-83.8, 0.4, 155.1). Extents are set to (9.0, 0.0, 3.0).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] curSet(1). Starting from node <448>.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] curSet UIDs(448). Adding node <484>.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] End of Row reached. O(27) Cur(2) C(490).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] (1) nodes found.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] End of Column reached. O(27) Cur(2) C(490).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] Creating Navnode <55> at (-37.3, 0.4, 104.1). Extents are set to (6.0, 0.0, 3.0).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] curSet(1). Starting from node <449>.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] curSet UIDs(449). Adding node <485>.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] End of Row reached. O(25) Cur(2) C(492).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] (1) nodes found.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] End of Column reached. O(25) Cur(2) C(492).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] Creating Navnode <56> at (-37.3, 0.4, 110.1). Extents are set to (6.0, 0.0, 3.0).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] curSet(1). Starting from node <456>.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] curSet UIDs(456). Adding node <492>.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] End of Row reached. O(23) Cur(2) C(494).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] (1) nodes found.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] End of Column reached. O(23) Cur(2) C(494).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] Creating Navnode <57> at (-49.3, 0.4, 92.1). Extents are set to (6.0, 0.0, 3.0).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] curSet(1). Starting from node <457>.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] curSet UIDs(457). Adding node <493>.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] End of Row reached. O(21) Cur(2) C(496).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] (1) nodes found.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] End of Column reached. O(21) Cur(2) C(496).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] Creating Navnode <58> at (-49.3, 0.4, 122.1). Extents are set to (6.0, 0.0, 3.0).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] curSet(1). Starting from node <464>.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] curSet UIDs(464). Adding node <500>.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] End of Row reached. O(19) Cur(2) C(498).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] (1) nodes found.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] End of Column reached. O(19) Cur(2) C(498).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] Creating Navnode <59> at (-61.3, 0.4, 134.1). Extents are set to (6.0, 0.0, 3.0).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] curSet(1). Starting from node <468>.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] curSet UIDs(468). Adding node <504>.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] End of Row reached. O(17) Cur(2) C(500).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] (1) nodes found.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] End of Column reached. O(17) Cur(2) C(500).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] Creating Navnode <60> at (-73.3, 0.4, 146.1). Extents are set to (6.0, 0.0, 3.0).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] curSet(1). Starting from node <473>.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] End of Row reached. O(16) Cur(1) C(502).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] End of Column reached. O(16) Cur(1) C(502).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] Creating Navnode <61> at (-113.1, 0.4, 130.4). Extents are set to (1.5, 0.0, 1.5).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] curSet(1). Starting from node <477>.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] curSet UIDs(477). Adding node <513>.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] End of Row reached. O(14) Cur(2) C(503).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] (1) nodes found.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] End of Column reached. O(14) Cur(2) C(503).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] Creating Navnode <62> at (-103.3, 0.4, 143.1). Extents are set to (6.0, 0.0, 3.0).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] curSet(1). Starting from node <481>.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] curSet UIDs(481). Adding node <517>.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] End of Row reached. O(12) Cur(2) C(505).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] (1) nodes found.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] End of Column reached. O(12) Cur(2) C(505).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] Creating Navnode <63> at (-91.3, 0.4, 155.1). Extents are set to (6.0, 0.0, 3.0).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] curSet(1). Starting from node <482>.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] curSet UIDs(482). Adding node <508>.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] End of Row reached. O(10) Cur(2) C(507).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] (1) nodes found.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] End of Column reached. O(10) Cur(2) C(507).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] Creating Navnode <64> at (-85.3, 0.4, 158.1). Extents are set to (6.0, 0.0, 3.0).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] curSet(1). Starting from node <486>.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] End of Row reached. O(9) Cur(1) C(509).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] End of Column reached. O(9) Cur(1) C(509).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] Creating Navnode <65> at (-38.8, 0.4, 101.1). Extents are set to (3.0, 0.0, 3.0).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] curSet(1). Starting from node <487>.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] End of Row reached. O(8) Cur(1) C(510).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] End of Column reached. O(8) Cur(1) C(510).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] Creating Navnode <66> at (-38.8, 0.4, 113.1). Extents are set to (3.0, 0.0, 3.0).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] curSet(1). Starting from node <494>.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] End of Row reached. O(7) Cur(1) C(511).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] End of Column reached. O(7) Cur(1) C(511).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] Creating Navnode <67> at (-50.8, 0.4, 89.1). Extents are set to (3.0, 0.0, 3.0).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] curSet(1). Starting from node <495>.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] End of Row reached. O(6) Cur(1) C(512).
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:14 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] End of Column reached. O(6) Cur(1) C(512).
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] Creating Navnode <68> at (-50.8, 0.4, 125.1). Extents are set to (3.0, 0.0, 3.0).
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] curSet(1). Starting from node <501>.
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] End of Row reached. O(5) Cur(1) C(513).
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] End of Column reached. O(5) Cur(1) C(513).
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] Creating Navnode <69> at (-62.8, 0.4, 137.1). Extents are set to (3.0, 0.0, 3.0).
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] curSet(1). Starting from node <505>.
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] End of Row reached. O(4) Cur(1) C(514).
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] End of Column reached. O(4) Cur(1) C(514).
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] Creating Navnode <70> at (-74.8, 0.4, 149.1). Extents are set to (3.0, 0.0, 3.0).
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] curSet(1). Starting from node <510>.
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] End of Row reached. O(3) Cur(1) C(515).
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] End of Column reached. O(3) Cur(1) C(515).
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] Creating Navnode <71> at (-113.1, 0.4, 133.4). Extents are set to (1.5, 0.0, 1.5).
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] curSet(1). Starting from node <514>.
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] End of Row reached. O(2) Cur(1) C(516).
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] End of Column reached. O(2) Cur(1) C(516).
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] Creating Navnode <72> at (-101.8, 0.4, 146.1). Extents are set to (3.0, 0.0, 3.0).
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] curSet(1). Starting from node <518>.
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] End of Row reached. O(1) Cur(1) C(517).
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] End of Column reached. O(1) Cur(1) C(517).
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] Creating Navnode <73> at (-89.8, 0.4, 158.1). Extents are set to (3.0, 0.0, 3.0).
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] curSet(1). Starting from node <519>.
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] End of Row reached. O(0) Cur(1) C(518).
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] (0) nodes found.
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] End of Column reached. O(0) Cur(1) C(518).
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] Creating Navnode <74> at (-86.8, 0.4, 161.1). Extents are set to (3.0, 0.0, 3.0).
+<1/26/2014 10:02:15 AM>[NavM][NavSimp] <74> node(s) created through MeshSimplifcation. Part 1.

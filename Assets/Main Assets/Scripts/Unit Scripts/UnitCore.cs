@@ -54,7 +54,6 @@ public class UnitCore : MonoBehaviour {
 
     private void OnDeath()
     {
-
         GameObject unitInstance = Instantiate(Resources.Load("Prefabs/Zergling-DeathAcid"), transform.position, transform.rotation) as GameObject;
         Destroy(this.gameObject);
     }
