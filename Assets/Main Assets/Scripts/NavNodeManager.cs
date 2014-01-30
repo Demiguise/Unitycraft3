@@ -35,7 +35,7 @@ public class NavNodeManager
 	private Vector3 defaultExtents;
     private Vector3 minSubDivisionExtents;
     public int navGenDebugLevel = 0; //Should go from 0 (Nothing) to 5 (Everything)
-    public int navSimpDebugLevel = 0;
+    public int navSimpDebugLevel = 5;
     private int[] worldLayer = { 9 };
 	
 	private List<double> nodeLinkTimes = new List<double>();
@@ -69,7 +69,7 @@ public class NavNodeManager
             stopWatch.Stop();
             DebugLog("NavLoad", "<" + availableNodes.Count + "> nodes loaded in " + stopWatch.Elapsed.TotalMilliseconds + "ms.", 0, navGenDebugLevel);
             printBenchmarkTimes();
-            availableNodes = GenerateInitialSquareMesh(availableNodes);
+            availableNodes = BeginNavMeshSimplification(availableNodes);     
         }
         catch (System.IO.FileNotFoundException)
         {
@@ -494,41 +494,56 @@ public class NavNodeManager
 
     #region NavMeshSimplification
 
-    private List<NavNode> GenerateInitialSquareMesh(List<NavNode> initialNodeList)
+    private List<NavNode> BeginNavMeshSimplification(List<NavNode> nodeList)
     {
+        List<NavNode> finishedList = new List<NavNode>();
+        List<NavNode> localNodeList = nodeList;
 
+        DebugLog("NavSimp", "Beginning simplification of all available nodes.", 1, navSimpDebugLevel);
+        finishedList = InitialSquareMerge(localNodeList, 3, 3);
+
+        DebugLog("NavSimp", "Navmesh simplification completed.", 1, navSimpDebugLevel);
+        return finishedList;
+    }
+
+    private List<NavNode> InitialSquareMerge(List<NavNode> initialNodeList, int reqRowSize, int reqColumnSize)
+    {
+        int maxRowSize = reqRowSize - 1;
+        int maxColumnSize = reqColumnSize - 1;
         List<NavNode> openSet = initialNodeList;
         List<NavNode> curSet = new List<NavNode>();
         List<NavNode> closedSet = new List<NavNode>();
         List<NavNode> newNodeList = new List<NavNode>();
-        RemoveSubDividedNodes(ref openSet, ref closedSet);
 
         while (openSet.Count > 0)
         {
-            //NavNode curNode = openSet[Random.Range(0, openSet.Count())];
             NavNode curNode = initialNodeList[0];
             openSet.Remove(curNode);
             curSet.Add(curNode);
             DebugLog("NavSimp", "curSet(" + curSet.Count + "). Starting from node <" + curNode.uID + ">.", 1, navSimpDebugLevel);
             Vector3 rowDir = Vector3.right;
-            NavNode nextRowNode = FindNavNodeFromPos(curSet[curSet.Count - 1].nodePosition + (rowDir * 1.6f));
+            //NavNode nextRowNode = FindNavNodeFromPos(curSet[curSet.Count - 1].nodePosition + (rowDir * 1.6f));
+            NavNode nextRowNode = FindAndMergeNodesFromArea(ref openSet, (curNode.nodePosition + (rowDir * 2.5f)), new Vector3((curNode.nodeExtents.x/2 * 0.6f), 0, curNode.nodeExtents.z/2));
             int rowCount= 0;
 
             if (nextRowNode == null)
             {
                 //This ensures that a row will be formed regardless of direction. If there's no node in front of it linearly, it will check behind.
+                DebugLog("NavSimp", "No nodes found from initial row search direction, reversing.", 3, navSimpDebugLevel);
                 rowDir *= -1;
-                nextRowNode = FindNavNodeFromPos(curSet[curSet.Count - 1].nodePosition + (rowDir * 1.6f));
+                //nextRowNode = FindNavNodeFromPos(curSet[curSet.Count - 1].nodePosition + (rowDir * 1.6f));
+                nextRowNode = FindAndMergeNodesFromArea(ref openSet, (curNode.nodePosition + (rowDir * 2.5f)), new Vector3((curNode.nodeExtents.x / 2 * 0.6f), 0, curNode.nodeExtents.z / 2));
             }
 
-            //Find the longest row of Nodes up to max of 4.
+            //Find the longest row of Nodes up to maxRowSize.
             while (nextRowNode != null)
             {
-                if (rowCount > 2)
+                if (rowCount >= maxRowSize)
                 {
-                    DebugLog("NavSimp", "Row Count is now at " + rowCount + "(+1). Maximum row size reached", 1, navSimpDebugLevel);
+                    DebugLog("NavSimp", "Row Count is now at " + rowCount + "(+1). Maximum row size reached.", 1, navSimpDebugLevel);
                     break; 
                 }
+                DebugLog("NavSimp", "Checking nextRowNode (" + nextRowNode.uID + ") is in Openset.", 2, navSimpDebugLevel);
                 if (CheckNodeInList(openSet, nextRowNode))
                 {
                     string debugString = curSet[0].uID.ToString();
@@ -539,29 +554,44 @@ public class NavNodeManager
                     DebugLog("NavSimp", "curSet UIDs(" + debugString + "). Adding node <" + nextRowNode.uID + ">.", 2, navSimpDebugLevel);
                     openSet.Remove(nextRowNode);
                     curSet.Add(nextRowNode);
-                    nextRowNode = FindNavNodeFromPos(curSet[curSet.Count - 1].nodePosition + (rowDir * 1.6f));
+                    //nextRowNode = FindNavNodeFromPos(curSet[curSet.Count - 1].nodePosition + (rowDir * 1.6f));
+                    nextRowNode = FindAndMergeNodesFromArea(ref openSet, (curNode.nodePosition + (rowDir * 2.5f)), new Vector3((curNode.nodeExtents.x / 2 * 0.6f), 0, curNode.nodeExtents.z / 2));
                     rowCount++;
                 }
                 else
                 {
-                    DebugLog("NavSimp", "curSet(" + curSet.Count + "). Node <" + nextRowNode.uID + "> did not exist in Openset, Discarding.", 2, navSimpDebugLevel);
+
+                    if (rowDir == Vector3.right)
+                    {
+                        DebugLog("NavSimp", "curSet(" + curSet.Count + "). Node <" + nextRowNode.uID + "> did not exist in Openset, discarding and reversing direction.", 2, navSimpDebugLevel);
+                        rowDir *= -1;
+                        //nextRowNode = FindNavNodeFromPos(curSet[curSet.Count - 1].nodePosition + (rowDir * 1.6f));
+                        nextRowNode = FindAndMergeNodesFromArea(ref openSet, (curNode.nodePosition + (rowDir * 2.5f)), new Vector3((curNode.nodeExtents.x / 2 * 0.6f), 0, curNode.nodeExtents.z / 2));
+                    }
+                    else
+                    {
+                        DebugLog("NavSimp", "curSet(" + curSet.Count + "). Node <" + nextRowNode.uID + "> did not exist in Openset, discarding and breaking.", 2, navSimpDebugLevel);
+                        break;
+                    }
                 }
             }
             DebugLog("NavSimp", "End of Row reached. O(" + openSet.Count + ") Cur(" + curSet.Count + ") C(" + closedSet.Count + ").", 1, navSimpDebugLevel);
 
-            //Find the longest Column of Nodes up to max of 4.
+            //Find the longest Column of Nodes up to maxColumnSize.
             int rowSize = curSet.Count();
             Vector3 columnDir = Vector3.forward;
             int columnCount = 0;
+            DebugLog("NavSimp", "Beginning search for matching columns.", 1, navSimpDebugLevel);
             List<NavNode> columnSet = FindColumnList(curSet, rowSize, openSet, columnDir);
             if (columnSet.Count == 0)
             {
+                DebugLog("NavSimp", "No nodes found from initial row search direction, reversing.", 2, navSimpDebugLevel);
                 columnDir *= -1;
                 columnSet = FindColumnList(curSet, rowSize, openSet, columnDir);
             }
             while (columnSet.Count == rowSize)
             {
-                if (columnCount > 2)
+                if (columnCount >= maxColumnSize)
                 {
                     DebugLog("NavSimp", "Column Count is now at " + columnCount + "(+1). Maximum column size reached", 1, navSimpDebugLevel);
                     break; 
@@ -588,29 +618,22 @@ public class NavNodeManager
             curSet.Clear();
             rowCount = 0;
         }
-        DebugLog("NavSimp", "<" + newNodeList.Count + "> node(s) created through MeshSimplifcation. Part 1.", 0, navSimpDebugLevel);
+        DebugLog("NavSimp", "<" + newNodeList.Count + "> node(s) created through MeshSimplifcation.", 0, navSimpDebugLevel);
         return newNodeList;
     }
 
-    private void RemoveSubDividedNodes(ref List<NavNode> openSet, ref List<NavNode> closedSet)
+    private List<NavNode> GetListOfSubDividedNodes(List<NavNode> openSet)
     {
-        List<NavNode> nodesToRemove = new List<NavNode>();
+        List<NavNode> returnList = new List<NavNode>();
         for (int i = 0; i < openSet.Count; i++)
         {
             NavNode curNode = openSet[i];
-            //Debug.Log("Checking Node <" + curNode.uID + ">. Extents are " + curNode.nodeExtents + ".");
             if ((curNode.nodeExtents.x < defaultExtents.x) || (curNode.nodeExtents.z < defaultExtents.z))
             {
-                //Debug.Log("Removing Node <" + curNode.uID + ">.");
-                nodesToRemove.Add(curNode);
+                returnList.Add(curNode);
             }
         }
-        for (int i = 0; i < nodesToRemove.Count; i++)
-        {
-            closedSet.Add(nodesToRemove[i]);
-            openSet.Remove(nodesToRemove[i]);
-        }
-        DebugLog("RmvSDNodes", "Removed (" + nodesToRemove.Count + ") nodes from the OpenSet", 0, navSimpDebugLevel);
+        return returnList;
     }
 
     private List<NavNode> FindColumnList(List<NavNode> curRowSet, int rowSize, List<NavNode> openSetList, Vector3 direction)
@@ -625,7 +648,7 @@ public class NavNodeManager
                 columnSet.Add(nextColumnNode); 
             }
         }
-        DebugLog("NavSimp", "(" + columnSet.Count + ") nodes found.", 1, navSimpDebugLevel);
+        DebugLog("NavSimp", "Found (" + columnSet.Count + ") nodes for column.", 1, navSimpDebugLevel);
         return columnSet;
     }
 
@@ -668,9 +691,10 @@ public class NavNodeManager
         return averagePos;
     }
 
-    private List<NavNode> FindNodesFromArea(List<NavNode> availableNodeList, Vector3 center, Vector3 size)
+    private NavNode FindAndMergeNodesFromArea(ref List<NavNode> availableNodeList, Vector3 center, Vector3 size)
     {
-        List<NavNode> returnList = new List<NavNode>();
+        DebugLog("NavSimp", "Search area C" + center + " S" + size, 2, navSimpDebugLevel);
+        List<NavNode> nodeList = new List<NavNode>();
         for (int i = 0; i < availableNodeList.Count(); i++)
         {
             NavNode curNode = availableNodeList[i];
@@ -678,11 +702,31 @@ public class NavNodeManager
             {
                 if (((center.z + size.z) >= curNode.nodePosition.z) && ((center.z - size.z) <= curNode.nodePosition.z))
                 {
-                    returnList.Add(curNode);
+                    nodeList.Add(curNode);
                 }
             }
         }
-        return returnList;
+        if (nodeList.Count() == 1)
+        {
+            return nodeList[0];
+        }
+        if (nodeList.Count() == 0)
+        {
+            return null;
+        }
+        if (nodeList.Count() > 1)
+        {
+            string debugString = nodeList[0].uID.ToString();
+            for (int i = 1; i < nodeList.Count; i++)
+            {
+                debugString += "," + nodeList[i].uID;
+            }
+            DebugLog("NavSimp", "Area searched, found UIDs(" + debugString + ").", 2, navSimpDebugLevel);
+            NavNode mergedNode = CreateNewNodeFromList(nodeList, GenerateUID(availableNodes), 2);
+            availableNodeList.Add(mergedNode);
+            return mergedNode;
+        }
+        return null;
     }
 
     #endregion

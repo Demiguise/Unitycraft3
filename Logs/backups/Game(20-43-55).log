@@ -1,0 +1,6 @@
+<1/30/2014 8:42:41 PM>[NavM][NavLoad] Beginning NavMesh initialization.
+<1/30/2014 8:42:41 PM>[NavM][NavLoad] NavMesh found. Parsing & Loading
+<1/30/2014 8:42:42 PM>[NavM][NavLoad] Loading NavNodeLinks took 45.8864ms.
+<1/30/2014 8:42:42 PM>[NavM][NavLoad] <519> nodes loaded in 343.0157ms.
+<1/30/2014 8:42:42 PM>[NavM][NavSimp] Beginning simplification of all available nodes.
+<1/30/2014 8:42:42 PM>[NavM][NavSimp] Navmesh simplification completed.

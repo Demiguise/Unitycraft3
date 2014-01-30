@@ -1,0 +1,185 @@
+<1/30/2014 8:00:41 PM>[NavM][NavLoad] Beginning NavMesh initialization.
+<1/30/2014 8:00:41 PM>[NavM][NavLoad] NavMesh found. Parsing & Loading
+<1/30/2014 8:00:41 PM>[NavM][NavLoad] Loading NavNodeLinks took 40.7922ms.
+<1/30/2014 8:00:41 PM>[NavM][NavLoad] <519> nodes loaded in 340.4759ms.
+<1/30/2014 8:00:41 PM>[NavM][NavSimp] Beginning simplification of all available nodes.
+<1/30/2014 8:00:41 PM>[NavM][NavSimp] curSet(1). Starting from node <1>.
+<1/30/2014 8:00:41 PM>[NavM][NavSimp] Area searched, found UIDs(2,3,5,7,8).
+<1/30/2014 8:00:41 PM>[NavM][NavSimp] Creating Navnode <520> at (-85.0, 0.4, 107.1). Extents are set to (6.0, 0.0, 6.0).
+<1/30/2014 8:00:41 PM>[NavM][NavSimp] Checking nextRowNode (520) is in Openset.
+<1/30/2014 8:00:41 PM>[NavM][NavSimp] curSet UIDs(1). Adding node <520>.
+<1/30/2014 8:00:41 PM>[NavM][NavSimp] Area searched, found UIDs(2,3,5,7,8).
+<1/30/2014 8:00:41 PM>[NavM][NavSimp] Creating Navnode <520> at (-85.0, 0.4, 107.1). Extents are set to (6.0, 0.0, 6.0).
+<1/30/2014 8:00:41 PM>[NavM][NavSimp] Checking nextRowNode (520) is in Openset.
+<1/30/2014 8:00:41 PM>[NavM][NavSimp] curSet UIDs(1,520). Adding node <520>.
+<1/30/2014 8:00:41 PM>[NavM][NavSimp] Area searched, found UIDs(2,3,5,7,8).
+<1/30/2014 8:00:41 PM>[NavM][NavSimp] Creating Navnode <520> at (-85.0, 0.4, 107.1). Extents are set to (6.0, 0.0, 6.0).
+<1/30/2014 8:00:41 PM>[NavM][NavSimp] Row Count is now at 2(+1). Maximum row size reached.
+<1/30/2014 8:00:41 PM>[NavM][NavSimp] End of Row reached. O(519) Cur(3) C(0).
+<1/30/2014 8:00:41 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/30/2014 8:00:41 PM>[NavM][NavSimp] Found (3) nodes for column.
+<1/30/2014 8:00:41 PM>[NavM][NavSimp] Column found with UIDs(,5,8,8).
+<1/30/2014 8:00:41 PM>[NavM][NavSimp] Found (3) nodes for column.
+<1/30/2014 8:00:41 PM>[NavM][NavSimp] Column found with UIDs(,13,18,18).
+<1/30/2014 8:00:41 PM>[NavM][NavSimp] Found (3) nodes for column.
+<1/30/2014 8:00:41 PM>[NavM][NavSimp] Column Count is now at 2(+1). Maximum column size reached
+<1/30/2014 8:00:41 PM>[NavM][NavSimp] End of Column reached. O(515) Cur(9) C(0).
+<1/30/2014 8:00:41 PM>[NavM][NavSimp] Creating Navnode <1> at (-85.1, 0.3, 110.1). Extents are set to (15.0, 0.0, 9.0).
+<1/30/2014 8:00:41 PM>[NavM][NavSimp] curSet(1). Starting from node <2>.
+<1/30/2014 8:00:41 PM>[NavM][NavSimp] Area searched, found UIDs(6,7,15,16).
+<1/30/2014 8:00:41 PM>[NavM][NavSimp] Creating Navnode <521> at (-81.6, 0.4, 106.4). Extents are set to (6.0, 0.0, 6.0).
+<1/30/2014 8:00:41 PM>[NavM][NavSimp] Checking nextRowNode (521) is in Openset.
+<1/30/2014 8:00:41 PM>[NavM][NavSimp] curSet UIDs(2). Adding node <521>.
+<1/30/2014 8:00:41 PM>[NavM][NavSimp] Area searched, found UIDs(6,7,15,16).
+<1/30/2014 8:00:41 PM>[NavM][NavSimp] Creating Navnode <521> at (-81.6, 0.4, 106.4). Extents are set to (6.0, 0.0, 6.0).
+<1/30/2014 8:00:41 PM>[NavM][NavSimp] Checking nextRowNode (521) is in Openset.
+<1/30/2014 8:00:41 PM>[NavM][NavSimp] curSet UIDs(2,521). Adding node <521>.
+<1/30/2014 8:00:41 PM>[NavM][NavSimp] Area searched, found UIDs(6,7,15,16).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Creating Navnode <521> at (-81.6, 0.4, 106.4). Extents are set to (6.0, 0.0, 6.0).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Row Count is now at 2(+1). Maximum row size reached.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] End of Row reached. O(515) Cur(3) C(9).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Found (3) nodes for column.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Column found with UIDs(,520,6,6).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Found (2) nodes for column.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] End of Column reached. O(513) Cur(6) C(9).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Creating Navnode <2> at (-82.3, 0.4, 106.9). Extents are set to (15.0, 0.0, 6.0).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] curSet(1). Starting from node <3>.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Area searched, found UIDs(7,9,17).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Creating Navnode <522> at (-84.8, 0.4, 102.1). Extents are set to (6.0, 0.0, 3.0).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Checking nextRowNode (522) is in Openset.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] curSet UIDs(3). Adding node <522>.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Area searched, found UIDs(7,9,17).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Creating Navnode <522> at (-84.8, 0.4, 102.1). Extents are set to (6.0, 0.0, 3.0).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Checking nextRowNode (522) is in Openset.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] curSet UIDs(3,522). Adding node <522>.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Area searched, found UIDs(7,9,17).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Creating Navnode <522> at (-84.8, 0.4, 102.1). Extents are set to (6.0, 0.0, 3.0).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Row Count is now at 2(+1). Maximum row size reached.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] End of Row reached. O(513) Cur(3) C(15).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Found (2) nodes for column.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] End of Column reached. O(513) Cur(3) C(15).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Creating Navnode <3> at (-85.5, 0.4, 102.8). Extents are set to (15.0, 0.0, 3.0).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] curSet(1). Starting from node <4>.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Area searched, found UIDs(10,12).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Creating Navnode <523> at (-89.8, 0.4, 107.1). Extents are set to (6.0, 0.0, 3.0).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Checking nextRowNode (523) is in Openset.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] curSet UIDs(4). Adding node <523>.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Area searched, found UIDs(10,12).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Creating Navnode <523> at (-89.8, 0.4, 107.1). Extents are set to (6.0, 0.0, 3.0).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Checking nextRowNode (523) is in Openset.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] curSet UIDs(4,523). Adding node <523>.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Area searched, found UIDs(10,12).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Creating Navnode <523> at (-89.8, 0.4, 107.1). Extents are set to (6.0, 0.0, 3.0).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Row Count is now at 2(+1). Maximum row size reached.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] End of Row reached. O(513) Cur(3) C(18).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Found (3) nodes for column.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Column found with UIDs(,12,12,12).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Found (3) nodes for column.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Column found with UIDs(,24,24,24).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Found (3) nodes for column.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Column Count is now at 2(+1). Maximum column size reached
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] End of Column reached. O(511) Cur(9) C(18).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Creating Navnode <4> at (-89.8, 0.4, 110.1). Extents are set to (15.0, 0.0, 9.0).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] curSet(1). Starting from node <7>.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Area searched, found UIDs(15,17,29,521).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Creating Navnode <524> at (-81.8, 0.4, 103.2). Extents are set to (6.0, 0.0, 6.0).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Checking nextRowNode (524) is in Openset.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] curSet UIDs(7). Adding node <524>.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Area searched, found UIDs(15,17,29,521).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Creating Navnode <524> at (-81.8, 0.4, 103.2). Extents are set to (6.0, 0.0, 6.0).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Checking nextRowNode (524) is in Openset.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] curSet UIDs(7,524). Adding node <524>.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Area searched, found UIDs(15,17,29,521).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Creating Navnode <524> at (-81.8, 0.4, 103.2). Extents are set to (6.0, 0.0, 6.0).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Row Count is now at 2(+1). Maximum row size reached.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] End of Row reached. O(511) Cur(3) C(27).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Found (3) nodes for column.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Column found with UIDs(,521,15,15).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Found (2) nodes for column.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] End of Column reached. O(509) Cur(6) C(27).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Creating Navnode <5> at (-81.8, 0.4, 104.2). Extents are set to (15.0, 0.0, 6.0).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] curSet(1). Starting from node <9>.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Area searched, found UIDs(17,19,31,522).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Creating Navnode <525> at (-84.8, 0.4, 99.9). Extents are set to (6.0, 0.0, 6.0).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Checking nextRowNode (525) is in Openset.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] curSet UIDs(9). Adding node <525>.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Area searched, found UIDs(17,19,31,522).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Creating Navnode <525> at (-84.8, 0.4, 99.9). Extents are set to (6.0, 0.0, 6.0).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Checking nextRowNode (525) is in Openset.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] curSet UIDs(9,525). Adding node <525>.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Area searched, found UIDs(17,19,31,522).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Creating Navnode <525> at (-84.8, 0.4, 99.9). Extents are set to (6.0, 0.0, 6.0).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Row Count is now at 2(+1). Maximum row size reached.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] End of Row reached. O(509) Cur(3) C(33).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Found (3) nodes for column.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Column found with UIDs(,522,17,17).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Found (2) nodes for column.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] End of Column reached. O(507) Cur(6) C(33).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Creating Navnode <6> at (-84.8, 0.4, 100.9). Extents are set to (15.0, 0.0, 6.0).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] curSet(1). Starting from node <10>.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Area searched, found UIDs(20,523).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Creating Navnode <526> at (-89.8, 0.4, 104.1). Extents are set to (9.0, 0.0, 3.0).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Checking nextRowNode (526) is in Openset.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] curSet UIDs(10). Adding node <526>.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Area searched, found UIDs(20,523).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Creating Navnode <526> at (-89.8, 0.4, 104.1). Extents are set to (9.0, 0.0, 3.0).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Checking nextRowNode (526) is in Openset.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] curSet UIDs(10,526). Adding node <526>.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Area searched, found UIDs(20,523).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Creating Navnode <526> at (-89.8, 0.4, 104.1). Extents are set to (9.0, 0.0, 3.0).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Row Count is now at 2(+1). Maximum row size reached.
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] End of Row reached. O(507) Cur(3) C(39).
+<1/30/2014 8:00:42 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] Found (3) nodes for column.
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] Column found with UIDs(,523,523,523).
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] End of Column reached. O(506) Cur(6) C(39).
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] Creating Navnode <7> at (-89.8, 0.4, 105.6). Extents are set to (21.0, 0.0, 6.0).
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] curSet(1). Starting from node <11>.
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] Area searched, found UIDs(21,23,526).
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] Creating Navnode <527> at (-91.8, 0.4, 106.1). Extents are set to (6.0, 0.0, 3.0).
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] Checking nextRowNode (527) is in Openset.
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] curSet UIDs(11). Adding node <527>.
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] Area searched, found UIDs(21,23,526).
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] Creating Navnode <527> at (-91.8, 0.4, 106.1). Extents are set to (6.0, 0.0, 3.0).
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] Checking nextRowNode (527) is in Openset.
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] curSet UIDs(11,527). Adding node <527>.
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] Area searched, found UIDs(21,23,526).
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] Creating Navnode <527> at (-91.8, 0.4, 106.1). Extents are set to (6.0, 0.0, 3.0).
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] Row Count is now at 2(+1). Maximum row size reached.
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] End of Row reached. O(506) Cur(3) C(45).
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] Found (1) nodes for column.
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] End of Column reached. O(506) Cur(3) C(45).
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] Creating Navnode <8> at (-92.2, 0.4, 106.4). Extents are set to (15.0, 0.0, 3.0).
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] curSet(1). Starting from node <14>.
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] Area searched, found UIDs(26,27,28,43,44).
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] Creating Navnode <528> at (-76.0, 0.4, 107.1). Extents are set to (6.0, 0.0, 6.0).
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] Checking nextRowNode (528) is in Openset.
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] curSet UIDs(14). Adding node <528>.
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] Area searched, found UIDs(26,27,28,43,44).
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] Creating Navnode <528> at (-76.0, 0.4, 107.1). Extents are set to (6.0, 0.0, 6.0).
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] Checking nextRowNode (528) is in Openset.
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] curSet UIDs(14,528). Adding node <528>.
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] Area searched, found UIDs(26,27,28,43,44).
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] Creating Navnode <528> at (-76.0, 0.4, 107.1). Extents are set to (6.0, 0.0, 6.0).
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] Row Count is now at 2(+1). Maximum row size reached.
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] End of Row reached. O(506) Cur(3) C(48).
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] Found (3) nodes for column.
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] Column found with UIDs(,28,44,44).
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] Found (3) nodes for column.
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] Column found with UIDs(,46,66,66).
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] Found (3) nodes for column.
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] Column Count is now at 2(+1). Maximum column size reached
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] End of Column reached. O(502) Cur(9) C(48).
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] Creating Navnode <9> at (-76.1, 0.4, 110.1). Extents are set to (15.0, 0.0, 9.0).
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] curSet(1). Starting from node <16>.
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] Area searched, found UIDs(30).
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] Checking nextRowNode (30) is in Openset.
+<1/30/2014 8:00:43 PM>[NavM][NavSimp] curSet UIDs(16). Adding node <30>.

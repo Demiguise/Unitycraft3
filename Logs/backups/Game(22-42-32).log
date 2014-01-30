@@ -1,0 +1,426 @@
+<1/29/2014 10:35:32 PM>[NavM][NavLoad] Beginning NavMesh initialization.
+<1/29/2014 10:35:32 PM>[NavM][NavLoad] NavMesh found. Parsing & Loading
+<1/29/2014 10:35:32 PM>[NavM][NavLoad] Loading NavNodeLinks took 42.2908ms.
+<1/29/2014 10:35:32 PM>[NavM][NavLoad] <519> nodes loaded in 343.0079ms.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] Beginning simplification of sub-divded nodes.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] Openset nodes [72] (99,127,129,130,131,160,162,164,165,172,195,197,200,201,207,208,209,210,233,235,239,240,245,246,247,248,271,273,278,279,283,284,285,286,309,311,317,318,321,322,323,324,347,349,356,357,359,360,361,362,385,387,395,396,397,398,399,400,423,425,434,435,436,437,460,462,472,473,496,498,509,510)
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] curSet(1). Starting from node <99>.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] Checking nextRowNode (129) is in Openset.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] curSet UIDs(99). Adding node <129>.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] Row Count is now at 1(+1). Maximum row size reached.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] End of Row reached. O(70) Cur(2) C(0).
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] No nodes found from initial row search direction, reversing.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] End of Column reached. O(70) Cur(2) C(0).
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] Creating Navnode <1> at (-85.3, 0.4, 86.9). Extents are set to (3.0, 0.0, 1.5).
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] curSet(1). Starting from node <127>.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] Checking nextRowNode (162) is in Openset.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] curSet UIDs(127). Adding node <162>.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] Row Count is now at 1(+1). Maximum row size reached.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] End of Row reached. O(68) Cur(2) C(2).
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] No nodes found from initial row search direction, reversing.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] End of Column reached. O(68) Cur(2) C(2).
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] Creating Navnode <2> at (-82.3, 0.4, 86.9). Extents are set to (3.0, 0.0, 1.5).
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] curSet(1). Starting from node <130>.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] Checking nextRowNode (99) is in Openset.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] curSet(1). Node <99> did not exist in Openset, discarding and reversing direction.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] Checking nextRowNode (131) is in Openset.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] curSet UIDs(130). Adding node <131>.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] Row Count is now at 1(+1). Maximum row size reached.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] End of Row reached. O(66) Cur(2) C(4).
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] No nodes found from initial row search direction, reversing.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] End of Column reached. O(66) Cur(2) C(4).
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] Creating Navnode <3> at (-88.3, 0.4, 86.9). Extents are set to (3.0, 0.0, 1.5).
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] curSet(1). Starting from node <160>.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] Checking nextRowNode (197) is in Openset.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] curSet UIDs(160). Adding node <197>.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] Row Count is now at 1(+1). Maximum row size reached.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] End of Row reached. O(64) Cur(2) C(6).
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] No nodes found from initial row search direction, reversing.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] End of Column reached. O(64) Cur(2) C(6).
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] Creating Navnode <4> at (-79.3, 0.4, 86.9). Extents are set to (3.0, 0.0, 1.5).
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] curSet(1). Starting from node <164>.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] Checking nextRowNode (131) is in Openset.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] curSet(1). Node <131> did not exist in Openset, discarding and reversing direction.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] Checking nextRowNode (165) is in Openset.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] curSet UIDs(164). Adding node <165>.
+<1/29/2014 10:35:32 PM>[NavM][NavSimp] Row Count is now at 1(+1). Maximum row size reached.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] End of Row reached. O(62) Cur(2) C(8).
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] No nodes found from initial row search direction, reversing.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] End of Column reached. O(62) Cur(2) C(8).
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Creating Navnode <5> at (-91.3, 0.4, 86.9). Extents are set to (3.0, 0.0, 1.5).
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] curSet(1). Starting from node <172>.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Checking nextRowNode (138) is in Openset.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] curSet(1). Node <138> did not exist in Openset, discarding and reversing direction.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] End of Row reached. O(61) Cur(1) C(10).
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Found (1) nodes for column.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Column found with UIDs(,209).
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Found (1) nodes for column.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Column Count is now at 1(+1). Maximum column size reached
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] End of Column reached. O(60) Cur(2) C(10).
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Creating Navnode <6> at (-113.1, 0.4, 107.1). Extents are set to (1.5, 0.0, 3.0).
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] curSet(1). Starting from node <195>.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Checking nextRowNode (235) is in Openset.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] curSet UIDs(195). Adding node <235>.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Row Count is now at 1(+1). Maximum row size reached.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] End of Row reached. O(58) Cur(2) C(12).
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] No nodes found from initial row search direction, reversing.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] End of Column reached. O(58) Cur(2) C(12).
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Creating Navnode <7> at (-76.3, 0.4, 86.9). Extents are set to (3.0, 0.0, 1.5).
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] curSet(1). Starting from node <200>.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Checking nextRowNode (165) is in Openset.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] curSet(1). Node <165> did not exist in Openset, discarding and reversing direction.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Checking nextRowNode (201) is in Openset.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] curSet UIDs(200). Adding node <201>.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Row Count is now at 1(+1). Maximum row size reached.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] End of Row reached. O(56) Cur(2) C(14).
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] No nodes found from initial row search direction, reversing.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] End of Column reached. O(56) Cur(2) C(14).
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Creating Navnode <8> at (-94.3, 0.4, 86.9). Extents are set to (3.0, 0.0, 1.5).
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] curSet(1). Starting from node <207>.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Checking nextRowNode (171) is in Openset.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] curSet(1). Node <171> did not exist in Openset, discarding and reversing direction.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] End of Row reached. O(55) Cur(1) C(16).
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Found (1) nodes for column.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Column found with UIDs(,208).
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] End of Column reached. O(54) Cur(2) C(16).
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Creating Navnode <9> at (-113.1, 0.4, 104.1). Extents are set to (1.5, 0.0, 3.0).
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] curSet(1). Starting from node <210>.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Checking nextRowNode (173) is in Openset.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] curSet(1). Node <173> did not exist in Openset, discarding and reversing direction.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] End of Row reached. O(53) Cur(1) C(18).
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Found (1) nodes for column.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Column found with UIDs(,247).
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Found (1) nodes for column.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Column Count is now at 1(+1). Maximum column size reached
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] End of Column reached. O(52) Cur(2) C(18).
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Creating Navnode <10> at (-113.1, 0.4, 110.1). Extents are set to (1.5, 0.0, 3.0).
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] curSet(1). Starting from node <233>.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Checking nextRowNode (273) is in Openset.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] curSet UIDs(233). Adding node <273>.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Row Count is now at 1(+1). Maximum row size reached.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] End of Row reached. O(50) Cur(2) C(20).
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] No nodes found from initial row search direction, reversing.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] End of Column reached. O(50) Cur(2) C(20).
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Creating Navnode <11> at (-73.3, 0.4, 86.9). Extents are set to (3.0, 0.0, 1.5).
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] curSet(1). Starting from node <239>.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Checking nextRowNode (201) is in Openset.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] curSet(1). Node <201> did not exist in Openset, discarding and reversing direction.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Checking nextRowNode (240) is in Openset.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] curSet UIDs(239). Adding node <240>.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Row Count is now at 1(+1). Maximum row size reached.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] End of Row reached. O(48) Cur(2) C(22).
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/29/2014 10:35:33 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] No nodes found from initial row search direction, reversing.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] End of Column reached. O(48) Cur(2) C(22).
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Creating Navnode <12> at (-97.3, 0.4, 86.9). Extents are set to (3.0, 0.0, 1.5).
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] curSet(1). Starting from node <245>.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Checking nextRowNode (206) is in Openset.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] curSet(1). Node <206> did not exist in Openset, discarding and reversing direction.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] End of Row reached. O(47) Cur(1) C(24).
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Found (1) nodes for column.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Column found with UIDs(,246).
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] End of Column reached. O(46) Cur(2) C(24).
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Creating Navnode <13> at (-113.1, 0.4, 101.1). Extents are set to (1.5, 0.0, 3.0).
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] curSet(1). Starting from node <248>.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Checking nextRowNode (211) is in Openset.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] curSet(1). Node <211> did not exist in Openset, discarding and reversing direction.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] End of Row reached. O(45) Cur(1) C(26).
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Found (1) nodes for column.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Column found with UIDs(,285).
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Found (1) nodes for column.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Column Count is now at 1(+1). Maximum column size reached
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] End of Column reached. O(44) Cur(2) C(26).
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Creating Navnode <14> at (-113.1, 0.4, 113.1). Extents are set to (1.5, 0.0, 3.0).
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] curSet(1). Starting from node <271>.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Checking nextRowNode (311) is in Openset.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] curSet UIDs(271). Adding node <311>.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Row Count is now at 1(+1). Maximum row size reached.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] End of Row reached. O(42) Cur(2) C(28).
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] No nodes found from initial row search direction, reversing.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] End of Column reached. O(42) Cur(2) C(28).
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Creating Navnode <15> at (-70.3, 0.4, 86.9). Extents are set to (3.0, 0.0, 1.5).
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] curSet(1). Starting from node <278>.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Checking nextRowNode (240) is in Openset.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] curSet(1). Node <240> did not exist in Openset, discarding and reversing direction.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Checking nextRowNode (279) is in Openset.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] curSet UIDs(278). Adding node <279>.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Row Count is now at 1(+1). Maximum row size reached.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] End of Row reached. O(40) Cur(2) C(30).
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] No nodes found from initial row search direction, reversing.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] End of Column reached. O(40) Cur(2) C(30).
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Creating Navnode <16> at (-100.3, 0.4, 86.9). Extents are set to (3.0, 0.0, 1.5).
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] curSet(1). Starting from node <283>.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Checking nextRowNode (244) is in Openset.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] curSet(1). Node <244> did not exist in Openset, discarding and reversing direction.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] End of Row reached. O(39) Cur(1) C(32).
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Found (1) nodes for column.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Column found with UIDs(,284).
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] End of Column reached. O(38) Cur(2) C(32).
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Creating Navnode <17> at (-113.1, 0.4, 98.1). Extents are set to (1.5, 0.0, 3.0).
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] curSet(1). Starting from node <286>.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Checking nextRowNode (249) is in Openset.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] curSet(1). Node <249> did not exist in Openset, discarding and reversing direction.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] End of Row reached. O(37) Cur(1) C(34).
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Found (1) nodes for column.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Column found with UIDs(,323).
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Found (1) nodes for column.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Column Count is now at 1(+1). Maximum column size reached
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] End of Column reached. O(36) Cur(2) C(34).
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Creating Navnode <18> at (-113.1, 0.4, 116.1). Extents are set to (1.5, 0.0, 3.0).
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] curSet(1). Starting from node <309>.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Checking nextRowNode (349) is in Openset.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] curSet UIDs(309). Adding node <349>.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Row Count is now at 1(+1). Maximum row size reached.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] End of Row reached. O(34) Cur(2) C(36).
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] No nodes found from initial row search direction, reversing.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] End of Column reached. O(34) Cur(2) C(36).
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Creating Navnode <19> at (-67.3, 0.4, 86.9). Extents are set to (3.0, 0.0, 1.5).
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] curSet(1). Starting from node <317>.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Checking nextRowNode (279) is in Openset.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] curSet(1). Node <279> did not exist in Openset, discarding and reversing direction.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Checking nextRowNode (318) is in Openset.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] curSet UIDs(317). Adding node <318>.
+<1/29/2014 10:35:34 PM>[NavM][NavSimp] Row Count is now at 1(+1). Maximum row size reached.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] End of Row reached. O(32) Cur(2) C(38).
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] No nodes found from initial row search direction, reversing.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] End of Column reached. O(32) Cur(2) C(38).
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Creating Navnode <20> at (-103.3, 0.4, 86.9). Extents are set to (3.0, 0.0, 1.5).
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] curSet(1). Starting from node <321>.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Checking nextRowNode (282) is in Openset.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] curSet(1). Node <282> did not exist in Openset, discarding and reversing direction.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] End of Row reached. O(31) Cur(1) C(40).
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Found (1) nodes for column.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Column found with UIDs(,322).
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] End of Column reached. O(30) Cur(2) C(40).
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Creating Navnode <21> at (-113.1, 0.4, 95.1). Extents are set to (1.5, 0.0, 3.0).
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] curSet(1). Starting from node <324>.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Checking nextRowNode (287) is in Openset.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] curSet(1). Node <287> did not exist in Openset, discarding and reversing direction.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] End of Row reached. O(29) Cur(1) C(42).
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Found (1) nodes for column.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Column found with UIDs(,361).
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Found (1) nodes for column.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Column Count is now at 1(+1). Maximum column size reached
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] End of Column reached. O(28) Cur(2) C(42).
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Creating Navnode <22> at (-113.1, 0.4, 119.1). Extents are set to (1.5, 0.0, 3.0).
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] curSet(1). Starting from node <347>.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Checking nextRowNode (387) is in Openset.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] curSet UIDs(347). Adding node <387>.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Row Count is now at 1(+1). Maximum row size reached.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] End of Row reached. O(26) Cur(2) C(44).
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] No nodes found from initial row search direction, reversing.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] End of Column reached. O(26) Cur(2) C(44).
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Creating Navnode <23> at (-64.3, 0.4, 86.9). Extents are set to (3.0, 0.0, 1.5).
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] curSet(1). Starting from node <356>.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Checking nextRowNode (318) is in Openset.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] curSet(1). Node <318> did not exist in Openset, discarding and reversing direction.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Checking nextRowNode (357) is in Openset.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] curSet UIDs(356). Adding node <357>.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Row Count is now at 1(+1). Maximum row size reached.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] End of Row reached. O(24) Cur(2) C(46).
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] No nodes found from initial row search direction, reversing.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] End of Column reached. O(24) Cur(2) C(46).
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Creating Navnode <24> at (-106.3, 0.4, 86.9). Extents are set to (3.0, 0.0, 1.5).
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] curSet(1). Starting from node <359>.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Checking nextRowNode (320) is in Openset.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] curSet(1). Node <320> did not exist in Openset, discarding and reversing direction.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] End of Row reached. O(23) Cur(1) C(48).
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Found (1) nodes for column.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Column found with UIDs(,360).
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] End of Column reached. O(22) Cur(2) C(48).
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Creating Navnode <25> at (-113.1, 0.4, 92.1). Extents are set to (1.5, 0.0, 3.0).
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] curSet(1). Starting from node <362>.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Checking nextRowNode (325) is in Openset.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] curSet(1). Node <325> did not exist in Openset, discarding and reversing direction.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] End of Row reached. O(21) Cur(1) C(50).
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Found (1) nodes for column.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Column found with UIDs(,399).
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Found (1) nodes for column.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Column Count is now at 1(+1). Maximum column size reached
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] End of Column reached. O(20) Cur(2) C(50).
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Creating Navnode <26> at (-113.1, 0.4, 122.1). Extents are set to (1.5, 0.0, 3.0).
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] curSet(1). Starting from node <385>.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Checking nextRowNode (425) is in Openset.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] curSet UIDs(385). Adding node <425>.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Row Count is now at 1(+1). Maximum row size reached.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] End of Row reached. O(18) Cur(2) C(52).
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] No nodes found from initial row search direction, reversing.
+<1/29/2014 10:35:35 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] End of Column reached. O(18) Cur(2) C(52).
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Creating Navnode <27> at (-61.3, 0.4, 86.9). Extents are set to (3.0, 0.0, 1.5).
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] curSet(1). Starting from node <395>.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Checking nextRowNode (357) is in Openset.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] curSet(1). Node <357> did not exist in Openset, discarding and reversing direction.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Checking nextRowNode (396) is in Openset.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] curSet UIDs(395). Adding node <396>.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Row Count is now at 1(+1). Maximum row size reached.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] End of Row reached. O(16) Cur(2) C(54).
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] No nodes found from initial row search direction, reversing.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] End of Column reached. O(16) Cur(2) C(54).
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Creating Navnode <28> at (-109.3, 0.4, 86.9). Extents are set to (3.0, 0.0, 1.5).
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] curSet(1). Starting from node <397>.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Checking nextRowNode (358) is in Openset.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] curSet(1). Node <358> did not exist in Openset, discarding and reversing direction.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] End of Row reached. O(15) Cur(1) C(56).
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Found (1) nodes for column.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Column found with UIDs(,398).
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] End of Column reached. O(14) Cur(2) C(56).
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Creating Navnode <29> at (-113.1, 0.4, 89.1). Extents are set to (1.5, 0.0, 3.0).
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] curSet(1). Starting from node <400>.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Checking nextRowNode (363) is in Openset.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] curSet(1). Node <363> did not exist in Openset, discarding and reversing direction.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] End of Row reached. O(13) Cur(1) C(58).
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Found (1) nodes for column.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Column found with UIDs(,436).
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Found (1) nodes for column.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Column Count is now at 1(+1). Maximum column size reached
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] End of Column reached. O(12) Cur(2) C(58).
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Creating Navnode <30> at (-113.1, 0.4, 125.1). Extents are set to (1.5, 0.0, 3.0).
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] curSet(1). Starting from node <423>.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Checking nextRowNode (462) is in Openset.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] curSet UIDs(423). Adding node <462>.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Row Count is now at 1(+1). Maximum row size reached.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] End of Row reached. O(10) Cur(2) C(60).
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] No nodes found from initial row search direction, reversing.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] End of Column reached. O(10) Cur(2) C(60).
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Creating Navnode <31> at (-58.3, 0.4, 86.9). Extents are set to (3.0, 0.0, 1.5).
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] curSet(1). Starting from node <434>.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Checking nextRowNode (396) is in Openset.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] curSet(1). Node <396> did not exist in Openset, discarding and reversing direction.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Checking nextRowNode (435) is in Openset.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] curSet UIDs(434). Adding node <435>.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] End of Row reached. O(8) Cur(2) C(62).
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] No nodes found from initial row search direction, reversing.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] End of Column reached. O(8) Cur(2) C(62).
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Creating Navnode <32> at (-112.3, 0.4, 86.9). Extents are set to (3.0, 0.0, 1.5).
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] curSet(1). Starting from node <437>.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Checking nextRowNode (401) is in Openset.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] curSet(1). Node <401> did not exist in Openset, discarding and reversing direction.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] End of Row reached. O(7) Cur(1) C(64).
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Found (1) nodes for column.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Column found with UIDs(,472).
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Found (1) nodes for column.
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Column Count is now at 1(+1). Maximum column size reached
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] End of Column reached. O(6) Cur(2) C(64).
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] Creating Navnode <33> at (-113.1, 0.4, 128.1). Extents are set to (1.5, 0.0, 3.0).
+<1/29/2014 10:35:36 PM>[NavM][NavSimp] curSet(1). Starting from node <460>.
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] Checking nextRowNode (498) is in Openset.
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] curSet UIDs(460). Adding node <498>.
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] Row Count is now at 1(+1). Maximum row size reached.
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] End of Row reached. O(4) Cur(2) C(66).
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] No nodes found from initial row search direction, reversing.
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] End of Column reached. O(4) Cur(2) C(66).
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] Creating Navnode <34> at (-55.3, 0.4, 86.9). Extents are set to (3.0, 0.0, 1.5).
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] curSet(1). Starting from node <473>.
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] Checking nextRowNode (438) is in Openset.
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] curSet(1). Node <438> did not exist in Openset, discarding and reversing direction.
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] End of Row reached. O(3) Cur(1) C(68).
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] Found (1) nodes for column.
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] Column found with UIDs(,509).
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] Found (1) nodes for column.
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] Column Count is now at 1(+1). Maximum column size reached
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] End of Column reached. O(2) Cur(2) C(68).
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] Creating Navnode <35> at (-113.1, 0.4, 131.1). Extents are set to (1.5, 0.0, 3.0).
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] curSet(1). Starting from node <496>.
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] No nodes found from initial row search direction, reversing.
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] Checking nextRowNode (498) is in Openset.
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] curSet(1). Node <498> did not exist in Openset, discarding and breaking.
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] End of Row reached. O(1) Cur(1) C(70).
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] No nodes found from initial row search direction, reversing.
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] End of Column reached. O(1) Cur(1) C(70).
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] Creating Navnode <36> at (-53.1, 0.4, 86.9). Extents are set to (1.5, 0.0, 1.5).
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] curSet(1). Starting from node <510>.
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] Checking nextRowNode (474) is in Openset.
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] curSet(1). Node <474> did not exist in Openset, discarding and reversing direction.
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] End of Row reached. O(0) Cur(1) C(71).
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] Beginning search for matching columns.
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] No nodes found from initial row search direction, reversing.
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] Found (0) nodes for column.
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] End of Column reached. O(0) Cur(1) C(71).
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] Creating Navnode <37> at (-113.1, 0.4, 133.4). Extents are set to (1.5, 0.0, 1.5).
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] <37> node(s) created through MeshSimplifcation.
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] Beginning simplification of all available nodes.
+<1/29/2014 10:35:37 PM>[NavM][NavSimp] Navmesh simplification completed.
